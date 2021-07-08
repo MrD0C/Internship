@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://consultionRecordEditScreen.caption"
+        messagesPack="com.company.medicalrecord.web.screens">
+    <data>
+        <instance id="consultationRecordDc" class="com.company.medicalrecord.entity.ConsultationRecord">
+            <view extends="_local">
+                <property name="diagnosis" view="_minimal">
+                    <property name="name"/>
+                </property>
+                <property name="description" view="_minimal">
+                    <property name="complaints"/>
+                    <property name="anamnesis"/>
+                    <property name="objectively"/>
+                    <property name="conclusion"/>
+                </property>
+            </view>
+            <loader id="consultationRecordDl"/>
+        </instance>
+    </data>
+    <layout>
+        <vbox id="vBoxMain" spacing="true" width="50%">
+            <label id="consultionRecordLabel" value="Add consultion" stylename="h3 bold"/>
+            <vbox id="vBoxDiagnosis" spacing="true">
+                <label id="labelDiagnosis" value="Diagnosis" stylename="bold h3"/>
+                <form id="consultationRecordForm" dataContainer="consultationRecordDc">
+                    <column width="350px">
+                        <textField id="diagnosisIcd10NameField" caption="" property="diagnosis.icd10Name" inputPrompt="isd10Name"/>
+                        <textField id="diagnosisNameField" caption="" property="diagnosis.name" inputPrompt="name"/>
+                    </column>
+                </form>
+            </vbox>
+            <vbox id="vBoxDescription" spacing="true">
+                <label id="labelDescription" value="Description" stylename="bold h3"/>
+                <form id="consultationRecordForm1" dataContainer="consultationRecordDc">
+                    <column width="350px">
+                        <textArea id="descriptionComplaintsField" caption="" property="description.complaints" rows="5" inputPrompt="Complaints"/>
+                        <textArea id="descriptionAnamnesisField" caption="" property="description.anamnesis" rows="5" inputPrompt="Anamnesis"/>
+                        <textArea id="descriptionObjectivelyField" caption="" property="description.objectively" rows="5" inputPrompt="Objectively"/>
+                        <textArea id="descriptionConclusionField" caption="" property="description.conclusion" rows="5" inputPrompt="Conclusion"/>
+                    </column>
+                </form>
+            </vbox>
+            <hbox id="hBoxButtons" spacing="true">
+                <button id="buttonCreate" stylename="friendly" caption="Commit"/>
+            </hbox>
+        </vbox>
+    </layout>
+</window>

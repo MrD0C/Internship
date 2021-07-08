@@ -18,7 +18,8 @@ public class TreatmentPlan extends StandardEntity {
     private String treatmentType;
 
     @Lob
-    @Column(name = "TITLE")
+    @Column(name = "TITLE", nullable = false)
+    @NotNull
     private String title;
 
     @Lob
@@ -28,7 +29,8 @@ public class TreatmentPlan extends StandardEntity {
     @NotNull
     @Column(name = "DATE_", nullable = false)
     private LocalDateTime date;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONSULTATION_RECORD_ID")
     private ConsultationRecord consultationRecord;
 

@@ -19,7 +19,8 @@ public class Medication extends StandardEntity {
     @Lob
     @Column(name = "INTAKE_RECOMMENDATION")
     private String intakeRecommendation;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONSULTATION_RECORD_ID")
     private ConsultationRecord consultationRecord;
 
