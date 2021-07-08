@@ -5,5 +5,6 @@
               caption="mainMsg://menu_config.medicalrecord_ConsultionRecordEditScreen"/>
         <item screen="medicalrecord_ConsultationRecord.browse"
               caption="mainMsg://menu_config.medicalrecord_ConsultationRecord.browse"/>
+        <item screen="medicalrecord_Medication.browse" caption="mainMsg://menu_config.medicalrecord_Medication.browse"/>
     </menu>
 </menu-config>

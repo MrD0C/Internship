@@ -6,14 +6,15 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 
-@Service(ConsultionRecordService.NAME)
-public class ConsultionRecordServiceBean implements ConsultionRecordService {
+@Service(ConsultationService.NAME)
+public class ConsultationServiceBean implements ConsultationService {
 
     @Inject
     private DataManager dataManager;
 
     @Override
     public ConsultationRecord saveConsultationRecord(ConsultationRecord record) {
-       return dataManager.commit(record);
+        return dataManager.commit(record);
     }
+
 }

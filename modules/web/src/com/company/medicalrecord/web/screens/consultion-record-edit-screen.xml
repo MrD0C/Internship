@@ -17,6 +17,30 @@
             </view>
             <loader id="consultationRecordDl"/>
         </instance>
+        <collection id="medicationsDc" class="com.company.medicalrecord.entity.Medication">
+            <view extends="_local"/>
+            <loader id="medicationsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_Medication e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="treatmentPlansDc" class="com.company.medicalrecord.entity.TreatmentPlan">
+            <view extends="_local"/>
+            <loader id="treatmentPlansDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_TreatmentPlan e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="medicationDc" class="com.company.medicalrecord.entity.Medication">
+            <view extends="_local"/>
+            <loader id="medicationDl"/>
+        </instance>
+        <instance id="treatmentPlanDc" class="com.company.medicalrecord.entity.TreatmentPlan">
+            <view extends="_local"/>
+            <loader id="treatmentPlanDl"/>
+        </instance>
     </data>
     <layout>
         <vbox id="vBoxMain" spacing="true" width="50%">
@@ -40,6 +64,10 @@
                         <textArea id="descriptionConclusionField" caption="" property="description.conclusion" rows="5" inputPrompt="Conclusion"/>
                     </column>
                 </form>
+            </vbox>
+            <vbox id="vBoxMedicine" spacing="true">
+                <label id="labelMedicine" value="Medicine" stylename="bold h3"/>
+                <button id="buttonAddMedicine" stylename="primary" caption="Add medicine"/>
             </vbox>
             <hbox id="hBoxButtons" spacing="true">
                 <button id="buttonCreate" stylename="friendly" caption="Commit"/>

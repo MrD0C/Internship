@@ -11,8 +11,10 @@
         <property name="serverSelector" ref="cuba_ServerSelector"/>
         <property name="remoteServices">
             <map>
-                <entry key="medicalrecord_ConsultionRecordService"
-                       value="com.company.medicalrecord.service.ConsultionRecordService"/>
+                <entry key="medicalrecord_ConsultationService"
+                       value="com.company.medicalrecord.service.ConsultationService"/>
+                <entry key="medicalrecord_MedicationService"
+                       value="com.company.medicalrecord.service.MedicationService"/>
             </map>
         </property>
     </bean>
