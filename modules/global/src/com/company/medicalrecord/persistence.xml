@@ -5,5 +5,6 @@
         <class>com.company.medicalrecord.entity.Description</class>
         <class>com.company.medicalrecord.entity.Diagnosis</class>
         <class>com.company.medicalrecord.entity.TreatmentPlan</class>
+        <class>com.company.medicalrecord.entity.Medication</class>
     </persistence-unit>
 </persistence>
