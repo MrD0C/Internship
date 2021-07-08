@@ -1,6 +1,7 @@
 package com.company.medicalrecord.entity;
 
 import com.haulmont.chile.core.annotations.MetaClass;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.EmbeddableEntity;
 
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @MetaClass(name = "medicalrecord_CreationInfo")
 @Embeddable
+@NamePattern("%s|date")
 public class CreationInfo extends EmbeddableEntity {
     private static final long serialVersionUID = -3356974252480974141L;
 

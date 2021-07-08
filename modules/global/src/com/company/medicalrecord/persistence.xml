@@ -8,5 +8,6 @@
         <class>com.company.medicalrecord.entity.Medication</class>
         <class>com.company.medicalrecord.entity.CreationInfo</class>
         <class>com.company.medicalrecord.entity.AnalysisIndicator</class>
+        <class>com.company.medicalrecord.entity.ConsultationRecord</class>
     </persistence-unit>
 </persistence>

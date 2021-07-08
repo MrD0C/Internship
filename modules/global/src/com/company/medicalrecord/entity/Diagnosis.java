@@ -9,7 +9,7 @@ import javax.persistence.Embeddable;
 
 @MetaClass(name = "medicalrecord_Diagnosis")
 @Embeddable
-@NamePattern("%s|name")
+@NamePattern("%s|icd10Name")
 public class Diagnosis extends EmbeddableEntity {
     private static final long serialVersionUID = 1523421526646234626L;
 
