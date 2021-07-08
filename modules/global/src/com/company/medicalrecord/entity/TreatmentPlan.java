@@ -1,23 +1,23 @@
 package com.company.medicalrecord.entity;
 
-import com.haulmont.chile.core.annotations.MetaClass;
 import com.haulmont.chile.core.annotations.NamePattern;
-import com.haulmont.cuba.core.entity.EmbeddableEntity;
+import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Lob;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@MetaClass(name = "medicalrecord_TreatmentPlan")
-@Embeddable
+@Table(name = "MEDICALRECORD_TREATMENT_PLAN")
+@Entity(name = "medicalrecord_TreatmentPlan")
 @NamePattern("%s|title")
-public class TreatmentPlan extends EmbeddableEntity {
+public class TreatmentPlan extends StandardEntity {
     private static final long serialVersionUID = 4134760512660096552L;
 
-    @Column(name = "TREATMENT_TYPE")
+    @NotNull
+    @Column(name = "TREATMENT_TYPE", nullable = false)
     private String treatmentType;
 
+    @Lob
     @Column(name = "TITLE")
     private String title;
 
@@ -25,8 +25,20 @@ public class TreatmentPlan extends EmbeddableEntity {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "DATE_")
+    @NotNull
+    @Column(name = "DATE_", nullable = false)
     private LocalDateTime date;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "CONSULTATION_RECORD_ID")
+    private ConsultationRecord consultationRecord;
+
+    public ConsultationRecord getConsultationRecord() {
+        return consultationRecord;
+    }
+
+    public void setConsultationRecord(ConsultationRecord consultationRecord) {
+        this.consultationRecord = consultationRecord;
+    }
 
     public LocalDateTime getDate() {
         return date;

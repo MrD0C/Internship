@@ -5,6 +5,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "MEDICALRECORD_CONSULTATION_RECORD")
 @Entity(name = "medicalrecord_ConsultationRecord")
@@ -30,37 +31,25 @@ public class ConsultationRecord extends StandardEntity {
     })
     private Description description;
 
-    @Embedded
-    @EmbeddedParameters(nullAllowed = false)
-    @AttributeOverrides({
-            @AttributeOverride(name = "medicineName", column = @Column(name = "MEDICATION_MEDICINE_NAME")),
-            @AttributeOverride(name = "intakeRecommendation", column = @Column(name = "MEDICATION_INTAKE_RECOMMENDATION"))
-    })
-    private Medication medication;
+    @OneToMany(mappedBy = "consultationRecord")
+    private List<Medication> medication;
 
-    @Embedded
-    @EmbeddedParameters(nullAllowed = false)
-    @AttributeOverrides({
-            @AttributeOverride(name = "treatmentType", column = @Column(name = "TREATMENT_PLAN_TREATMENT_TYPE")),
-            @AttributeOverride(name = "title", column = @Column(name = "TREATMENT_PLAN_TITLE")),
-            @AttributeOverride(name = "name", column = @Column(name = "TREATMENT_PLAN_NAME")),
-            @AttributeOverride(name = "date", column = @Column(name = "TREATMENT_PLAN_DATE_"))
-    })
-    private TreatmentPlan treatmentPlan;
+    @OneToMany(mappedBy = "consultationRecord")
+    private List<TreatmentPlan> treatmentPlan;
 
-    public TreatmentPlan getTreatmentPlan() {
+    public List<TreatmentPlan> getTreatmentPlan() {
         return treatmentPlan;
     }
 
-    public void setTreatmentPlan(TreatmentPlan treatmentPlan) {
+    public void setTreatmentPlan(List<TreatmentPlan> treatmentPlan) {
         this.treatmentPlan = treatmentPlan;
     }
 
-    public Medication getMedication() {
+    public List<Medication> getMedication() {
         return medication;
     }
 
-    public void setMedication(Medication medication) {
+    public void setMedication(List<Medication> medication) {
         this.medication = medication;
     }
 
