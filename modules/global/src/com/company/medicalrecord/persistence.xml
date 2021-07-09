@@ -10,5 +10,6 @@
         <class>com.company.medicalrecord.entity.Medication</class>
         <class>com.company.medicalrecord.entity.TreatmentPlan</class>
         <class>com.company.medicalrecord.entity.monitoring.WeightMonitoring</class>
+        <class>com.company.medicalrecord.entity.monitoring.PulseMonitoring</class>
     </persistence-unit>
 </persistence>
