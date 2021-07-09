@@ -9,6 +9,6 @@
         <class>com.company.medicalrecord.entity.ConsultationRecord</class>
         <class>com.company.medicalrecord.entity.Medication</class>
         <class>com.company.medicalrecord.entity.TreatmentPlan</class>
-        <class>com.company.medicalrecord.entity.WeightMonitoring</class>
+        <class>com.company.medicalrecord.entity.monitoring.WeightMonitoring</class>
     </persistence-unit>
 </persistence>

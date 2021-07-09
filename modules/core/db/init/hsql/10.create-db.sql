@@ -68,8 +68,9 @@ create table MEDICALRECORD_WEIGHT_MONITORING (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    VALUE_ double precision not null,
-    DATE_ timestamp not null,
+    MASS_VALUE double precision not null,
+    UNIT varchar(50) not null,
+    LOCAL_DATE_TIME timestamp not null,
     --
     primary key (ID)
 )^

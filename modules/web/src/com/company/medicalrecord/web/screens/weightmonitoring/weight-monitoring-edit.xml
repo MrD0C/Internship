@@ -5,18 +5,21 @@
         messagesPack="com.company.medicalrecord.web.screens.weightmonitoring">
     <data>
         <instance id="weightMonitoringDc"
-                  class="com.company.medicalrecord.entity.WeightMonitoring">
+                  class="com.company.medicalrecord.entity.monitoring.WeightMonitoring">
             <view extends="_local"/>
             <loader/>
         </instance>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="weightMonitoringDc">
             <column width="350px">
-                <textField id="valueField" property="value"/>
-                <dateField id="dateField" property="date"/>
+                <textField id="massValueField" property="massValue"/>
+                <lookupField id="unitField" property="unit"/>
+                <dateField id="localDateTimeField" property="localDateTime"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

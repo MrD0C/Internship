@@ -1,0 +1,1 @@
+drop table MEDICALRECORD_WEIGHT_MONITORING__U68289 if exists cascade ;
