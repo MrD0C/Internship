@@ -28,7 +28,7 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="massValue"/>
+                <column id="value"/>
                 <column id="unit"/>
                 <column id="localDateTime"/>
             </columns>

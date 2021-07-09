@@ -42,7 +42,7 @@
                                    dataDateFormat="DD.MM.YYYY"
                                    width="100%" height="100%" box.expandRatio="1.0">
                     <chart:graphs>
-                    <chart:graph valueField="massValue"
+                    <chart:graph valueField="value"
                                  lineColor="RED"
                                  bullet="TRIANGLE_DOWN"/>
                     </chart:graphs>

@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
 
 @Table(name = "MEDICALRECORD_WEIGHT_MONITORING")
 @Entity(name = "medicalrecord_WeightMonitoring")
-@NamePattern("%s %s|massValue,unit")
+@NamePattern("%s %s|value,unit")
 public class WeightMonitoring extends StandardEntity {
     private static final long serialVersionUID = 2144253680316515486L;
 
     @NotNull
     @Column(name = "MASS_VALUE", nullable = false)
-    private Double massValue;
+    private Double value;
 
     @NotNull
     @Column(name = "UNIT", nullable = false)
@@ -44,11 +44,11 @@ public class WeightMonitoring extends StandardEntity {
         this.localDateTime = localDateTime;
     }
 
-    public Double getMassValue() {
-        return massValue;
+    public Double getValue() {
+        return value;
     }
 
-    public void setMassValue(Double massValue) {
-        this.massValue = massValue;
+    public void setValue(Double value) {
+        this.value = value;
     }
 }

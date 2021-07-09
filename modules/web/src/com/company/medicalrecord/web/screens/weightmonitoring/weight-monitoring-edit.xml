@@ -17,7 +17,7 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="weightMonitoringDc">
             <column width="350px">
-                <textField id="massValueField" property="massValue"/>
+                <textField id="massValueField" property="value"/>
                 <lookupField id="unitField" property="unit"/>
                 <dateField id="localDateTimeField" property="localDateTime"/>
             </column>
