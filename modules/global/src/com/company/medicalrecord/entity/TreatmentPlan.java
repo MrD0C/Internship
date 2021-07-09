@@ -1,5 +1,6 @@
 package com.company.medicalrecord.entity;
 
+import com.company.medicalrecord.entity.record.ExaminationRecord;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
@@ -33,6 +34,17 @@ public class TreatmentPlan extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CONSULTATION_RECORD_ID")
     private ConsultationRecord consultationRecord;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "EXAMINATION_RECORD_ID")
+    private ExaminationRecord examinationRecord;
+
+    public ExaminationRecord getExaminationRecord() {
+        return examinationRecord;
+    }
+
+    public void setExaminationRecord(ExaminationRecord examinationRecord) {
+        this.examinationRecord = examinationRecord;
+    }
 
     public ConsultationRecord getConsultationRecord() {
         return consultationRecord;

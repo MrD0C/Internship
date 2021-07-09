@@ -5,12 +5,15 @@
         <class>com.company.medicalrecord.entity.Description</class>
         <class>com.company.medicalrecord.entity.Diagnosis</class>
         <class>com.company.medicalrecord.entity.CreationInfo</class>
-        <class>com.company.medicalrecord.entity.AnalysisIndicator</class>
         <class>com.company.medicalrecord.entity.ConsultationRecord</class>
         <class>com.company.medicalrecord.entity.Medication</class>
         <class>com.company.medicalrecord.entity.TreatmentPlan</class>
         <class>com.company.medicalrecord.entity.monitoring.WeightMonitoring</class>
         <class>com.company.medicalrecord.entity.monitoring.PulseMonitoring</class>
         <class>com.company.medicalrecord.entity.monitoring.TemperatureMonitoring</class>
+        <class>com.company.medicalrecord.entity.record.NoteRecord</class>
+        <class>com.company.medicalrecord.entity.record.AnalysisRecord</class>
+        <class>com.company.medicalrecord.entity.AnalysisIndicator</class>
+        <class>com.company.medicalrecord.entity.record.ExaminationRecord</class>
     </persistence-unit>
 </persistence>

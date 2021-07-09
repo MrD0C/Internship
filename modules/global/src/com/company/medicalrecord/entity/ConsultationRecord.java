@@ -24,6 +24,15 @@ public class ConsultationRecord extends StandardEntity {
     @Embedded
     @EmbeddedParameters(nullAllowed = false)
     @AttributeOverrides({
+            @AttributeOverride(name = "clinicName", column = @Column(name = "CREATION_INFO_CLINIC_NAME")),
+            @AttributeOverride(name = "doctorSurname", column = @Column(name = "CREATION_INFO_DOCTOR_SURNAME")),
+            @AttributeOverride(name = "date", column = @Column(name = "CREATION_INFO_DATE_"))
+    })
+    private CreationInfo creationInfo;
+
+    @Embedded
+    @EmbeddedParameters(nullAllowed = false)
+    @AttributeOverrides({
             @AttributeOverride(name = "complaints", column = @Column(name = "DESCRIPTION_COMPLAINTS")),
             @AttributeOverride(name = "anamnesis", column = @Column(name = "DESCRIPTION_ANAMNESIS")),
             @AttributeOverride(name = "objectively", column = @Column(name = "DESCRIPTION_OBJECTIVELY")),
@@ -36,6 +45,14 @@ public class ConsultationRecord extends StandardEntity {
 
     @OneToMany(mappedBy = "consultationRecord")
     private List<TreatmentPlan> treatmentPlan;
+
+    public CreationInfo getCreationInfo() {
+        return creationInfo;
+    }
+
+    public void setCreationInfo(CreationInfo creationInfo) {
+        this.creationInfo = creationInfo;
+    }
 
     public List<TreatmentPlan> getTreatmentPlan() {
         return treatmentPlan;

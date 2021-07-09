@@ -1,26 +1,24 @@
 package com.company.medicalrecord.entity;
 
-import com.haulmont.chile.core.annotations.MetaClass;
+import com.company.medicalrecord.entity.record.AnalysisRecord;
 import com.haulmont.chile.core.annotations.NamePattern;
-import com.haulmont.cuba.core.entity.EmbeddableEntity;
+import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Lob;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@MetaClass(name = "medicalrecord_AnalysisIndicator")
-@Embeddable
+@Table(name = "MEDICALRECORD_ANALYSIS_INDICATOR")
+@Entity(name = "medicalrecord_AnalysisIndicator")
 @NamePattern("%s|name")
-public class AnalysisIndicator extends EmbeddableEntity {
+public class AnalysisIndicator extends StandardEntity {
     private static final long serialVersionUID = 3262290100569293550L;
 
-    @Column(name = "NAME", nullable = false)
     @NotNull
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "RESULT_", nullable = false)
     @NotNull
+    @Column(name = "RESULT_", nullable = false)
     private String result;
 
     @Column(name = "NORM")
@@ -29,9 +27,19 @@ public class AnalysisIndicator extends EmbeddableEntity {
     @Column(name = "UNIT")
     private String unit;
 
-    @Lob
     @Column(name = "COMMENT_")
     private String comment;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ANALYSIS_RECORD_ID")
+    private AnalysisRecord analysisRecord;
+
+    public AnalysisRecord getAnalysisRecord() {
+        return analysisRecord;
+    }
+
+    public void setAnalysisRecord(AnalysisRecord analysisRecord) {
+        this.analysisRecord = analysisRecord;
+    }
 
     public String getComment() {
         return comment;
