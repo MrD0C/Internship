@@ -1,1 +1,0 @@
-alter table MEDICALRECORD_MEDICATION alter column CONSULTATION_RECORD_ID set null ;
