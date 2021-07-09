@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://monitoringScreen.caption"
+        messagesPack="com.company.medicalrecord.web.screens.monitoring"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
+    <data>
+        <collection id="weightMonitoringsDc" class="com.company.medicalrecord.entity.monitoring.WeightMonitoring">
+            <view extends="_local"/>
+            <loader id="weightMonitoringsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_WeightMonitoring e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="pulseMonitoringsDc" class="com.company.medicalrecord.entity.monitoring.PulseMonitoring">
+            <view extends="_local"/>
+            <loader id="pulseMonitoringsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_PulseMonitoring e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="temperatureMonitoringsDc"
+                    class="com.company.medicalrecord.entity.monitoring.TemperatureMonitoring">
+            <view extends="_local"/>
+            <loader id="temperatureMonitoringsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_TemperatureMonitoring e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="vBoxMain">
+        <vbox id="vBoxMain" spacing="true">
+            <label id="labelMonitoring" value="Monitoring" stylename="bold h3"/>
+            <vbox id="vBoxWeightMonitoring" box.expandRatio="1.0" height="25%">
+                <label id="labelWeight" value="Weight" stylename="bold h3"/>
+                <chart:serialChart id="serialChartWeight"
+                                   dataContainer="weightMonitoringsDc"
+                                   categoryField="localDateTime"
+                                   startDuration="1"
+                                   dataDateFormat="DD.MM.YYYY"
+                                   width="100%" height="100%" box.expandRatio="1.0">
+                    <chart:graphs>
+                    <chart:graph valueField="massValue"
+                                 lineColor="RED"
+                                 bullet="TRIANGLE_DOWN"/>
+                    </chart:graphs>
+                    <chart:chartCursor cursorColor="#DE1717"
+                                       limitToGraph="g1"
+                                       pan="true"
+                                       valueZoomable="true"/>
+                </chart:serialChart>
+            </vbox>
+            <hbox id="hBoxTemperatureAndPulse" width="100%" height="100%">
+                <vbox id="vBoxTemperature" spacing="true" height="100%" width="50%">
+                    <label id="labelTemperature" value="Temperature" stylename="bold h3"/>
+                    <chart:serialChart id="serialChartTemperature"
+                                       height="100%"
+                                       width="100%"
+                                       dataContainer="temperatureMonitoringsDc"
+                                       categoryField="localDateTime"
+                                       startDuration="1" box.expandRatio="1.0">
+                        <chart:graphs>
+                        <chart:graph valueField="value"
+                                     lineColor="RED"
+                                     bullet="TRIANGLE_DOWN"/>
+                      </chart:graphs>
+                    <chart:chartCursor cursorColor="#DE1717"
+                                       limitToGraph="g1"
+                                       pan="true"
+                                       valueZoomable="true"/>
+                    </chart:serialChart>
+                </vbox>
+                <vbox id="vBoxPulse" spacing="true" height="100%" width="50%">
+                    <label id="labelPulse" value="Pulse" stylename="bold h3"/>
+                    <chart:serialChart id="serialChartPreassure"
+                                       width="100%"
+                                       height="100%"
+                                       dataContainer="pulseMonitoringsDc"
+                                       categoryField="localDateTime"
+                                       startDuration="1" box.expandRatio="1.0">
+                        <chart:graphs>
+                            <chart:graph valueField="value"
+                                         lineColor="RED"
+                                         bullet="TRIANGLE_DOWN"/>
+                        </chart:graphs>
+                        <chart:chartCursor cursorColor="#DE1717"
+                                           limitToGraph="g1"
+                                           pan="true"
+                                           valueZoomable="true"/>
+                    </chart:serialChart>
+                </vbox>
+            </hbox>
+        </vbox>
+    </layout>
+</window>

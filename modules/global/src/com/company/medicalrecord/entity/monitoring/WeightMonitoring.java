@@ -1,6 +1,7 @@
 package com.company.medicalrecord.entity.monitoring;
 
 import com.company.medicalrecord.entity.unit.UnitMass;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Table(name = "MEDICALRECORD_WEIGHT_MONITORING")
 @Entity(name = "medicalrecord_WeightMonitoring")
+@NamePattern("%s %s|massValue,unit")
 public class WeightMonitoring extends StandardEntity {
     private static final long serialVersionUID = 2144253680316515486L;
 

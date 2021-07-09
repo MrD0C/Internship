@@ -8,5 +8,6 @@
               caption="mainMsg://menu_config.medicalrecord_PulseMonitoring.browse"/>
         <item screen="medicalrecord_TemperatureMonitoring.browse"
               caption="mainMsg://menu_config.medicalrecord_TemperatureMonitoring.browse"/>
+        <item screen="medicalrecord_MonitoringScreen" caption="mainMsg://menu_config.medicalrecord_MonitoringScreen"/>
     </menu>
 </menu-config>
