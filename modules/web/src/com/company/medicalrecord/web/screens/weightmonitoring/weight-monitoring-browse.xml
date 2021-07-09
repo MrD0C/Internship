@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://weightMonitoringBrowse.caption"
+        focusComponent="weightMonitoringsTable"
+        messagesPack="com.company.medicalrecord.web.screens.weightmonitoring"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
+    <data readOnly="true">
+        <collection id="weightMonitoringsDc"
+                    class="com.company.medicalrecord.entity.WeightMonitoring">
+            <view extends="_local"/>
+            <loader id="weightMonitoringsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_WeightMonitoring e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout
+            spacing="true">
+        <filter id="filter"
+                applyTo="weightMonitoringsTable"
+                dataLoader="weightMonitoringsDl">
+            <properties include=".*"/>
+        </filter>
+        <tabSheet>
+            <tab expand="weightMonitoringsTable" id="tab" caption="Tab">
+                <groupTable id="weightMonitoringsTable"
+                                    width="100%"
+                                    dataContainer="weightMonitoringsDc">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="value"/>
+                        <column id="date"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn" action="weightMonitoringsTable.create"/>
+                        <button id="editBtn" action="weightMonitoringsTable.edit"/>
+                        <button id="removeBtn" action="weightMonitoringsTable.remove"/>
+                    </buttonsPanel>
+                </groupTable>
+            </tab>
+            <tab id="tab_1" caption="Tab" margin="true,false,false,false" spacing="true" expand="chart">
+                <chart:xyChart id="chart" dataContainer="weightMonitoringsDc">
+                <chart:graphs>
+                    <chart:graph balloonText="x:[[x]] y:[[y]]"
+                                 bullet="TRIANGLE_DOWN"
+                                 fillAlphas="0"
+                                 lineAlpha="0"
+                                 lineColor="#FCD202"
+                                 xField="date"
+                                 yField="value"/>
+                </chart:graphs>
+                <chart:valueAxes>
+                    <chart:axis axisAlpha="0"
+                                dashLength="1"
+                                position="BOTTOM"
+                                title="X Axis"/>
+                    <chart:axis axisAlpha="0"
+                                dashLength="1"
+                                position="LEFT"
+                                title="Y Axis"/>
+                </chart:valueAxes>
+                </chart:xyChart>
+            </tab>
+        </tabSheet>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

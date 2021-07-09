@@ -6,5 +6,8 @@
         <item screen="medicalrecord_ConsultationRecord.browse"
               caption="mainMsg://menu_config.medicalrecord_ConsultationRecord.browse"/>
         <item screen="medicalrecord_Medication.browse" caption="mainMsg://menu_config.medicalrecord_Medication.browse"/>
+        <item screen="medicalrecord_WeightMonitoring.browse"
+              caption="mainMsg://menu_config.medicalrecord_WeightMonitoring.browse"/>
+        <item screen="medicalrecord_MonitoringScreen" caption="mainMsg://menu_config.medicalrecord_MonitoringScreen"/>
     </menu>
 </menu-config>
