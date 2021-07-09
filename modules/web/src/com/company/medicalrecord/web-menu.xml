@@ -6,5 +6,7 @@
               caption="mainMsg://menu_config.medicalrecord_WeightMonitoring.browse"/>
         <item screen="medicalrecord_PulseMonitoring.browse"
               caption="mainMsg://menu_config.medicalrecord_PulseMonitoring.browse"/>
+        <item screen="medicalrecord_TemperatureMonitoring.browse"
+              caption="mainMsg://menu_config.medicalrecord_TemperatureMonitoring.browse"/>
     </menu>
 </menu-config>
