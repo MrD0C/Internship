@@ -19,13 +19,13 @@ public class WeightMonitoringServiceBean implements WeightMonitoringService {
     @Override
     public List<WeightMonitoring> getValuesForYear(LocalDateTime date) {
         if (date != null){
-            LocalDateTime startOfYear = LocalDateTime.of(date.getYear()-1, Month.DECEMBER,31,23,59);
-            LocalDateTime endOfYear = LocalDateTime.of(date.getYear()+1,Month.JANUARY,1,0,0);
+            LocalDateTime startOfYear = LocalDateTime.of(date.getYear()-1, Month.DECEMBER,31,23,59,59);
+            LocalDateTime endOfYear = LocalDateTime.of(date.getYear(),Month.DECEMBER,31,23,59,59);
             return getListForPeriod(startOfYear,endOfYear);
         }
         return new ArrayList<>();
     }
-    
+
     @Override
     public List<WeightMonitoring> getValuesForMonth(LocalDateTime date) {
         if (date != null) {
