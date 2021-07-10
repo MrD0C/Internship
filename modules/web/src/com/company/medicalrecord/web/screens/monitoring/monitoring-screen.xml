@@ -33,8 +33,11 @@
     <layout expand="vBoxMain">
         <vbox id="vBoxMain" spacing="true">
             <label id="labelMonitoring" value="Monitoring" stylename="bold h3"/>
-            <vbox id="vBoxWeightMonitoring" box.expandRatio="1.0" height="25%">
+            <vbox id="vBoxWeightMonitoring" box.expandRatio="1.0" height="40%" spacing="true">
                 <label id="labelWeight" value="msg://labelWeight.value" stylename="bold h3"/>
+                <lookupField id="lookupFieldDuration" caption="Period" nullOptionVisible="false"/>
+                <dateField id="dateField"/>
+                <button id="buttonShow" caption="Show"/>
                 <chart:serialChart id="serialChartWeight"
                                    categoryField="localDateTime"
                                    dataDateFormat="YYYY-MM-DD"
