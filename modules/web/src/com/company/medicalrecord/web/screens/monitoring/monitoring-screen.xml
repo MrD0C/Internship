@@ -46,6 +46,12 @@
                                  lineColor="RED"
                                  bullet="TRIANGLE_DOWN"/>
                     </chart:graphs>
+                    <chart:chartCursor cursorAlpha="1"
+                                       cursorColor="#FF0000"
+                                       cursorPosition="MOUSE"
+                                       limitToGraph="g1"
+                                       pan="true"
+                    />
                 </chart:serialChart>
             </vbox>
         </vbox>
