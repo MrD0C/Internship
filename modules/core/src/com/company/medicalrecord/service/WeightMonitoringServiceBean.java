@@ -25,15 +25,11 @@ public class WeightMonitoringServiceBean implements WeightMonitoringService {
         }
         return new ArrayList<>();
     }
-
-    //todo fix 
-    /*
-    При выборе месяца август берет значения из предыдущего месяца
-     */
+    
     @Override
     public List<WeightMonitoring> getValuesForMonth(LocalDateTime date) {
         if (date != null) {
-            LocalDateTime startOfMonth = date.withDayOfMonth(1).minusDays(1);
+            LocalDateTime startOfMonth = date.withDayOfMonth(1).toLocalDate().atStartOfDay();
             LocalDateTime endOfMonth = date.plusMonths(1).withDayOfMonth(1).toLocalDate().atStartOfDay();
             return getListForPeriod(startOfMonth,endOfMonth);
         }
