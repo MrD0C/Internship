@@ -27,7 +27,7 @@ public class MonitoringScreen extends Screen {
     @Inject
     private WeightMonitoringService weightMonitoringService;
     @Inject
-    private CollectionContainer<WeightMonitoring> weightMonitoringsDc;
+    private CollectionContainer<WeightMonitoring> weightMonitoringDc;
     @Inject
     private DateField<Date> dateField;
     @Inject
@@ -38,74 +38,69 @@ public class MonitoringScreen extends Screen {
     @Subscribe
     public void onInit(InitEvent event) {
         List<WeightMonitoring> list = weightMonitoringService.getValuesForMonth(LocalDateTime.now());
-        weightMonitoringsDc.setItems(list);
+        weightMonitoringDc.setItems(list);
         initLookUpField();
         initDateField();
     }
 
-    private void initLookUpField(){
-        List<String> durationList = List.of("Year","Month");
+    private void initLookUpField() {
+        List<String> durationList = List.of("Year", "Month");
         lookupFieldDuration.setOptionsList(durationList);
         lookupFieldDuration.setValue("Month");
     }
 
-    private void initDateField(){
+    private void initDateField() {
         dateField.setValue(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
     }
 
     @Subscribe("lookupFieldDuration")
     public void onLookupFieldDurationValueChange(HasValue.ValueChangeEvent<String> event) {
-        if (event.getValue() == null){
-            notifications.create()
-                    .withCaption("Select period!")
-                    .withType(Notifications.NotificationType.TRAY)
-                    .withPosition(Notifications.Position.TOP_CENTER)
-                    .show();
+        if (event.getValue() == null) {
+            createTrayNotification("Select period!");
             lookupFieldDuration.setValue(event.getPrevValue());
+            return;
         }
-        if (event.getValue().equals("Year")){
+        if (event.getValue().equals("Year")) {
             dateField.setDateFormat("yyyy");
+            return;
         }
-        if (event.getValue().equals("Month")){
+        if (event.getValue().equals("Month")) {
             dateField.setDateFormat("MM/yyyy");
         }
     }
 
     @Subscribe("buttonShow")
     public void onButtonShowClick(Button.ClickEvent event) {
-        if (dateField.getValue() == null || lookupFieldDuration.getValue() == null){
-            notifications.create()
-                    .withCaption("Enter values to field(s)!")
-                    .withType(Notifications.NotificationType.TRAY)
-                    .withPosition(Notifications.Position.TOP_CENTER)
-                    .show();
+        if (dateField.getValue() == null || lookupFieldDuration.getValue() == null) {
+            createTrayNotification("Enter values to field(s)!");
             return;
         }
-
         LocalDateTime date = LocalDateTime.ofInstant(dateField.getValue().toInstant(), ZoneId.systemDefault());
-        String period = lookupFieldDuration.getValue();
-        List<WeightMonitoring> list = getWeightMonitoringListForPeriod(date,period);
-
-        if (list.isEmpty()){
-            notifications.create()
-                    .withCaption("There is no info during this period..")
-                    .withType(Notifications.NotificationType.TRAY)
-                    .withPosition(Notifications.Position.TOP_CENTER)
-                    .show();
+        String periodName = lookupFieldDuration.getValue();
+        List<WeightMonitoring> list = getWeightMonitoringListForPeriod(date, periodName);
+        if (list.isEmpty()) {
+            createTrayNotification("There is no info during this period..");
         } else {
-            weightMonitoringsDc.setItems(list);
+            weightMonitoringDc.setItems(list);
         }
     }
 
-    private List<WeightMonitoring> getWeightMonitoringListForPeriod(LocalDateTime date,String period) {
+    private List<WeightMonitoring> getWeightMonitoringListForPeriod(LocalDateTime date, String period) {
         List<WeightMonitoring> list = new ArrayList<>();
-        if (period.equals("Month")){
+        if (period.equals("Month")) {
             list = weightMonitoringService.getValuesForMonth(date);
         }
-        if (period.equals("Year")){
+        if (period.equals("Year")) {
             list = weightMonitoringService.getValuesForYear(date);
         }
         return list;
     }
 
+    private void createTrayNotification(String caption) {
+        notifications.create()
+                .withCaption(caption)
+                .withType(Notifications.NotificationType.TRAY)
+                .withPosition(Notifications.Position.TOP_CENTER)
+                .show();
+    }
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service(WeightMonitoringService.NAME)
@@ -15,26 +16,35 @@ public class WeightMonitoringServiceBean implements WeightMonitoringService {
     @Inject
     private DataManager dataManager;
 
-
     @Override
     public List<WeightMonitoring> getValuesForYear(LocalDateTime date) {
-        LocalDateTime startOfYear = LocalDateTime.of(date.getYear()-1, Month.DECEMBER,31,23,59);
-        LocalDateTime endOfYear = LocalDateTime.of(date.getYear()+1,Month.JANUARY,1,0,0);
-        return dataManager.load(WeightMonitoring.class)
-                .query("select w from medicalrecord_WeightMonitoring w where w.localDateTime between :startOfYear AND :endOfYear order by w.localDateTime")
-                .parameter("startOfYear", startOfYear)
-                .parameter("endOfYear",endOfYear)
-                .list();
+        if (date != null){
+            LocalDateTime startOfYear = LocalDateTime.of(date.getYear()-1, Month.DECEMBER,31,23,59);
+            LocalDateTime endOfYear = LocalDateTime.of(date.getYear()+1,Month.JANUARY,1,0,0);
+            return getListForPeriod(startOfYear,endOfYear);
+        }
+        return new ArrayList<>();
     }
 
+    //todo fix 
+    /*
+    При выборе месяца август берет значения из предыдущего месяца
+     */
     @Override
     public List<WeightMonitoring> getValuesForMonth(LocalDateTime date) {
-        LocalDateTime startOfMonth = date.withDayOfMonth(1).minusDays(1);
-        LocalDateTime endOfMonth = date.plusMonths(1).withDayOfMonth(1).toLocalDate().atStartOfDay();
+        if (date != null) {
+            LocalDateTime startOfMonth = date.withDayOfMonth(1).minusDays(1);
+            LocalDateTime endOfMonth = date.plusMonths(1).withDayOfMonth(1).toLocalDate().atStartOfDay();
+            return getListForPeriod(startOfMonth,endOfMonth);
+        }
+        return new ArrayList<>();
+    }
+
+    private List<WeightMonitoring> getListForPeriod(LocalDateTime start,LocalDateTime end){
         return dataManager.load(WeightMonitoring.class)
-                .query("select w from medicalrecord_WeightMonitoring w where w.localDateTime between :startOfMonth AND :endOfMonth order by w.localDateTime")
-                .parameter("startOfMonth", startOfMonth)
-                .parameter("endOfMonth",endOfMonth)
+                .query("select w from medicalrecord_WeightMonitoring  w where w.localDateTime between :start AND :end order by w.localDateTime")
+                .parameter("start",start)
+                .parameter("end",end)
                 .list();
     }
 

@@ -4,9 +4,9 @@
         messagesPack="com.company.medicalrecord.web.screens.monitoring"
         xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
     <data>
-        <collection id="weightMonitoringsDc" class="com.company.medicalrecord.entity.monitoring.WeightMonitoring">
+        <collection id="weightMonitoringDc" class="com.company.medicalrecord.entity.monitoring.WeightMonitoring">
             <view extends="_local"/>
-            <loader id="weightMonitoringsDl">
+            <loader id="weightMonitoringDl">
                 <query>
                     <![CDATA[select e from medicalrecord_WeightMonitoring e order by e.localDateTime]]>
                 </query>
@@ -41,7 +41,7 @@
                 <chart:serialChart id="serialChartWeight"
                                    categoryField="localDateTime"
                                    dataDateFormat="YYYY-MM-DD"
-                                   dataContainer="weightMonitoringsDc"
+                                   dataContainer="weightMonitoringDc"
                                    width="100%" height="100%" box.expandRatio="1.0">
                     <chart:categoryAxis parseDates="true"/>
                     <chart:graphs>
