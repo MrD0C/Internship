@@ -1,0 +1,5 @@
+alter table MEDICALRECORD_WEIGHT_MONITORING alter column LOCAL_DATE_TIME rename to LOCAL_DATE_TIME__U98762 ^
+alter table MEDICALRECORD_WEIGHT_MONITORING alter column LOCAL_DATE_TIME__U98762 set null ;
+alter table MEDICALRECORD_WEIGHT_MONITORING add column LOCAL_DATE_TIME timestamp ^
+update MEDICALRECORD_WEIGHT_MONITORING set LOCAL_DATE_TIME = current_timestamp where LOCAL_DATE_TIME is null ;
+alter table MEDICALRECORD_WEIGHT_MONITORING alter column LOCAL_DATE_TIME set not null ;

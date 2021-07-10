@@ -4,6 +4,7 @@ import com.company.medicalrecord.entity.unit.UnitMass;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @UiController("medicalrecord_WeightMonitoring.edit")

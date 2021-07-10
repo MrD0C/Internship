@@ -24,9 +24,17 @@ public class WeightMonitoring extends StandardEntity {
     @Column(name = "UNIT", nullable = false)
     private String unit;
 
-    @NotNull
     @Column(name = "LOCAL_DATE_TIME", nullable = false)
+    @NotNull
     private LocalDateTime localDateTime;
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
 
     public void setUnit(UnitMass unit) {
         this.unit = unit == null ? null : unit.getId();
@@ -34,14 +42,6 @@ public class WeightMonitoring extends StandardEntity {
 
     public UnitMass getUnit() {
         return unit == null ? null : UnitMass.fromId(unit);
-    }
-
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
-    }
-
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
     }
 
     public Double getValue() {
