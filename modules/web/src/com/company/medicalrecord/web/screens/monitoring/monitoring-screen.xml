@@ -32,7 +32,8 @@
     </data>
     <layout expand="vBoxMain">
         <vbox id="vBoxMain" spacing="true">
-            <vbox id="vBoxWeightMonitoring" box.expandRatio="1.0" height="40%" spacing="true">
+            <vbox id="vBoxWeightMonitoring" box.expandRatio="0.7" height="100%" spacing="true"
+            >
                 <label id="labelWeight" value="msg://labelWeight.value" stylename="bold h3"/>
                 <hbox id="hBoxWeightPeriod" spacing="true">
                     <lookupField id="lookupFieldDuration" nullOptionVisible="false"/>
@@ -58,6 +59,24 @@
                     />
                 </chart:serialChart>
             </vbox>
+            <hbox id="vBoxSugarAndTemperature" spacing="true" box.expandRatio="1.0">
+                <vbox id="hBoxTemperaturePeriod" spacing="true">
+                    <label id="labelTemperature" value="Temperature" stylename="bold h3"/>
+                    <hbox id="hBoxTemperature" spacing="true">
+                        <lookupField id="lookupFieldTemperature"/>
+                        <dateField id="dateFieldTemperature"/>
+                        <button id="buttonShowTemperature" caption="Show"/>
+                    </hbox>
+                </vbox>
+                <vbox id="hBoxPulseMonitoring" spacing="true">
+                    <label id="labelPulse" value="Pulse" stylename="bold h3"/>
+                    <hbox id="hBoxPulse" spacing="true">
+                        <lookupField id="lookupFieldPulse"/>
+                        <dateField id="dateFieldPulse"/>
+                        <button id="buttonShowPulse" caption="Show"/>
+                    </hbox>
+                </vbox>
+            </hbox>
         </vbox>
     </layout>
 </window>
