@@ -37,6 +37,7 @@
                 <label id="labelWeight" value="msg://labelWeight.value" stylename="bold h3"/>
                 <chart:serialChart id="serialChartWeight"
                                    categoryField="localDateTime"
+                                   dataDateFormat="YYYY-MM-DD"
                                    dataContainer="weightMonitoringsDc"
                                    width="100%" height="100%" box.expandRatio="1.0">
                     <chart:categoryAxis parseDates="true"/>
