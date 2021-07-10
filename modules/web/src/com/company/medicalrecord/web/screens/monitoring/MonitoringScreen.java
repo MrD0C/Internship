@@ -102,6 +102,9 @@ public class MonitoringScreen extends Screen {
         if (period.equals("Month")){
             list = weightMonitoringService.getValuesForMonth(date);
         }
+        if (period.equals("Year")){
+            list = weightMonitoringService.getValuesForYear(date);
+        }
         return list;
     }
 
