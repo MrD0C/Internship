@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://noteRecordBrowse.caption"
+        focusComponent="noteRecordsTable"
+        messagesPack="com.company.medicalrecord.web.screens.noterecord">
+    <data readOnly="true">
+        <collection id="noteRecordsDc"
+                    class="com.company.medicalrecord.entity.record.NoteRecord">
+            <view extends="_local"/>
+            <loader id="noteRecordsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_NoteRecord e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="noteRecordsTable"
+            spacing="true">
+        <groupTable id="noteRecordsTable"
+                    width="100%"
+                    dataContainer="noteRecordsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="description"/>
+                <column id="date"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="noteRecordsTable.create"/>
+                <button id="editBtn" action="noteRecordsTable.edit"/>
+                <button id="removeBtn" action="noteRecordsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
