@@ -22,11 +22,49 @@
                 </query>
             </loader>
         </collection>
+        <collection id="analysisRecordsDc" class="com.company.medicalrecord.entity.record.AnalysisRecord">
+            <view extends="_local">
+                <property name="creationInfo" view="_minimal"/>
+            </view>
+            <loader id="analysisRecordsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_AnalysisRecord e]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <layout expand="tabSheetRecord" spacing="true">
         <label id="labelMedicalRecord" value="Medical Record" stylename="bold h3"/>
         <tabSheet id="tabSheetRecord">
-            <tab id="tabExamination" caption="Examinations"/>
+            <tab id="tabExamination" caption="Examinations" spacing="true">
+                <table id="examinationRecordsTable" height="auto" width="100%" dataContainer="examinationRecordsDc">
+                    <actions>
+                        <action id="create" type="create">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="edit" type="edit">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="remove" type="remove"/>
+                        <action id="view" type="view"/>
+                    </actions>
+                    <buttonsPanel alwaysVisible="true" margin="true,false,false,false">
+                        <button id="examinationRecordsTableCreateBtn" action="examinationRecordsTable.create"/>
+                        <button id="examinationRecordsTableEditBtn" action="examinationRecordsTable.edit"/>
+                        <button id="examinationRecordsTableRemoveBtn" action="examinationRecordsTable.remove" stylename="danger"/>
+                    </buttonsPanel>
+                    <columns>
+                        <column id="examinationType"/>
+                        <column id="name"/>
+                        <column id="diagnosis.icd10Name"/>
+                        <column id="creationInfo.date"/>
+                    </columns>
+                </table>
+            </tab>
             <tab id="tabNotes" caption="Notes" spacing="true">
                 <dataGrid id="noteRecordsTable" height="auto" width="100%" dataContainer="noteRecordsDc"
                           reorderingAllowed="false">
@@ -59,6 +97,34 @@
                         <column id="date" property="date"/>
                     </columns>
                 </dataGrid>
+            </tab>
+            <tab id="tabAnalysis" caption="Analysis" spacing="true">
+                <table id="analysisRecordsTable" height="auto" width="100%" dataContainer="analysisRecordsDc">
+                    <actions>
+                        <action id="create" type="create">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="edit" type="edit">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="remove" type="remove"/>
+                        <action id="view" type="view"/>
+                    </actions>
+                    <buttonsPanel alwaysVisible="true" margin="true,false,false,false">
+                        <button id="analysisRecordsTableCreateBtn" action="analysisRecordsTable.create"/>
+                        <button id="analysisRecordsTableEditBtn" action="analysisRecordsTable.edit"/>
+                        <button id="analysisRecordsTableRemoveBtn" action="analysisRecordsTable.remove" stylename="danger"/>
+                    </buttonsPanel>
+                    <columns>
+                        <column id="name"/>
+                        <column id="conclusion"/>
+                        <column id="creationInfo.date"/>
+                    </columns>
+                </table>
             </tab>
         </tabSheet>
     </layout>

@@ -1,5 +1,7 @@
 package com.company.medicalrecord.web.screens.medicalrecord;
 
+import com.company.medicalrecord.entity.record.AnalysisRecord;
+import com.company.medicalrecord.entity.record.ExaminationRecord;
 import com.company.medicalrecord.entity.record.NoteRecord;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.RemoveOperation;
@@ -42,6 +44,36 @@ public class MedicalRecordScreen extends Screen {
     @Install(to = "noteRecordsTable.remove", subject = "afterActionPerformedHandler")
     private void noteRecordsTableRemoveAfterActionPerformedHandler(RemoveOperation.AfterActionPerformedEvent<NoteRecord> afterActionPerformedEvent) {
         createTraySuccessNotification("Note deleted");
+    }
+
+    @Install(to = "examinationRecordsTable.create", subject = "afterCommitHandler")
+    private void examinationRecordsTableCreateAfterCommitHandler(ExaminationRecord examinationRecord) {
+        createTraySuccessNotification("Examination saved");
+    }
+
+    @Install(to = "examinationRecordsTable.edit", subject = "afterCommitHandler")
+    private void examinationRecordsTableEditAfterCommitHandler(ExaminationRecord examinationRecord) {
+        createTraySuccessNotification("Examination changes saved");
+    }
+
+    @Install(to = "examinationRecordsTable.remove", subject = "afterActionPerformedHandler")
+    private void examinationRecordsTableRemoveAfterActionPerformedHandler(RemoveOperation.AfterActionPerformedEvent<ExaminationRecord> afterActionPerformedEvent) {
+        createTraySuccessNotification("Examination deleted");
+    }
+
+    @Install(to = "analysisRecordsTable.create", subject = "afterCommitHandler")
+    private void analysisRecordsTableCreateAfterCommitHandler(AnalysisRecord analysisRecord) {
+        createTraySuccessNotification("Analysis saved");
+    }
+
+    @Install(to = "analysisRecordsTable.edit", subject = "afterCommitHandler")
+    private void analysisRecordsTableEditAfterCommitHandler(AnalysisRecord analysisRecord) {
+        createTraySuccessNotification("Analysis changes saved");
+    }
+
+    @Install(to = "analysisRecordsTable.remove", subject = "afterActionPerformedHandler")
+    private void analysisRecordsTableRemoveAfterActionPerformedHandler(RemoveOperation.AfterActionPerformedEvent<AnalysisRecord> afterActionPerformedEvent) {
+        createTraySuccessNotification("Analysis deleted");
     }
 
     private void createTraySuccessNotification(String description){

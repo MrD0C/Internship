@@ -23,7 +23,7 @@
     </data>
     <dialogMode height="auto"
                 width="auto"/>
-    <layout expand="editActions" spacing="true">
+    <layout spacing="true">
         <hbox id="hBox" spacing="true">
             <vbox id="vBoxAnalysis" spacing="true">
                 <label id="labelAnalysis" value="Analysis" stylename="bold h2"/>
@@ -42,25 +42,25 @@
             </vbox>
         </hbox>
         <label id="labelIndicators" value="Indicators" stylename="bold h2"/>
-        <table id="indicatorsTable" dataContainer="indicatorsDc" width="100%" height="auto">
+        <dataGrid id="analysisIndicatorsTable" height="auto" width="100%" dataContainer="indicatorsDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
-            <columns>
-                <column id="name"/>
-                <column id="result"/>
-                <column id="norm"/>
-                <column id="unit"/>
-                <column id="comment"/>
-            </columns>
-            <buttonsPanel>
-                <button action="indicatorsTable.create"/>
-                <button action="indicatorsTable.edit"/>
-                <button action="indicatorsTable.remove" stylename="danger"/>
+            <buttonsPanel alwaysVisible="true">
+                <button id="analysisIndicatorsTableCreateBtn" action="analysisIndicatorsTable.create"/>
+                <button id="analysisIndicatorsTableEditBtn" action="analysisIndicatorsTable.edit"/>
+                <button id="analysisIndicatorsTableRemoveBtn" action="analysisIndicatorsTable.remove"/>
             </buttonsPanel>
-        </table>
+            <columns>
+                <column id="name" property="name"/>
+                <column id="result" property="result"/>
+                <column id="norm" property="norm"/>
+                <column id="unit" property="unit"/>
+                <column id="comment" property="comment"/>
+            </columns>
+        </dataGrid>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
