@@ -13,16 +13,24 @@
     <dialogMode height="auto"
                 width="auto"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="noteRecordDc">
-            <column width="350px">
-                <textField id="nameField" property="name"/>
-                <textField id="descriptionField" property="description"/>
-                <dateField id="dateField" property="date"/>
-            </column>
-        </form>
+        <hbox spacing="true">
+            <vbox id="vBoxNoteInfo" spacing="true">
+                <label id="labelNote" value="Note" stylename="bold h2"/>
+                <textField id="nameField" dataContainer="noteRecordDc" property="name" inputPrompt="Name" width="400px"/>
+                <textArea id="textAreaDescription" dataContainer="noteRecordDc" property="description" width="400px" height="75px" inputPrompt="Description"/>
+            </vbox>
+            <vbox id="vBoxCreationInfo" spacing="true">
+                <label id="labelCreationInfo" value="Created By" stylename="bold h2"/>
+                <dateField id="dateField" dataContainer="noteRecordDc" property="date"/>
+            </vbox>
+        </hbox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
         </hbox>
+        <form id="form" dataContainer="noteRecordDc" visible="false">
+            <column width="350px">
+            </column>
+        </form>
     </layout>
 </window>
