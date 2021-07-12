@@ -30,22 +30,50 @@
             <collection id="treatmentPlansDc" property="treatmentPlans"/>
         </instance>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="auto"
+                width="auto"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="examinationRecordDc">
+        <hbox id="hBoxInfo" spacing="true">
+            <vbox id="vBoxMainInfo" spacing="true">
+                <vbox id="vBoxExamineInfo" spacing="true">
+                    <label id="labelExamination" value="Name" stylename="bold h2"/>
+                    <textField id="examinationTypeField" dataContainer="examinationRecordDc" property="examinationType" inputPrompt="Type of examination"
+                               width="500"/>
+                    <textField id="nameField" dataContainer="examinationRecordDc" property="name" inputPrompt="Examination name"
+                               width="500"/>
+                </vbox>
+                <vbox id="vBoxDiagnosisInfo" spacing="true">
+                    <label id="labelDiagnosis" value="Diagnosis" stylename="bold h2"/>
+                    <textField id="diagnosisIcd10NameField" dataContainer="examinationRecordDc" property="diagnosis.icd10Name" inputPrompt="ICD-10 name or code"
+                               width="500"/>
+                    <textField id="diagnosisNameField" dataContainer="examinationRecordDc" property="diagnosis.name" inputPrompt="Diagnosis: in free-form"
+                               width="500"/>
+                </vbox>
+                <vbox id="vBoxDescription" spacing="true">
+                    <label id="labelDescription" value="Description" stylename="bold h2"/>
+                    <textArea id="descriptionComplaintsField" dataContainer="examinationRecordDc" property="description.complaints" rows="5" inputPrompt="Complains"
+                              width="500" height="75"/>
+                    <textArea id="descriptionAnamnesisField" dataContainer="examinationRecordDc" property="description.anamnesis" rows="5" inputPrompt="Anamnesis"
+                              width="500" height="75"/>
+                    <textArea id="descriptionObjectivelyField" dataContainer="examinationRecordDc" property="description.objectively" rows="5" inputPrompt="Objectively"
+                              width="500" height="75"/>
+                    <textArea id="descriptionConclusionField" dataContainer="examinationRecordDc" property="description.conclusion" rows="5" inputPrompt="Conclusion"
+                              width="500" height="75"/>
+                </vbox>
+            </vbox>
+            <vbox id="vBoxCreationInfo" spacing="true" margin="false,true,false,true">
+                <label id="labelCreationInfo" value="Created by" stylename="bold h2"/>
+                <textField id="creationInfoClinicNameField" dataContainer="examinationRecordDc" property="creationInfo.clinicName"
+                           inputPrompt="Clinic name"
+                           width="200" height="30"/>
+                <textField id="creationInfoDoctorSurnameField" dataContainer="examinationRecordDc" property="creationInfo.doctorSurname" inputPrompt="Doctor's surname"
+                           height="30" width="200"/>
+                <dateField id="creationInfoDateField" dataContainer="examinationRecordDc" property="creationInfo.date"
+                           width="200"/>
+            </vbox>
+        </hbox>
+        <form id="form" dataContainer="examinationRecordDc" visible="false">
             <column width="350px">
-                <textField id="examinationTypeField" property="examinationType"/>
-                <textField id="nameField" property="name"/>
-                <textField id="diagnosisIcd10NameField" property="diagnosis.icd10Name"/>
-                <textField id="diagnosisNameField" property="diagnosis.name"/>
-                <textArea id="descriptionComplaintsField" property="description.complaints" rows="5"/>
-                <textArea id="descriptionAnamnesisField" property="description.anamnesis" rows="5"/>
-                <textArea id="descriptionObjectivelyField" property="description.objectively" rows="5"/>
-                <textArea id="descriptionConclusionField" property="description.conclusion" rows="5"/>
-                <dateField id="creationInfoDateField" property="creationInfo.date"/>
-                <textArea id="creationInfoClinicNameField" property="creationInfo.clinicName" rows="5"/>
-                <textField id="creationInfoDoctorSurnameField" property="creationInfo.doctorSurname"/>
             </column>
         </form>
         <groupBox id="treatmentPlansBox"

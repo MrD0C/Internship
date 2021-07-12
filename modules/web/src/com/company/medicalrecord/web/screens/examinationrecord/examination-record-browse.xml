@@ -26,7 +26,11 @@
                     width="100%"
                     dataContainer="examinationRecordsDc">
             <actions>
-                <action id="create" type="create"/>
+                <action id="create" type="create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
