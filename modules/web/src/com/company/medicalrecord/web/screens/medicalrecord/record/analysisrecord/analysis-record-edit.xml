@@ -21,8 +21,8 @@
             <collection id="indicatorsDc" property="indicators"/>
         </instance>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="auto"
+                width="auto"/>
     <layout expand="editActions" spacing="true">
         <hbox id="hBox" spacing="true">
             <vbox id="vBoxAnalysis" spacing="true">

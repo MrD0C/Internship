@@ -10,20 +10,25 @@
             <loader/>
         </instance>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="auto"
+                width="auto"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="treatmentPlanDc">
-            <column width="350px">
-                <lookupField id="treatmentTypeField" property="treatmentType"/>
-                <textArea id="titleField" property="title" rows="5"/>
-                <textArea id="nameField" property="name" rows="5"/>
-                <dateField id="dateField" property="date"/>
-            </column>
-        </form>
+        <vbox id="vBoxTreatmentPlan" spacing="true">
+            <label id="labelTreatmentPlan" value="Treatment Plan" stylename="bold h2"/>
+            <lookupField id="treatmentTypeField" dataContainer="treatmentPlanDc" property="treatmentType" inputPrompt="Treatment plan"/>
+            <dateField id="dateField" dataContainer="treatmentPlanDc" property="date"/>
+            <textField id="titleField" dataContainer="treatmentPlanDc" property="title" inputPrompt="Title"
+                       width="500"/>
+            <textField id="nameField" dataContainer="treatmentPlanDc" property="name" inputPrompt="Title in free-form"
+                       width="500"/>
+        </vbox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
         </hbox>
+        <form id="form" dataContainer="treatmentPlanDc" visible="false">
+            <column width="350px">
+            </column>
+        </form>
     </layout>
 </window>
