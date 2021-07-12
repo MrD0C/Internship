@@ -77,7 +77,25 @@
             </column>
         </form>
         <label id="labelTreatmentPlans" value="Treatment plans" stylename="bold h2"/>
-        <button id="buttonAddTreatmentPlan" caption="Add a treatment plan" width="500" stylename="friendly"/>
+        <dataGrid id="treatmentPlansTable" width="100%" dataContainer="treatmentPlansDc" reorderingAllowed="false"
+                  settingsEnabled="false" columnsCollapsingAllowed="false">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <buttonsPanel alwaysVisible="true">
+                <button id="treatmentPlansTableCreateBtn" action="treatmentPlansTable.create" stylename="friendly"/>
+                <button id="treatmentPlansTableEditBtn" action="treatmentPlansTable.edit"/>
+                <button id="treatmentPlansTableRemoveBtn" action="treatmentPlansTable.remove" stylename="danger"/>
+            </buttonsPanel>
+            <columns>
+                <column id="treatmentType" property="treatmentType"/>
+                <column id="title" property="title"/>
+                <column id="name" property="name"/>
+                <column id="date" property="date"/>
+            </columns>
+        </dataGrid>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
