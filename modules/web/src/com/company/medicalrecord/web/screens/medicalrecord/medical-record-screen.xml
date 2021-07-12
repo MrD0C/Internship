@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://medicalRecordScreen.caption"
+        messagesPack="com.company.medicalrecord.web.screens.medicalrecord">
+    <data>
+        <collection id="noteRecordsDc" class="com.company.medicalrecord.entity.record.NoteRecord">
+            <view extends="_local"/>
+            <loader id="noteRecordsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_NoteRecord e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="examinationRecordsDc" class="com.company.medicalrecord.entity.record.ExaminationRecord">
+            <view extends="_local">
+                <property name="diagnosis" view="_minimal"/>
+                <property name="creationInfo" view="_minimal"/>
+            </view>
+            <loader id="examinationRecordsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_ExaminationRecord e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="tabSheetRecord" spacing="true">
+        <label id="labelMedicalRecord" value="Medical Record" stylename="bold h3"/>
+        <tabSheet id="tabSheetRecord" height="auto">
+            <tab id="tabExamination" caption="Examinations"/>
+            <tab id="tabNotes" caption="Notes" spacing="true">
+                <dataGrid id="noteRecordsTable" height="auto" width="100%" dataContainer="noteRecordsDc"
+                          reorderingAllowed="false">
+                    <actions>
+                        <action id="create" type="create">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="edit" type="edit">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="remove" type="remove"/>
+                        <action id="view" type="view">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                    </actions>
+                    <buttonsPanel alwaysVisible="true" margin="true,false,false,false">
+                        <button id="noteRecordsTableCreateBtn" action="noteRecordsTable.create"/>
+                        <button id="noteRecordsTableEditBtn" action="noteRecordsTable.edit"/>
+                        <button id="noteRecordsTableRemoveBtn" action="noteRecordsTable.remove"/>
+                    </buttonsPanel>
+                    <columns>
+                        <column id="name" property="name"/>
+                        <column id="description" property="description"/>
+                        <column id="date" property="date"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @UiDescriptor("note-record-edit.xml")
 @EditedEntityContainer("noteRecordDc")
 @LoadDataBeforeShow
-public class NoteRecordEdit extends StandardEditor<NoteRecord> {
+public class NoteRecordEdit extends StandardEditor<NoteRecord>{
 
     @Subscribe
     public void onInitEntity(InitEntityEvent<NoteRecord> event) {
