@@ -24,39 +24,50 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="analysisRecordDc">
-            <column width="350px">
-                <textField id="nameField" property="name"/>
-                <textField id="conclusionField" property="conclusion"/>
-                <dateField id="creationInfoDateField" property="creationInfo.date"/>
-                <textArea id="creationInfoClinicNameField" property="creationInfo.clinicName" rows="5"/>
-                <textField id="creationInfoDoctorSurnameField" property="creationInfo.doctorSurname"/>
-            </column>
-        </form>
-        <groupBox id="indicatorsBox" caption="msg://com.company.medicalrecord.entity.record/AnalysisRecord.indicators">
-            <table id="indicatorsTable" dataContainer="indicatorsDc" width="100%" height="200px">
-                <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
-                    <action id="remove" type="remove"/>
-                </actions>
-                <columns>
-                    <column id="name"/>
-                    <column id="result"/>
-                    <column id="norm"/>
-                    <column id="unit"/>
-                    <column id="comment"/>
-                </columns>
-                <buttonsPanel>
-                    <button action="indicatorsTable.create"/>
-                    <button action="indicatorsTable.edit"/>
-                    <button action="indicatorsTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
+        <hbox id="hBox" spacing="true">
+            <vbox id="vBoxAnalysis" spacing="true">
+                <label id="labelAnalysis" value="Analysis" stylename="bold h2"/>
+                <textField id="nameField" dataContainer="analysisRecordDc" property="name" inputPrompt="Name"
+                           width="500"/>
+                <textArea id="conclusionField" dataContainer="analysisRecordDc" property="conclusion" inputPrompt="Conclusion"
+                          width="500" height="70"/>
+            </vbox>
+            <vbox id="vBoxCreationInfo" spacing="true">
+                <label id="labelCreationInfo" value="Created By" stylename="bold h2"/>
+                <textField id="creationInfoClinicNameField" dataContainer="analysisRecordDc" property="creationInfo.clinicName"
+                           inputPrompt="Clinic name"/>
+                <textField id="creationInfoDoctorSurnameField" dataContainer="analysisRecordDc" property="creationInfo.doctorSurname"
+                           inputPrompt="Doctor's surname"/>
+                <dateField id="creationInfoDateField" dataContainer="analysisRecordDc" property="creationInfo.date"/>
+            </vbox>
+        </hbox>
+        <label id="labelIndicators" value="Indicators" stylename="bold h2"/>
+        <table id="indicatorsTable" dataContainer="indicatorsDc" width="100%" height="auto">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="result"/>
+                <column id="norm"/>
+                <column id="unit"/>
+                <column id="comment"/>
+            </columns>
+            <buttonsPanel>
+                <button action="indicatorsTable.create"/>
+                <button action="indicatorsTable.edit"/>
+                <button action="indicatorsTable.remove" stylename="danger"/>
+            </buttonsPanel>
+        </table>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
         </hbox>
+        <form id="form" dataContainer="analysisRecordDc" visible="false">
+            <column width="350px">
+            </column>
+        </form>
     </layout>
 </window>

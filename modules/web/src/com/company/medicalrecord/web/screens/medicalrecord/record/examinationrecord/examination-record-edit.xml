@@ -65,9 +65,9 @@
                 <label id="labelCreationInfo" value="Created by" stylename="bold h2"/>
                 <textField id="creationInfoClinicNameField" dataContainer="examinationRecordDc" property="creationInfo.clinicName"
                            inputPrompt="Clinic name"
-                           width="200" height="30"/>
+                           width="200" height="auto"/>
                 <textField id="creationInfoDoctorSurnameField" dataContainer="examinationRecordDc" property="creationInfo.doctorSurname" inputPrompt="Doctor's surname"
-                           height="30" width="200"/>
+                           height="auto" width="200"/>
                 <dateField id="creationInfoDateField" dataContainer="examinationRecordDc" property="creationInfo.date"
                            width="200"/>
             </vbox>
