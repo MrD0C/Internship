@@ -33,7 +33,7 @@
     <dialogMode height="auto"
                 width="auto"/>
     <layout expand="editActions" spacing="true">
-        <hbox id="hBoxInfo" spacing="true">
+        <hbox id="hBoxInfo" spacing="true" expand="vBoxMainInfo">
             <vbox id="vBoxMainInfo" spacing="true">
                 <vbox id="vBoxExamineInfo" spacing="true">
                     <label id="labelExamination" value="Name" stylename="bold h2"/>
@@ -76,27 +76,8 @@
             <column width="350px">
             </column>
         </form>
-        <groupBox id="treatmentPlansBox"
-                  caption="msg://com.company.medicalrecord.entity.record/ExaminationRecord.treatmentPlans">
-            <table id="treatmentPlansTable" dataContainer="treatmentPlansDc" width="100%" height="200px">
-                <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
-                    <action id="remove" type="remove"/>
-                </actions>
-                <columns>
-                    <column id="title"/>
-                    <column id="treatmentType"/>
-                    <column id="name"/>
-                    <column id="date"/>
-                </columns>
-                <buttonsPanel>
-                    <button action="treatmentPlansTable.create"/>
-                    <button action="treatmentPlansTable.edit"/>
-                    <button action="treatmentPlansTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
+        <label id="labelTreatmentPlans" value="Treatment plans" stylename="bold h2"/>
+        <button id="buttonAddTreatmentPlan" caption="Add a treatment plan" width="500" stylename="friendly"/>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
