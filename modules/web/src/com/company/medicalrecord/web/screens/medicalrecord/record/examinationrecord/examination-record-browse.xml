@@ -3,7 +3,7 @@
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
         caption="msg://examinationRecordBrowse.caption"
         focusComponent="examinationRecordsTable"
-        messagesPack="com.company.medicalrecord.web.screens.examinationrecord">
+        messagesPack="com.company.medicalrecord.web.screens.medicalrecord.record.examinationrecord">
     <data readOnly="true">
         <collection id="examinationRecordsDc"
                     class="com.company.medicalrecord.entity.record.ExaminationRecord">

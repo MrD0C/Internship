@@ -2,7 +2,7 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://examinationRecordEdit.caption"
         focusComponent="form"
-        messagesPack="com.company.medicalrecord.web.screens.examinationrecord">
+        messagesPack="com.company.medicalrecord.web.screens.medicalrecord.record.examinationrecord">
     <data>
         <instance id="examinationRecordDc"
                   class="com.company.medicalrecord.entity.record.ExaminationRecord">

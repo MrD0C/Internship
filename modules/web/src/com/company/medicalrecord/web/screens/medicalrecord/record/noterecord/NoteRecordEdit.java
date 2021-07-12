@@ -1,4 +1,4 @@
-package com.company.medicalrecord.web.screens.noterecord;
+package com.company.medicalrecord.web.screens.medicalrecord.record.noterecord;
 
 import com.haulmont.cuba.gui.screen.*;
 import com.company.medicalrecord.entity.record.NoteRecord;
