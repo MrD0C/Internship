@@ -37,6 +37,7 @@ create table MEDICALRECORD_TREATMENT_PLAN (
     TITLE longvarchar not null,
     NAME longvarchar,
     DATE_ timestamp not null,
+    EXAMINATION_RECORD_ID varchar(36) not null,
     --
     primary key (ID)
 )^

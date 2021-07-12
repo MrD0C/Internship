@@ -3,12 +3,17 @@ package com.company.medicalrecord.entity.record;
 import com.company.medicalrecord.entity.CreationInfo;
 import com.company.medicalrecord.entity.Description;
 import com.company.medicalrecord.entity.Diagnosis;
+import com.company.medicalrecord.entity.TreatmentPlan;
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Table(name = "MEDICALRECORD_EXAMINATION_RECORD")
 @Entity(name = "medicalrecord_ExaminationRecord")
@@ -49,6 +54,19 @@ public class ExaminationRecord extends StandardEntity {
             @AttributeOverride(name = "date", column = @Column(name = "CREATION_INFO_DATE_"))
     })
     private CreationInfo creationInfo;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "examinationRecord")
+    private List<TreatmentPlan> treatmentPlans;
+
+    public List<TreatmentPlan> getTreatmentPlans() {
+        return treatmentPlans;
+    }
+
+    public void setTreatmentPlans(List<TreatmentPlan> treatmentPlans) {
+        this.treatmentPlans = treatmentPlans;
+    }
 
     public CreationInfo getCreationInfo() {
         return creationInfo;

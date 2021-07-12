@@ -13,5 +13,9 @@
               caption="mainMsg://menu_config.medicalrecord_AnalysisRecord.browse"/>
         <item screen="medicalrecord_AnalysisIndicator.browse"
               caption="mainMsg://menu_config.medicalrecord_AnalysisIndicator.browse"/>
+        <item screen="medicalrecord_TreatmentPlan.browse"
+              caption="mainMsg://menu_config.medicalrecord_TreatmentPlan.browse"/>
+        <item screen="medicalrecord_ExaminationRecord.browse"
+              caption="mainMsg://menu_config.medicalrecord_ExaminationRecord.browse"/>
     </menu>
 </menu-config>

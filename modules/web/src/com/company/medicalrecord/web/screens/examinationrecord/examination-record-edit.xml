@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://examinationRecordEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.medicalrecord.web.screens.examinationrecord">
+    <data>
+        <instance id="examinationRecordDc"
+                  class="com.company.medicalrecord.entity.record.ExaminationRecord">
+            <view extends="_local">
+                <property name="diagnosis" view="_minimal">
+                    <property name="name"/>
+                </property>
+                <property name="description" view="_minimal">
+                    <property name="complaints"/>
+                    <property name="anamnesis"/>
+                    <property name="objectively"/>
+                    <property name="conclusion"/>
+                </property>
+                <property name="creationInfo" view="_minimal">
+                    <property name="clinicName"/>
+                    <property name="doctorSurname"/>
+                </property>
+                <property name="treatmentPlans" view="_minimal">
+                    <property name="treatmentType"/>
+                    <property name="name"/>
+                    <property name="date"/>
+                </property>
+            </view>
+            <loader/>
+            <collection id="treatmentPlansDc" property="treatmentPlans"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="examinationRecordDc">
+            <column width="350px">
+                <textField id="examinationTypeField" property="examinationType"/>
+                <textField id="nameField" property="name"/>
+                <textField id="diagnosisIcd10NameField" property="diagnosis.icd10Name"/>
+                <textField id="diagnosisNameField" property="diagnosis.name"/>
+                <textArea id="descriptionComplaintsField" property="description.complaints" rows="5"/>
+                <textArea id="descriptionAnamnesisField" property="description.anamnesis" rows="5"/>
+                <textArea id="descriptionObjectivelyField" property="description.objectively" rows="5"/>
+                <textArea id="descriptionConclusionField" property="description.conclusion" rows="5"/>
+                <dateField id="creationInfoDateField" property="creationInfo.date"/>
+                <textArea id="creationInfoClinicNameField" property="creationInfo.clinicName" rows="5"/>
+                <textField id="creationInfoDoctorSurnameField" property="creationInfo.doctorSurname"/>
+            </column>
+        </form>
+        <groupBox id="treatmentPlansBox"
+                  caption="msg://com.company.medicalrecord.entity.record/ExaminationRecord.treatmentPlans">
+            <table id="treatmentPlansTable" dataContainer="treatmentPlansDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="title"/>
+                    <column id="treatmentType"/>
+                    <column id="name"/>
+                    <column id="date"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="treatmentPlansTable.create"/>
+                    <button action="treatmentPlansTable.edit"/>
+                    <button action="treatmentPlansTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

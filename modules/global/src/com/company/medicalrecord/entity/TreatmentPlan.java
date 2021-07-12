@@ -1,12 +1,10 @@
 package com.company.medicalrecord.entity;
 
+import com.company.medicalrecord.entity.record.ExaminationRecord;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -32,6 +30,17 @@ public class TreatmentPlan extends StandardEntity {
     @NotNull
     @Column(name = "DATE_", nullable = false)
     private LocalDateTime date;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "EXAMINATION_RECORD_ID")
+    private ExaminationRecord examinationRecord;
+
+    public ExaminationRecord getExaminationRecord() {
+        return examinationRecord;
+    }
+
+    public void setExaminationRecord(ExaminationRecord examinationRecord) {
+        this.examinationRecord = examinationRecord;
+    }
 
     public LocalDateTime getDate() {
         return date;
