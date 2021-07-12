@@ -25,7 +25,7 @@
     </data>
     <layout expand="tabSheetRecord" spacing="true">
         <label id="labelMedicalRecord" value="Medical Record" stylename="bold h3"/>
-        <tabSheet id="tabSheetRecord" height="auto">
+        <tabSheet id="tabSheetRecord">
             <tab id="tabExamination" caption="Examinations"/>
             <tab id="tabNotes" caption="Notes" spacing="true">
                 <dataGrid id="noteRecordsTable" height="auto" width="100%" dataContainer="noteRecordsDc"
@@ -51,7 +51,7 @@
                     <buttonsPanel alwaysVisible="true" margin="true,false,false,false">
                         <button id="noteRecordsTableCreateBtn" action="noteRecordsTable.create"/>
                         <button id="noteRecordsTableEditBtn" action="noteRecordsTable.edit"/>
-                        <button id="noteRecordsTableRemoveBtn" action="noteRecordsTable.remove"/>
+                        <button id="noteRecordsTableRemoveBtn" action="noteRecordsTable.remove" stylename="danger"/>
                     </buttonsPanel>
                     <columns>
                         <column id="name" property="name"/>
