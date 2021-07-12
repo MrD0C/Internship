@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "MEDICALRECORD_ANALYSIS_INDICATOR")
 @Entity(name = "medicalrecord_AnalysisIndicator")
-@NamePattern("%s|name")
+@NamePattern("%s %s|name,result")
 public class AnalysisIndicator extends StandardEntity {
     private static final long serialVersionUID = 3262290100569293550L;
 
@@ -29,6 +29,7 @@ public class AnalysisIndicator extends StandardEntity {
 
     @Column(name = "COMMENT_")
     private String comment;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ANALYSIS_RECORD_ID")
     private AnalysisRecord analysisRecord;

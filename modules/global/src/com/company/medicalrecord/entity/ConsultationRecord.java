@@ -5,7 +5,6 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Table(name = "MEDICALRECORD_CONSULTATION_RECORD")
 @Entity(name = "medicalrecord_ConsultationRecord")
@@ -40,34 +39,12 @@ public class ConsultationRecord extends StandardEntity {
     })
     private Description description;
 
-    @OneToMany(mappedBy = "consultationRecord")
-    private List<Medication> medication;
-
-    @OneToMany(mappedBy = "consultationRecord")
-    private List<TreatmentPlan> treatmentPlan;
-
     public CreationInfo getCreationInfo() {
         return creationInfo;
     }
 
     public void setCreationInfo(CreationInfo creationInfo) {
         this.creationInfo = creationInfo;
-    }
-
-    public List<TreatmentPlan> getTreatmentPlan() {
-        return treatmentPlan;
-    }
-
-    public void setTreatmentPlan(List<TreatmentPlan> treatmentPlan) {
-        this.treatmentPlan = treatmentPlan;
-    }
-
-    public List<Medication> getMedication() {
-        return medication;
-    }
-
-    public void setMedication(List<Medication> medication) {
-        this.medication = medication;
     }
 
     public Description getDescription() {

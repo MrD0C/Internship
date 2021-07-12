@@ -1,13 +1,15 @@
 package com.company.medicalrecord.entity.record;
 
 import com.company.medicalrecord.entity.AnalysisIndicator;
+import com.company.medicalrecord.entity.CreationInfo;
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Table(name = "MEDICALRECORD_ANALYSIS_RECORD")
@@ -22,26 +24,34 @@ public class AnalysisRecord extends StandardEntity {
     @Column(name = "CONCLUSION")
     private String conclusion;
 
-    @Column(name = "CREATION_INFO")
-    private String creationInfo;
+    @Embedded
+    @EmbeddedParameters(nullAllowed = false)
+    @AttributeOverrides({
+            @AttributeOverride(name = "clinicName", column = @Column(name = "CREATION_INFO_CLINIC_NAME")),
+            @AttributeOverride(name = "doctorSurname", column = @Column(name = "CREATION_INFO_DOCTOR_SURNAME")),
+            @AttributeOverride(name = "date", column = @Column(name = "CREATION_INFO_DATE_"))
+    })
+    private CreationInfo creationInfo;
 
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "analysisRecord")
-    private List<AnalysisIndicator> analysisIndicators;
+    private List<AnalysisIndicator> indicators;
 
-    public List<AnalysisIndicator> getAnalysisIndicators() {
-        return analysisIndicators;
-    }
-
-    public void setAnalysisIndicators(List<AnalysisIndicator> analysisIndicators) {
-        this.analysisIndicators = analysisIndicators;
-    }
-
-    public String getCreationInfo() {
+    public CreationInfo getCreationInfo() {
         return creationInfo;
     }
 
-    public void setCreationInfo(String creationInfo) {
+    public void setCreationInfo(CreationInfo creationInfo) {
         this.creationInfo = creationInfo;
+    }
+
+    public List<AnalysisIndicator> getIndicators() {
+        return indicators;
+    }
+
+    public void setIndicators(List<AnalysisIndicator> indicators) {
+        this.indicators = indicators;
     }
 
     public String getConclusion() {

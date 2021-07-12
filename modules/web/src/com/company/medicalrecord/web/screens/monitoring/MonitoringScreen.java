@@ -1,5 +1,6 @@
 package com.company.medicalrecord.web.screens.monitoring;
 
+import com.company.medicalrecord.entity.monitoring.TemperatureMonitoring;
 import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
 import com.company.medicalrecord.service.WeightMonitoringService;
 import com.haulmont.cuba.gui.Notifications;
@@ -8,6 +9,7 @@ import com.haulmont.cuba.gui.components.DateField;
 import com.haulmont.cuba.gui.components.HasValue;
 import com.haulmont.cuba.gui.components.LookupField;
 import com.haulmont.cuba.gui.model.CollectionContainer;
+import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.screen.Screen;
 import com.haulmont.cuba.gui.screen.Subscribe;
 import com.haulmont.cuba.gui.screen.UiController;
@@ -33,12 +35,15 @@ public class MonitoringScreen extends Screen {
     @Inject
     private LookupField<String> lookupFieldDuration;
     @Inject
+    private CollectionLoader<TemperatureMonitoring> temperatureMonitoringsDl;
+    @Inject
     private Notifications notifications;
 
     @Subscribe
     public void onInit(InitEvent event) {
         List<WeightMonitoring> list = weightMonitoringService.getValuesForMonth(LocalDateTime.now());
         weightMonitoringDc.setItems(list);
+        temperatureMonitoringsDl.load();
         initLookUpField();
         initDateField();
     }

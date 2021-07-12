@@ -31,8 +31,8 @@
         </collection>
     </data>
     <layout>
-        <vbox id="vBoxWeightMonitoring" box.expandRatio="0.7" height="40%" spacing="true"
-        >
+        <vbox id="vBoxWeightMonitoring" box.expandRatio="0.7" height="100%" spacing="true"
+              width="100%">
             <label id="labelWeight" value="msg://labelWeight.value" stylename="bold h3"/>
             <hbox id="hBoxWeightPeriod" spacing="true">
                 <lookupField id="lookupFieldDuration" nullOptionVisible="false"/>
@@ -43,7 +43,7 @@
                                categoryField="localDateTime"
                                dataDateFormat="YYYY-MM-DD"
                                dataContainer="weightMonitoringDc"
-                               width="100%" height="100%" box.expandRatio="1.0">
+                               width="100%" height="80%" box.expandRatio="1.0">
                 <chart:categoryAxis parseDates="true"/>
                 <chart:graphs>
                 <chart:graph valueField="value"
@@ -58,5 +58,37 @@
                 />
             </chart:serialChart>
         </vbox>
+        <hbox id="hBoxTemperatureAndPulse" width="100%">
+            <vbox id="vBoxTest" spacing="true">
+                <button/>
+                <button/>
+                <button/>
+                <button/>
+                <button/>
+                <chart:serialChart id="serialChartTemp"
+                                   box.expandRatio="1.0"
+                                   categoryField="localDateTime"
+                                   dataDateFormat="YYYY-MM-DD"
+                                   dataContainer="temperatureMonitoringsDc"
+                                   width="100%" height="auto">
+                    <chart:categoryAxis parseDates="true"/>
+                    <chart:graphs>
+                        <chart:graph valueField="value"
+                                     lineColor="RED"
+                                     bullet="TRIANGLE_DOWN"/>
+                    </chart:graphs>
+                    <chart:chartCursor cursorAlpha="1"
+                                       cursorColor="#FF0000"
+                                       cursorPosition="MOUSE"
+                                       limitToGraph="g1"
+                                       pan="true"
+                    />
+                </chart:serialChart>
+            </vbox>
+            <vbox spacing="true">
+                <button caption="TEST"/>
+                <button/>
+            </vbox>
+        </hbox>
     </layout>
 </window>

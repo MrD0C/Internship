@@ -1,0 +1,1 @@
+alter table MEDICALRECORD_MEDICATION drop column CONSULTATION_RECORD_ID__U47123 cascade ;

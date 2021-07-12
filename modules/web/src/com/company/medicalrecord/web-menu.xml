@@ -9,5 +9,9 @@
         <item screen="medicalrecord_TemperatureMonitoring.browse"
               caption="mainMsg://menu_config.medicalrecord_TemperatureMonitoring.browse"/>
         <item screen="medicalrecord_MonitoringScreen" caption="mainMsg://menu_config.medicalrecord_MonitoringScreen"/>
+        <item screen="medicalrecord_AnalysisRecord.browse"
+              caption="mainMsg://menu_config.medicalrecord_AnalysisRecord.browse"/>
+        <item screen="medicalrecord_AnalysisIndicator.browse"
+              caption="mainMsg://menu_config.medicalrecord_AnalysisIndicator.browse"/>
     </menu>
 </menu-config>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://analysisIndicatorEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.medicalrecord.web.screens.analysisindicator">
+    <data>
+        <instance id="analysisIndicatorDc"
+                  class="com.company.medicalrecord.entity.AnalysisIndicator">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="analysisIndicatorDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <textField id="resultField" property="result"/>
+                <textField id="normField" property="norm"/>
+                <textField id="unitField" property="unit"/>
+                <textField id="commentField" property="comment"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

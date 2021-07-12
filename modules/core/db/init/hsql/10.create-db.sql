@@ -37,8 +37,6 @@ create table MEDICALRECORD_TREATMENT_PLAN (
     TITLE longvarchar not null,
     NAME longvarchar,
     DATE_ timestamp not null,
-    CONSULTATION_RECORD_ID varchar(36),
-    EXAMINATION_RECORD_ID varchar(36) not null,
     --
     primary key (ID)
 )^
@@ -56,7 +54,6 @@ create table MEDICALRECORD_MEDICATION (
     --
     MEDICINE_NAME varchar(255) not null,
     INTAKE_RECOMMENDATION longvarchar,
-    CONSULTATION_RECORD_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -153,9 +150,12 @@ create table MEDICALRECORD_ANALYSIS_RECORD (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    CREATION_INFO_CLINIC_NAME longvarchar,
+    CREATION_INFO_DOCTOR_SURNAME varchar(255),
+    CREATION_INFO_DATE_ timestamp not null,
+    --
     NAME varchar(255),
     CONCLUSION varchar(255),
-    CREATION_INFO varchar(255),
     --
     primary key (ID)
 )^
