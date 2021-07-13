@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://treatmentPlanEdit.caption"
-        focusComponent="form"
         messagesPack="com.company.medicalrecord.web.screens.treatmentplan">
     <data>
         <instance id="treatmentPlanDc"
@@ -13,8 +12,8 @@
     <dialogMode height="auto"
                 width="auto"/>
     <layout expand="editActions" spacing="true">
-        <vbox id="vBoxTreatmentPlan" spacing="true">
-            <label id="labelTreatmentPlan" value="Treatment Plan" stylename="bold h2"/>
+        <vbox id="treatmentPlanVBox" spacing="true">
+            <label id="treatmentPlanLabel" value="Treatment Plan" stylename="bold h2"/>
             <lookupField id="treatmentTypeField" dataContainer="treatmentPlanDc" property="treatmentType" inputPrompt="Treatment plan"/>
             <dateField id="dateField" dataContainer="treatmentPlanDc" property="date"/>
             <textField id="titleField" dataContainer="treatmentPlanDc" property="title" inputPrompt="Title"
@@ -26,9 +25,5 @@
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
         </hbox>
-        <form id="form" dataContainer="treatmentPlanDc" visible="false">
-            <column width="350px">
-            </column>
-        </form>
     </layout>
 </window>
