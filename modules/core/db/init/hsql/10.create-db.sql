@@ -55,6 +55,7 @@ create table MEDICALRECORD_MEDICATION (
     --
     MEDICINE_NAME varchar(255) not null,
     INTAKE_RECOMMENDATION longvarchar,
+    CONSULTATION_RECORD_ID varchar(36) not null,
     --
     primary key (ID)
 )^

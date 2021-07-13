@@ -1,1 +1,0 @@
-alter table MEDICALRECORD_ANALYSIS_RECORD drop column CREATION_INFO__U22487 cascade ;

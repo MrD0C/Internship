@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://consultationRecordEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.medicalrecord.web.screens.consultationrecord">
+    <data>
+        <instance id="consultationRecordDc"
+                  class="com.company.medicalrecord.entity.record.ConsultationRecord">
+            <view extends="_local">
+                <property name="diagnosis" view="_minimal">
+                    <property name="name"/>
+                </property>
+                <property name="creationInfo" view="_minimal">
+                    <property name="clinicName"/>
+                    <property name="doctorSurname"/>
+                </property>
+                <property name="description" view="_minimal">
+                    <property name="complaints"/>
+                    <property name="anamnesis"/>
+                    <property name="objectively"/>
+                    <property name="conclusion"/>
+                </property>
+                <property name="medications" view="_minimal">
+                    <property name="intakeRecommendation"/>
+                </property>
+            </view>
+            <loader/>
+            <collection id="medicationsDc" property="medications"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <hbox id="hBoxMain" spacing="true">
+            <vbox id="vBoxMainInfo" spacing="true">
+                <label id="labelDiagnosis" value="Diagnosis" stylename="bold h2"/>
+                <textField id="diagnosisIcd10NameField" dataContainer="consultationRecordDc" property="diagnosis.icd10Name" inputPrompt="ICD-10 code or name"
+                           width="500"/>
+                <textField id="diagnosisNameField" dataContainer="consultationRecordDc" property="diagnosis.name" inputPrompt="Diagnosis:in free-form"
+                           width="500"/>
+                <label id="labelDescription" value="Description" stylename="bold h2"/>
+                <textArea id="descriptionComplaintsField" dataContainer="consultationRecordDc" property="description.complaints" rows="5" inputPrompt="Complains"
+                          width="500" height="75"/>
+                <textArea id="descriptionAnamnesisField" dataContainer="consultationRecordDc" property="description.anamnesis" rows="5" inputPrompt="Anamnesis"
+                          width="500" height="75"/>
+                <textArea id="descriptionObjectivelyField" dataContainer="consultationRecordDc" property="description.objectively" rows="5" inputPrompt="Objectively"
+                          width="500" height="75"/>
+                <textArea id="descriptionConclusionField" dataContainer="consultationRecordDc" property="description.conclusion" rows="5" inputPrompt="Conclusion"
+                          width="500" height="75"/>
+            </vbox>
+            <vbox id="vBoxCreationInfo" spacing="true">
+                <label id="labelCreationInfo" value="Created By" stylename="bold h2"/>
+                <textField id="creationInfoClinicNameField" dataContainer="consultationRecordDc" property="creationInfo.clinicName" inputPrompt="Clinic name"
+                           width="200"/>
+                <textField id="creationInfoDoctorSurnameField" dataContainer="consultationRecordDc" property="creationInfo.doctorSurname" inputPrompt="Doctor's surname"
+                           width="200"/>
+                <dateField id="creationInfoDateField" dataContainer="consultationRecordDc" property="creationInfo.date"
+                           width="200"/>
+            </vbox>
+        </hbox>
+        <form id="form" dataContainer="consultationRecordDc">
+            <column width="350px">
+            </column>
+        </form>
+        <groupBox id="medicationsBox"
+                  caption="msg://com.company.medicalrecord.entity.record/ConsultationRecord.medications">
+            <table id="medicationsTable" dataContainer="medicationsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="medicineName"/>
+                    <column id="intakeRecommendation"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="medicationsTable.create"/>
+                    <button action="medicationsTable.edit"/>
+                    <button action="medicationsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

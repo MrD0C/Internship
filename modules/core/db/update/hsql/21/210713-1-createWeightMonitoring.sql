@@ -1,4 +1,4 @@
-create table MEDICALRECORD_ANALYSIS_RECORD (
+create table MEDICALRECORD_WEIGHT_MONITORING (
     ID varchar(36) not null,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -8,9 +8,9 @@ create table MEDICALRECORD_ANALYSIS_RECORD (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    NAME varchar(255),
-    CONCLUSION varchar(255),
-    CREATION_INFO varchar(255),
+    MASS_VALUE double precision not null,
+    UNIT varchar(50) not null,
+    LOCAL_DATE_TIME timestamp not null,
     --
     primary key (ID)
 );

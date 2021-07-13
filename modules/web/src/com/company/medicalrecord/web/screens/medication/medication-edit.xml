@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://medicationEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.medicalrecord.web.screens.medication">
+    <data>
+        <instance id="medicationDc"
+                  class="com.company.medicalrecord.entity.Medication">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="auto"
+                width="auto"/>
+    <layout expand="editActions" spacing="true">
+        <vbox id="vBoxMedicationInfo" spacing="true">
+            <label id="labelMedication" value="Medication" stylename="bold h2"/>
+            <textField id="medicineNameField" dataContainer="medicationDc" property="medicineName" inputPrompt="Medicine name"
+                       width="500"/>
+            <textArea id="intakeRecommendationField" dataContainer="medicationDc" property="intakeRecommendation" rows="5" inputPrompt="Recommendations on intake"
+                      width="500" height="75"/>
+        </vbox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+        <form id="form" dataContainer="medicationDc" visible="false">
+            <column width="350px">
+            </column>
+        </form>
+    </layout>
+</window>

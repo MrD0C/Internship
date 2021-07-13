@@ -1,6 +1,6 @@
 package com.company.medicalrecord.service;
 
-import com.company.medicalrecord.entity.ConsultationRecord;
+import com.company.medicalrecord.entity.record.ConsultationRecord;
 import com.haulmont.cuba.core.global.DataManager;
 import org.springframework.stereotype.Service;
 

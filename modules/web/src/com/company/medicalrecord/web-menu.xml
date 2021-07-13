@@ -20,5 +20,8 @@
         <item screen="medicalrecord_NoteRecord.browse" caption="mainMsg://menu_config.medicalrecord_NoteRecord.browse"/>
         <item screen="medicalrecord_MedicalRecordScreen"
               caption="mainMsg://menu_config.medicalrecord_MedicalRecordScreen"/>
+        <item screen="medicalrecord_ConsultationRecord.browse"
+              caption="mainMsg://menu_config.medicalrecord_ConsultationRecord.browse"/>
+        <item screen="medicalrecord_Medication.browse" caption="mainMsg://menu_config.medicalrecord_Medication.browse"/>
     </menu>
 </menu-config>

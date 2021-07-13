@@ -1,1 +1,0 @@
-alter table MEDICALRECORD_WEIGHT_MONITORING drop column LOCAL_DATE_TIME__U94932 cascade ;

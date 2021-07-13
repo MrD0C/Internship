@@ -1,6 +1,6 @@
 package com.company.medicalrecord.service;
 
-import com.company.medicalrecord.entity.ConsultationRecord;
+import com.company.medicalrecord.entity.record.ConsultationRecord;
 
 public interface ConsultationService {
     String NAME = "medicalrecord_ConsultationService";

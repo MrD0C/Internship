@@ -1,4 +1,0 @@
--- alter table MEDICALRECORD_TREATMENT_PLAN add column EXAMINATION_RECORD_ID varchar(36) ^
--- update MEDICALRECORD_TREATMENT_PLAN set EXAMINATION_RECORD_ID = <default_value> ;
--- alter table MEDICALRECORD_TREATMENT_PLAN alter column EXAMINATION_RECORD_ID set not null ;
-alter table MEDICALRECORD_TREATMENT_PLAN add column EXAMINATION_RECORD_ID varchar(36) not null ;

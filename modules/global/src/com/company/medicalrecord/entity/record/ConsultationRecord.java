@@ -1,10 +1,18 @@
-package com.company.medicalrecord.entity;
+package com.company.medicalrecord.entity.record;
 
+import com.company.medicalrecord.entity.CreationInfo;
+import com.company.medicalrecord.entity.Description;
+import com.company.medicalrecord.entity.Diagnosis;
+import com.company.medicalrecord.entity.Medication;
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "MEDICALRECORD_CONSULTATION_RECORD")
 @Entity(name = "medicalrecord_ConsultationRecord")
@@ -38,6 +46,19 @@ public class ConsultationRecord extends StandardEntity {
             @AttributeOverride(name = "conclusion", column = @Column(name = "DESCRIPTION_CONCLUSION"))
     })
     private Description description;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "consultationRecord")
+    private List<Medication> medications;
+
+    public List<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
+    }
 
     public CreationInfo getCreationInfo() {
         return creationInfo;

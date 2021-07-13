@@ -67,7 +67,7 @@
             </tab>
             <tab id="tabNotes" caption="Notes" spacing="true">
                 <dataGrid id="noteRecordsTable" height="auto" width="100%" dataContainer="noteRecordsDc"
-                          reorderingAllowed="false">
+                          reorderingAllowed="false" settingsEnabled="false">
                     <actions>
                         <action id="create" type="create">
                             <properties>
