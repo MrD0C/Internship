@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://analysisIndicatorEdit.caption"
-        focusComponent="form"
         messagesPack="com.company.medicalrecord.web.screens.analysisindicator">
     <data>
         <instance id="analysisIndicatorDc"
@@ -13,10 +12,10 @@
     <dialogMode height="auto"
                 width="auto"/>
     <layout expand="editActions" spacing="true">
-        <vbox id="vBoxIndicator" spacing="true">
-            <label id="labelIndicator" value="Indicator" stylename="bold h2"/>
+        <vbox id="indicatorVBox" spacing="true">
+            <label id="indicatorLabel" value="Indicator" stylename="bold h2"/>
             <textField id="nameField" dataContainer="analysisIndicatorDc" property="name" width="530px" inputPrompt="Name"/>
-            <hbox id="hBoxIndicatorResult" spacing="true">
+            <hbox id="indicatorResultVBox" spacing="true">
                 <textField id="resultField" dataContainer="analysisIndicatorDc" property="result" width="100" inputPrompt="Result"/>
                 <textField id="normField" dataContainer="analysisIndicatorDc" property="norm" width="100" inputPrompt="Norm"/>
                 <textField id="unitField" dataContainer="analysisIndicatorDc" property="unit" width="100" inputPrompt="Unit"/>
@@ -27,9 +26,5 @@
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
         </hbox>
-        <form id="form" dataContainer="analysisIndicatorDc" visible="false">
-            <column width="350px">
-            </column>
-        </form>
     </layout>
 </window>

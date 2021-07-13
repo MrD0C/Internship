@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://analysisRecordEdit.caption"
-        focusComponent="form"
         messagesPack="com.company.medicalrecord.web.screens.medicalrecord.record.analysisrecord">
     <data>
         <instance id="analysisRecordDc"
@@ -24,24 +23,26 @@
     <dialogMode height="auto"
                 width="auto"/>
     <layout spacing="true">
-        <hbox id="hBox" spacing="true">
-            <vbox id="vBoxAnalysis" spacing="true">
-                <label id="labelAnalysis" value="Analysis" stylename="bold h2"/>
-                <textField id="nameField" dataContainer="analysisRecordDc" property="name" inputPrompt="Name"
-                           width="500"/>
-                <textArea id="conclusionField" dataContainer="analysisRecordDc" property="conclusion" inputPrompt="Conclusion"
-                          width="500" height="70"/>
-            </vbox>
-            <vbox id="vBoxCreationInfo" spacing="true">
-                <label id="labelCreationInfo" value="Created By" stylename="bold h2"/>
-                <textField id="creationInfoClinicNameField" dataContainer="analysisRecordDc" property="creationInfo.clinicName"
-                           inputPrompt="Clinic name"/>
-                <textField id="creationInfoDoctorSurnameField" dataContainer="analysisRecordDc" property="creationInfo.doctorSurname"
-                           inputPrompt="Doctor's surname"/>
-                <dateField id="creationInfoDateField" dataContainer="analysisRecordDc" property="creationInfo.date"/>
-            </vbox>
-        </hbox>
-        <label id="labelIndicators" value="Indicators" stylename="bold h2"/>
+        <scrollBox id="scrollBox" width="AUTO">
+            <hbox id="analysisHBox" spacing="true">
+                <vbox id="analysisVBox" spacing="true">
+                    <label id="analysisLabel" value="Analysis" stylename="bold h2"/>
+                    <textField id="nameField" dataContainer="analysisRecordDc" property="name" inputPrompt="Name"
+                               width="500"/>
+                    <textArea id="conclusionField" dataContainer="analysisRecordDc" property="conclusion" inputPrompt="Conclusion"
+                              width="500" height="70"/>
+                </vbox>
+                <vbox id="creationInfoVBox" spacing="true">
+                    <label id="creationInfoLabel" value="Created By" stylename="bold h2"/>
+                    <textField id="creationInfoClinicNameField" dataContainer="analysisRecordDc" property="creationInfo.clinicName"
+                               inputPrompt="Clinic name"/>
+                    <textField id="creationInfoDoctorSurnameField" dataContainer="analysisRecordDc" property="creationInfo.doctorSurname"
+                               inputPrompt="Doctor's surname"/>
+                    <dateField id="creationInfoDateField" dataContainer="analysisRecordDc" property="creationInfo.date"/>
+                </vbox>
+            </hbox>
+        </scrollBox>
+        <label id="indicatorLabel" value="Indicators" stylename="bold h2"/>
         <dataGrid id="analysisIndicatorsTable" height="auto" width="100%" dataContainer="indicatorsDc"
                   reorderingAllowed="false" settingsEnabled="false" columnsCollapsingAllowed="false">
             <actions>
@@ -66,9 +67,5 @@
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
         </hbox>
-        <form id="form" dataContainer="analysisRecordDc" visible="false">
-            <column width="350px">
-            </column>
-        </form>
     </layout>
 </window>
