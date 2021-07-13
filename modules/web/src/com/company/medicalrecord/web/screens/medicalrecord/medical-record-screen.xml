@@ -32,12 +32,52 @@
                 </query>
             </loader>
         </collection>
+        <collection id="consultationRecordsDc" class="com.company.medicalrecord.entity.record.ConsultationRecord">
+            <view extends="_local">
+                <property name="diagnosis" view="_minimal"/>
+                <property name="creationInfo" view="_minimal"/>
+            </view>
+            <loader id="consultationRecordsDl">
+                <query>
+                    <![CDATA[select e from medicalrecord_ConsultationRecord e]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <layout expand="tabSheetRecord" spacing="true">
         <label id="labelMedicalRecord" value="Medical Record" stylename="bold h3"/>
         <tabSheet id="tabSheetRecord">
+            <tab id="tabConsultation" caption="Consultation" margin="true,false,false,false" spacing="true">
+                <dataGrid id="consultationRecordsTable" height="auto" width="100%"
+                          dataContainer="consultationRecordsDc" reorderingAllowed="false" settingsEnabled="false"
+                          columnsCollapsingAllowed="false">
+                    <actions>
+                        <action id="create" type="create">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="edit" type="edit">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <buttonsPanel alwaysVisible="true" margin="true,false,false,false">
+                        <button id="consultationRecordsTableCreateBtn" action="consultationRecordsTable.create" stylename="friendly"/>
+                        <button id="consultationRecordsTableEditBtn" action="consultationRecordsTable.edit"/>
+                        <button id="consultationRecordsTableRemoveBtn" action="consultationRecordsTable.remove" stylename="danger"/>
+                    </buttonsPanel>
+                    <columns>
+                        <column id="diagnosis.icd10Name" property="diagnosis.icd10Name"/>
+                        <column id="creationInfo.date" property="creationInfo.date"/>
+                    </columns>
+                </dataGrid>
+            </tab>
             <tab id="tabExamination" caption="Examinations" spacing="true">
-                <table id="examinationRecordsTable" height="auto" width="100%" dataContainer="examinationRecordsDc">
+                <dataGrid id="examinationRecordsTable" height="auto" width="100%" dataContainer="examinationRecordsDc"
+                          reorderingAllowed="false" settingsEnabled="false" columnsCollapsingAllowed="false">
                     <actions>
                         <action id="create" type="create">
                             <properties>
@@ -58,16 +98,16 @@
                         <button id="examinationRecordsTableRemoveBtn" action="examinationRecordsTable.remove" stylename="danger"/>
                     </buttonsPanel>
                     <columns>
-                        <column id="examinationType"/>
-                        <column id="name"/>
-                        <column id="diagnosis.icd10Name"/>
-                        <column id="creationInfo.date"/>
+                        <column id="examinationType" property="examinationType"/>
+                        <column id="name" property="name"/>
+                        <column id="diagnosis.icd10Name" property="diagnosis.icd10Name"/>
+                        <column id="creationInfo.date" property="creationInfo.date"/>
                     </columns>
-                </table>
+                </dataGrid>
             </tab>
             <tab id="tabNotes" caption="Notes" spacing="true">
                 <dataGrid id="noteRecordsTable" height="auto" width="100%" dataContainer="noteRecordsDc"
-                          reorderingAllowed="false" settingsEnabled="false">
+                          reorderingAllowed="false" settingsEnabled="false" columnsCollapsingAllowed="false">
                     <actions>
                         <action id="create" type="create">
                             <properties>
@@ -99,7 +139,8 @@
                 </dataGrid>
             </tab>
             <tab id="tabAnalysis" caption="Analysis" spacing="true">
-                <table id="analysisRecordsTable" height="auto" width="100%" dataContainer="analysisRecordsDc">
+                <dataGrid id="analysisRecordsTable" height="auto" width="100%" dataContainer="analysisRecordsDc"
+                          reorderingAllowed="false" settingsEnabled="false" columnsCollapsingAllowed="false">
                     <actions>
                         <action id="create" type="create">
                             <properties>
@@ -120,11 +161,11 @@
                         <button id="analysisRecordsTableRemoveBtn" action="analysisRecordsTable.remove" stylename="danger"/>
                     </buttonsPanel>
                     <columns>
-                        <column id="name"/>
-                        <column id="conclusion"/>
-                        <column id="creationInfo.date"/>
+                        <column id="name" property="conclusion"/>
+                        <column id="conclusion" property="conclusion"/>
+                        <column id="creationInfo.date" property="creationInfo.date"/>
                     </columns>
-                </table>
+                </dataGrid>
             </tab>
         </tabSheet>
     </layout>

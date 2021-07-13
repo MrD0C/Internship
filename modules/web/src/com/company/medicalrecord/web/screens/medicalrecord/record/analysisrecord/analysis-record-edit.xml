@@ -42,7 +42,8 @@
             </vbox>
         </hbox>
         <label id="labelIndicators" value="Indicators" stylename="bold h2"/>
-        <dataGrid id="analysisIndicatorsTable" height="auto" width="100%" dataContainer="indicatorsDc">
+        <dataGrid id="analysisIndicatorsTable" height="auto" width="100%" dataContainer="indicatorsDc"
+                  reorderingAllowed="false" settingsEnabled="false" columnsCollapsingAllowed="false">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
