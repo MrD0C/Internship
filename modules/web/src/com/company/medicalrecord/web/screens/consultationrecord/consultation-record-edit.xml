@@ -47,6 +47,25 @@
                           width="500" height="75"/>
                 <textArea id="descriptionConclusionField" dataContainer="consultationRecordDc" property="description.conclusion" rows="5" inputPrompt="Conclusion"
                           width="500" height="75"/>
+                <label id="labelMedications" value="Medications" stylename="bold h2"/>
+                <dataGrid id="medicationsTable" height="auto" width="100%" dataContainer="medicationsDc">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                        <action id="view" type="view"/>
+                    </actions>
+                    <buttonsPanel alwaysVisible="true">
+                        <button id="medicationsTableCreateBtn" action="medicationsTable.create"/>
+                        <button id="medicationsTableEditBtn" action="medicationsTable.edit"/>
+                        <button id="medicationsTableRemoveBtn" action="medicationsTable.remove"/>
+                        <button id="medicationsTableViewBtn" action="medicationsTable.view"/>
+                    </buttonsPanel>
+                    <columns>
+                        <column id="medicineName" property="medicineName"/>
+                        <column id="intakeRecommendation" property="intakeRecommendation"/>
+                    </columns>
+                </dataGrid>
             </vbox>
             <vbox id="vBoxCreationInfo" spacing="true">
                 <label id="labelCreationInfo" value="Created By" stylename="bold h2"/>
@@ -58,32 +77,13 @@
                            width="200"/>
             </vbox>
         </hbox>
-        <form id="form" dataContainer="consultationRecordDc">
-            <column width="350px">
-            </column>
-        </form>
-        <groupBox id="medicationsBox"
-                  caption="msg://com.company.medicalrecord.entity.record/ConsultationRecord.medications">
-            <table id="medicationsTable" dataContainer="medicationsDc" width="100%" height="200px">
-                <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
-                    <action id="remove" type="remove"/>
-                </actions>
-                <columns>
-                    <column id="medicineName"/>
-                    <column id="intakeRecommendation"/>
-                </columns>
-                <buttonsPanel>
-                    <button action="medicationsTable.create"/>
-                    <button action="medicationsTable.edit"/>
-                    <button action="medicationsTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
         </hbox>
+        <form id="form" dataContainer="consultationRecordDc">
+            <column width="350px">
+            </column>
+        </form>
     </layout>
 </window>
