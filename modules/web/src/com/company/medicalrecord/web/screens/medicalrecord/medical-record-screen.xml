@@ -47,7 +47,7 @@
     <layout expand="tabSheetRecord" spacing="true">
         <label id="labelMedicalRecord" value="Medical Record" stylename="bold h3"/>
         <tabSheet id="tabSheetRecord">
-            <tab id="tabConsultation" caption="Consultation" margin="true,false,false,false" spacing="true">
+            <tab id="tabConsultation" caption="Consultation" spacing="true">
                 <dataGrid id="consultationRecordsTable" height="auto" width="100%"
                           dataContainer="consultationRecordsDc" reorderingAllowed="false" settingsEnabled="false"
                           columnsCollapsingAllowed="false">
