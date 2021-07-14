@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-medicalrecord" insertBefore="administration" caption="mainMsg://menu_config.application-medicalrecord">
-
-        <item screen="medicalrecord_WeightMonitoring.browse"
-              caption="mainMsg://menu_config.medicalrecord_WeightMonitoring.browse"/>
-        <item screen="medicalrecord_PulseMonitoring.browse"
-              caption="mainMsg://menu_config.medicalrecord_PulseMonitoring.browse"/>
-        <item screen="medicalrecord_TemperatureMonitoring.browse"
-              caption="mainMsg://menu_config.medicalrecord_TemperatureMonitoring.browse"/>
         <item screen="medicalrecord_MonitoringScreen" caption="mainMsg://menu_config.medicalrecord_MonitoringScreen"/>
-        <item screen="medicalrecord_AnalysisRecord.browse"
-              caption="mainMsg://menu_config.medicalrecord_AnalysisRecord.browse"/>
-        <item screen="medicalrecord_AnalysisIndicator.browse"
-              caption="mainMsg://menu_config.medicalrecord_AnalysisIndicator.browse"/>
-        <item screen="medicalrecord_TreatmentPlan.browse"
-              caption="mainMsg://menu_config.medicalrecord_TreatmentPlan.browse"/>
-        <item screen="medicalrecord_ExaminationRecord.browse"
-              caption="mainMsg://menu_config.medicalrecord_ExaminationRecord.browse"/>
-        <item screen="medicalrecord_NoteRecord.browse" caption="mainMsg://menu_config.medicalrecord_NoteRecord.browse"/>
         <item screen="medicalrecord_MedicalRecordScreen"
               caption="mainMsg://menu_config.medicalrecord_MedicalRecordScreen"/>
-        <item screen="medicalrecord_ConsultationRecord.browse"
-              caption="mainMsg://menu_config.medicalrecord_ConsultationRecord.browse"/>
-        <item screen="medicalrecord_Medication.browse" caption="mainMsg://menu_config.medicalrecord_Medication.browse"/>
+        <menu id="DataBase" caption="mainMsg://menu_config.Database">
+            <item screen="medicalrecord_WeightMonitoring.browse"
+                  caption="mainMsg://menu_config.medicalrecord_WeightMonitoring.browse"/>
+            <item screen="medicalrecord_PulseMonitoring.browse"
+                  caption="mainMsg://menu_config.medicalrecord_PulseMonitoring.browse"/>
+            <item screen="medicalrecord_TemperatureMonitoring.browse"
+                  caption="mainMsg://menu_config.medicalrecord_TemperatureMonitoring.browse"/>
+            <item screen="medicalrecord_AnalysisRecord.browse"
+                  caption="mainMsg://menu_config.medicalrecord_AnalysisRecord.browse"/>
+            <item screen="medicalrecord_AnalysisIndicator.browse"
+                  caption="mainMsg://menu_config.medicalrecord_AnalysisIndicator.browse"/>
+            <item screen="medicalrecord_TreatmentPlan.browse"
+                  caption="mainMsg://menu_config.medicalrecord_TreatmentPlan.browse"/>
+            <item screen="medicalrecord_ExaminationRecord.browse"
+                  caption="mainMsg://menu_config.medicalrecord_ExaminationRecord.browse"/>
+            <item screen="medicalrecord_NoteRecord.browse" caption="mainMsg://menu_config.medicalrecord_NoteRecord.browse"/>
+            <item screen="medicalrecord_ConsultationRecord.browse"
+                  caption="mainMsg://menu_config.medicalrecord_ConsultationRecord.browse"/>
+            <item screen="medicalrecord_Medication.browse" caption="mainMsg://menu_config.medicalrecord_Medication.browse"/>
+        </menu>
     </menu>
 </menu-config>
