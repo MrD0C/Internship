@@ -20,6 +20,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @UiController("medicalrecord_MonitoringScreen")
 @UiDescriptor("monitoring-screen.xml")
@@ -44,12 +45,16 @@ public class MonitoringScreen extends Screen {
 
     @Subscribe
     public void onInit(InitEvent event) {
-        List<WeightMonitoring> list = monitoringService.getWeightValuesForMonth(LocalDateTime.now());
-        List<TemperatureMonitoring> listT = monitoringService.getTemperatureValuesForMonth(LocalDateTime.now());
-        weightMonitoringDc.setItems(list);
-        temperatureMonitoringsDc.setItems(listT);
+        initCollectionContainers();
         initLookUpField();
         initDateField();
+    }
+
+    private void initCollectionContainers(){
+        List<WeightMonitoring> weightMonitoringList = monitoringService.getWeightValuesForMonth(LocalDateTime.now());
+        List<TemperatureMonitoring> temperatureMonitoringList = monitoringService.getTemperatureValuesForMonth(LocalDateTime.now());
+        weightMonitoringDc.setItems(weightMonitoringList);
+        temperatureMonitoringsDc.setItems(temperatureMonitoringList);
     }
 
     private void initLookUpField() {
@@ -67,18 +72,22 @@ public class MonitoringScreen extends Screen {
 
     @Subscribe("weightPeriodLookupField")
     public void onWeightPeriodLookupFieldValueChange(HasValue.ValueChangeEvent<String> event) {
-        if (event.getValue() == null) {
-            createTrayNotification("Select period!");
-            weightPeriodLookupField.setValue(event.getPrevValue());
-            return;
+        weightDateField.setDateFormat(getDateFormat(Objects.requireNonNull(event.getValue())));
+    }
+
+    @Subscribe("temperatureDurationLookupField")
+    public void onTemperatureDurationLookupFieldFieldValueChange(HasValue.ValueChangeEvent<String> event) {
+        temperatureDateField.setDateFormat(getDateFormat(Objects.requireNonNull(event.getValue())));
+    }
+
+    private String getDateFormat(String value){
+        if (value.equals("Year")){
+            return "yyyy";
         }
-        if (event.getValue().equals("Year")) {
-            weightDateField.setDateFormat("yyyy");
-            return;
+        if (value.equals("Month")){
+            return "MM/yyyy";
         }
-        if (event.getValue().equals("Month")) {
-            weightDateField.setDateFormat("MM/yyyy");
-        }
+        return "dd.MM.yyyy";
     }
 
     @Subscribe("showWeightButton")
@@ -108,42 +117,6 @@ public class MonitoringScreen extends Screen {
         return list;
     }
 
-    private List<TemperatureMonitoring> getTemperatureMonitoringListForPeriod(LocalDateTime date,String period){
-        List<TemperatureMonitoring> list = new ArrayList<>();
-        if (period.equals("Month")) {
-            list = monitoringService.getTemperatureValuesForMonth(date);
-        }
-        if (period.equals("Year")) {
-            list = monitoringService.getTemperatureValuesForYear(date);
-        }
-        return list;
-    }
-
-
-    private void createTrayNotification(String caption) {
-        notifications.create()
-                .withCaption(caption)
-                .withType(Notifications.NotificationType.TRAY)
-                .withPosition(Notifications.Position.TOP_CENTER)
-                .show();
-    }
-
-    @Subscribe("temperatureDurationLookupField")
-    public void onTemperatureDurationLookupFieldFieldValueChange1(HasValue.ValueChangeEvent<String> event) {
-        if (event.getValue() == null) {
-            createTrayNotification("Select period!");
-            temperatureDurationLookupField.setValue(event.getPrevValue());
-            return;
-        }
-        if (event.getValue().equals("Year")) {
-            temperatureDateField.setDateFormat("yyyy");
-            return;
-        }
-        if (event.getValue().equals("Month")) {
-            temperatureDateField.setDateFormat("MM/yyyy");
-        }
-    }
-
     @Subscribe("showTemperature")
     public void onShowTemperatureClick(Button.ClickEvent event) {
         if (temperatureDateField.getValue() == null || temperatureDurationLookupField.getValue() == null) {
@@ -158,5 +131,24 @@ public class MonitoringScreen extends Screen {
         } else {
             temperatureMonitoringsDc.setItems(list);
         }
+    }
+
+    private List<TemperatureMonitoring> getTemperatureMonitoringListForPeriod(LocalDateTime date,String period) {
+        List<TemperatureMonitoring> list = new ArrayList<>();
+        if (period.equals("Month")) {
+            list = monitoringService.getTemperatureValuesForMonth(date);
+        }
+        if (period.equals("Year")) {
+            list = monitoringService.getTemperatureValuesForYear(date);
+        }
+        return list;
+    }
+
+    private void createTrayNotification(String caption) {
+        notifications.create()
+                .withCaption(caption)
+                .withType(Notifications.NotificationType.TRAY)
+                .withPosition(Notifications.Position.TOP_CENTER)
+                .show();
     }
 }
