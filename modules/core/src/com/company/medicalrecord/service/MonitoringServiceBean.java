@@ -55,19 +55,31 @@ public class MonitoringServiceBean implements MonitoringService {
         return (startOfYear != null) ? getWeightMonitoringValues(startOfYear,endOfYear): new ArrayList<>();
     }
 
+    private List<WeightMonitoring> getWeightMonitoringValues(LocalDateTime start,LocalDateTime end){
+        return dataManager.load(WeightMonitoring.class)
+                .query("select w from medicalrecord_WeightMonitoring  w where w.localDateTime between :start AND :end order by w.localDateTime")
+                .parameter("start",start)
+                .parameter("end",end)
+                .list();
+    }
+
     @Override
     public List<PulseMonitoring> getPulseValuesForMonth(LocalDateTime dateTime) {
-        return null;
+        LocalDateTime startOfMonth = getStartOfMonth(dateTime);
+        LocalDateTime endOfMonth = getEndOfMonth(dateTime);
+        return (startOfMonth != null) ? getPulseMonitoringValues(startOfMonth,endOfMonth): new ArrayList<>();
     }
 
     @Override
     public List<PulseMonitoring> getPulseValuesForYear(LocalDateTime dateTime) {
-        return null;
+        LocalDateTime startOfYear = getStartOfYear(dateTime);
+        LocalDateTime endOfYear = getEndOfYear(dateTime);
+        return (startOfYear != null) ? getPulseMonitoringValues(startOfYear,endOfYear): new ArrayList<>();
     }
 
-    private List<WeightMonitoring> getWeightMonitoringValues(LocalDateTime start,LocalDateTime end){
-        return dataManager.load(WeightMonitoring.class)
-                .query("select w from medicalrecord_WeightMonitoring  w where w.localDateTime between :start AND :end order by w.localDateTime")
+    private List<PulseMonitoring> getPulseMonitoringValues(LocalDateTime start,LocalDateTime end){
+        return dataManager.load(PulseMonitoring.class)
+                .query("select p from medicalrecord_PulseMonitoring  p where p.localDateTime between :start AND :end order by p.localDateTime")
                 .parameter("start",start)
                 .parameter("end",end)
                 .list();
