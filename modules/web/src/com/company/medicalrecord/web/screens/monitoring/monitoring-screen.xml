@@ -16,7 +16,7 @@
             <view extends="_local"/>
             <loader id="pulseMonitoringDl">
                 <query>
-                    <![CDATA[select e from medicalrecord_PulseMonitoring e]]>
+                    <![CDATA[select e from medicalrecord_PulseMonitoring e order by e.localDateTime]]>
                 </query>
             </loader>
         </collection>
@@ -25,7 +25,7 @@
             <view extends="_local"/>
             <loader id="temperatureMonitoringDl">
                 <query>
-                    <![CDATA[select e from medicalrecord_TemperatureMonitoring e]]>
+                    <![CDATA[select e from medicalrecord_TemperatureMonitoring e order by e.localDateTime]]>
                 </query>
             </loader>
         </collection>
