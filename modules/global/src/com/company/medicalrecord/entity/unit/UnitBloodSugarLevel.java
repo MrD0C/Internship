@@ -5,6 +5,7 @@ import com.haulmont.chile.core.datatypes.impl.EnumClass;
 import javax.annotation.Nullable;
 
 
+//Нужно ли?
 public enum UnitBloodSugarLevel implements EnumClass<String> {
 
     MILLIMOLEPERLITER("mmol/L"),

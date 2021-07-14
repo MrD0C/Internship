@@ -3,10 +3,8 @@ package com.company.medicalrecord.web.screens.monitoring;
 import com.company.medicalrecord.entity.monitoring.TemperatureMonitoring;
 import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
 import com.company.medicalrecord.service.MonitoringService;
-import com.company.medicalrecord.web.screens.weightmonitoring.WeightMonitoringEdit;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.ScreenBuilders;
-import com.haulmont.cuba.gui.Screens;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.screen.*;
@@ -39,8 +37,6 @@ public class MonitoringScreen extends Screen {
     private LookupField<String> temperatureDurationLookupField;
     @Inject
     private Notifications notifications;
-    @Inject
-    private Screens screens;
     @Inject
     private ScreenBuilders screenBuilders;
 
@@ -91,8 +87,9 @@ public class MonitoringScreen extends Screen {
         return "dd.MM.yyyy";
     }
 
-    @Subscribe("showWeightButton")
-    public void onShowWeightButtonClick(Button.ClickEvent event) {
+    //todo переименовать кнопки
+    @Subscribe("showPeriodWeightButton")
+    public void onShowPeriodWeightButtonClick(Button.ClickEvent event) {
         if (weightDateField.getValue() == null || weightPeriodLookupField.getValue() == null) {
             createTrayNotification("Enter values to field(s)!");
             return;
@@ -118,8 +115,8 @@ public class MonitoringScreen extends Screen {
         return list;
     }
 
-    @Subscribe("showTemperature")
-    public void onShowTemperatureClick(Button.ClickEvent event) {
+    @Subscribe("showPeriodTemperatureButton")
+    public void onShowPeriodTemperatureButtonClick(Button.ClickEvent event) {
         if (temperatureDateField.getValue() == null || temperatureDurationLookupField.getValue() == null) {
             createTrayNotification("Enter values to field(s)!");
             return;
@@ -163,6 +160,20 @@ public class MonitoringScreen extends Screen {
     @Subscribe("addTemperature")
     public void onAddTemperature(Action.ActionPerformedEvent event) {
         screenBuilders.editor(TemperatureMonitoring.class,this)
+                .withOpenMode(OpenMode.DIALOG)
+                .show();
+    }
+
+    @Subscribe("showAllWeight")
+    public void onShowAllWeight(Action.ActionPerformedEvent event) {
+        screenBuilders.lookup(WeightMonitoring.class,this)
+                .withOpenMode(OpenMode.DIALOG)
+                .show();
+    }
+
+    @Subscribe("showAllTemperature")
+    public void onShowAllTemperature(Action.ActionPerformedEvent event) {
+        screenBuilders.lookup(TemperatureMonitoring.class,this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
     }

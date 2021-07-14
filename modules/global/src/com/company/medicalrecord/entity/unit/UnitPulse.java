@@ -4,7 +4,7 @@ import com.haulmont.chile.core.datatypes.impl.EnumClass;
 
 import javax.annotation.Nullable;
 
-
+//Нужно ли?
 public enum UnitPulse implements EnumClass<String> {
 
     BUMPSPERMINUTE("bpm");

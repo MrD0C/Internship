@@ -33,6 +33,8 @@
     <actions>
         <action id="addWeight"/>
         <action id="addTemperature"/>
+        <action id="showAllWeight"/>
+        <action id="showAllTemperature"/>
     </actions>
     <layout>
         <vbox id="monitoringVBox" height="100%">
@@ -43,11 +45,11 @@
                     <hbox id="weightPeriodHBox" spacing="true">
                         <lookupField id="weightPeriodLookupField" nullOptionVisible="false"/>
                         <dateField id="weightDateField"/>
-                        <button id="showWeightButton" caption="Show"/>
+                        <button id="showPeriodWeightButton" caption="Show"/>
                     </hbox>
                     <hbox id="weightEditorHBox" spacing="true" align="TOP_RIGHT">
                         <button id="addWeightButton" icon="ADD_TO_SET_ACTION" action="addWeight"/>
-                        <button id="showAllWeightButton" icon="ALIGN_JUSTIFY"/>
+                        <button id="showAllWeightButton" icon="ALIGN_JUSTIFY" action="showAllWeight"/>
                     </hbox>
                 </hbox>
                 <chart:serialChart id="weightSerialChart"
@@ -75,11 +77,11 @@
                     <hbox id="temperaturePeriodHBox" spacing="true">
                         <lookupField id="temperatureDurationLookupField" nullOptionVisible="false"/>
                         <dateField id="temperatureDateField"/>
-                        <button id="showTemperature" caption="Show"/>
+                        <button id="showPeriodTemperatureButton" caption="Show"/>
                     </hbox>
                     <hbox id="temperatureEditorHBox" align="TOP_RIGHT" spacing="true">
                         <button id="addTemperatureButton" icon="ADD_TO_SET_ACTION" action="addTemperature"/>
-                        <button id="showAllTemperatureButton" icon="ALIGN_JUSTIFY"/>
+                        <button id="showAllTemperatureButton" icon="ALIGN_JUSTIFY" action="showAllTemperature"/>
                     </hbox>
                 </hbox>
                 <chart:serialChart id="temperatureSerialChart"

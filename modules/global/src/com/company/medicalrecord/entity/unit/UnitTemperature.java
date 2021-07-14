@@ -4,7 +4,7 @@ import com.haulmont.chile.core.datatypes.impl.EnumClass;
 
 import javax.annotation.Nullable;
 
-
+//Нужно ли?
 public enum UnitTemperature implements EnumClass<String> {
 
     DEGREECELSIUS("°C");
