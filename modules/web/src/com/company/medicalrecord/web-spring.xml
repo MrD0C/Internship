@@ -15,10 +15,8 @@
                        value="com.company.medicalrecord.service.ConsultationService"/>
                 <entry key="medicalrecord_MedicationService"
                        value="com.company.medicalrecord.service.MedicationService"/>
-                <entry key="medicalrecord_WeightMonitoringService"
-                       value="com.company.medicalrecord.service.WeightMonitoringService"/>
-                <entry key="medicalrecord_TemperatureMonitoringService"
-                       value="com.company.medicalrecord.service.TemperatureMonitoringService"/>
+                <entry key="medicalrecord_MonitoringService"
+                       value="com.company.medicalrecord.service.MonitoringService"/>
             </map>
         </property>
     </bean>

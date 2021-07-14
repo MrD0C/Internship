@@ -2,15 +2,13 @@ package com.company.medicalrecord.web.screens.monitoring;
 
 import com.company.medicalrecord.entity.monitoring.TemperatureMonitoring;
 import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
-import com.company.medicalrecord.service.TemperatureMonitoringService;
-import com.company.medicalrecord.service.WeightMonitoringService;
+import com.company.medicalrecord.service.MonitoringService;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.components.DateField;
 import com.haulmont.cuba.gui.components.HasValue;
 import com.haulmont.cuba.gui.components.LookupField;
 import com.haulmont.cuba.gui.model.CollectionContainer;
-import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.screen.Screen;
 import com.haulmont.cuba.gui.screen.Subscribe;
 import com.haulmont.cuba.gui.screen.UiController;
@@ -28,9 +26,7 @@ import java.util.List;
 public class MonitoringScreen extends Screen {
 
     @Inject
-    private WeightMonitoringService weightMonitoringService;
-    @Inject
-    private TemperatureMonitoringService temperatureMonitoringService;
+    private MonitoringService monitoringService;
     @Inject
     private CollectionContainer<WeightMonitoring> weightMonitoringDc;
     @Inject
@@ -44,14 +40,12 @@ public class MonitoringScreen extends Screen {
     @Inject
     private LookupField<String> temperatureDurationLookupField;
     @Inject
-    private CollectionLoader<TemperatureMonitoring> temperatureMonitoringsDl;
-    @Inject
     private Notifications notifications;
 
     @Subscribe
     public void onInit(InitEvent event) {
-        List<WeightMonitoring> list = weightMonitoringService.getValuesForMonth(LocalDateTime.now());
-        List<TemperatureMonitoring> listT = temperatureMonitoringService.getValuesForMonth(LocalDateTime.now());
+        List<WeightMonitoring> list = monitoringService.getWeightValuesForMonth(LocalDateTime.now());
+        List<TemperatureMonitoring> listT = monitoringService.getTemperatureValuesForMonth(LocalDateTime.now());
         weightMonitoringDc.setItems(list);
         temperatureMonitoringsDc.setItems(listT);
         initLookUpField();
@@ -106,10 +100,10 @@ public class MonitoringScreen extends Screen {
     private List<WeightMonitoring> getWeightMonitoringListForPeriod(LocalDateTime date, String period) {
         List<WeightMonitoring> list = new ArrayList<>();
         if (period.equals("Month")) {
-            list = weightMonitoringService.getValuesForMonth(date);
+            list = monitoringService.getWeightValuesForMonth(date);
         }
         if (period.equals("Year")) {
-            list = weightMonitoringService.getValuesForYear(date);
+            list = monitoringService.getWeightValuesForYear(date);
         }
         return list;
     }
@@ -117,10 +111,10 @@ public class MonitoringScreen extends Screen {
     private List<TemperatureMonitoring> getTemperatureMonitoringListForPeriod(LocalDateTime date,String period){
         List<TemperatureMonitoring> list = new ArrayList<>();
         if (period.equals("Month")) {
-            list = temperatureMonitoringService.getValuesForMonth(date);
+            list = monitoringService.getTemperatureValuesForMonth(date);
         }
         if (period.equals("Year")) {
-            list = temperatureMonitoringService.getValuesForYear(date);
+            list = monitoringService.getTemperatureValuesForYear(date);
         }
         return list;
     }
