@@ -35,6 +35,8 @@
         <action id="addTemperature"/>
         <action id="showAllWeight"/>
         <action id="showAllTemperature"/>
+        <action id="addPulse"/>
+        <action id="showAllPulse"/>
     </actions>
     <layout>
         <scrollBox id="monitoringVBox">
@@ -112,8 +114,8 @@
                         <button id="showPeriodPulseButton" caption="Show"/>
                     </hbox>
                     <hbox id="pulseEditorHBox" spacing="true" align="TOP_RIGHT">
-                        <button id="addPulseButton" icon="ADD_TO_SET_ACTION"/>
-                        <button id="showAllPulseButton" icon="ALIGN_JUSTIFY"/>
+                        <button id="addPulseButton" icon="ADD_TO_SET_ACTION" action="addPulse"/>
+                        <button id="showAllPulseButton" icon="ALIGN_JUSTIFY" action="showAllPulse"/>
                     </hbox>
                 </hbox>
                 <chart:serialChart id="pulseSerialChart"

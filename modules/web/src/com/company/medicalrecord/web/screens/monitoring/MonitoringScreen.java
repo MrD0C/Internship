@@ -217,6 +217,13 @@ public class MonitoringScreen extends Screen {
                 .show();
     }
 
+    @Subscribe("addPulse")
+    public void onAddPulse(Action.ActionPerformedEvent event) {
+        screenBuilders.editor(PulseMonitoring.class,this)
+                .withOpenMode(OpenMode.DIALOG)
+                .show();
+    }
+
     @Subscribe("showAllWeight")
     public void onShowAllWeight(Action.ActionPerformedEvent event) {
         screenBuilders.lookup(WeightMonitoring.class,this)
@@ -227,6 +234,13 @@ public class MonitoringScreen extends Screen {
     @Subscribe("showAllTemperature")
     public void onShowAllTemperature(Action.ActionPerformedEvent event) {
         screenBuilders.lookup(TemperatureMonitoring.class,this)
+                .withOpenMode(OpenMode.DIALOG)
+                .show();
+    }
+
+    @Subscribe("showAllPulse")
+    public void onShowAllPulse(Action.ActionPerformedEvent event) {
+        screenBuilders.lookup(PulseMonitoring.class,this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
     }
