@@ -11,10 +11,6 @@
         <property name="serverSelector" ref="cuba_ServerSelector"/>
         <property name="remoteServices">
             <map>
-                <entry key="medicalrecord_ConsultationService"
-                       value="com.company.medicalrecord.service.ConsultationService"/>
-                <entry key="medicalrecord_MedicationService"
-                       value="com.company.medicalrecord.service.MedicationService"/>
                 <entry key="medicalrecord_MonitoringService"
                        value="com.company.medicalrecord.service.MonitoringService"/>
             </map>

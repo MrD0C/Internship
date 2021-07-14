@@ -12,18 +12,18 @@
                 </query>
             </loader>
         </collection>
-        <collection id="pulseMonitoringsDc" class="com.company.medicalrecord.entity.monitoring.PulseMonitoring">
+        <collection id="pulseMonitoringDc" class="com.company.medicalrecord.entity.monitoring.PulseMonitoring">
             <view extends="_local"/>
-            <loader id="pulseMonitoringsDl">
+            <loader id="pulseMonitoringDl">
                 <query>
                     <![CDATA[select e from medicalrecord_PulseMonitoring e]]>
                 </query>
             </loader>
         </collection>
-        <collection id="temperatureMonitoringsDc"
+        <collection id="temperatureMonitoringDc"
                     class="com.company.medicalrecord.entity.monitoring.TemperatureMonitoring">
             <view extends="_local"/>
-            <loader id="temperatureMonitoringsDl">
+            <loader id="temperatureMonitoringDl">
                 <query>
                     <![CDATA[select e from medicalrecord_TemperatureMonitoring e]]>
                 </query>
@@ -47,7 +47,7 @@
                     <hbox id="weightPeriodHBox" spacing="true">
                         <lookupField id="weightPeriodLookupField" nullOptionVisible="false"/>
                         <dateField id="weightDateField"/>
-                        <button id="showPeriodWeightButton" caption="Show"/>
+                        <button id="showWeightByPeriodButton" caption="Show"/>
                     </hbox>
                     <hbox id="weightEditorHBox" spacing="true" align="TOP_RIGHT">
                         <button id="addWeightButton" icon="ADD_TO_SET_ACTION" action="addWeight"/>
@@ -79,7 +79,7 @@
                     <hbox id="temperaturePeriodHBox" spacing="true">
                         <lookupField id="temperatureDurationLookupField" nullOptionVisible="false"/>
                         <dateField id="temperatureDateField"/>
-                        <button id="showPeriodTemperatureButton" caption="Show"/>
+                        <button id="showTemperatureByPeriodButton" caption="Show"/>
                     </hbox>
                     <hbox id="temperatureEditorHBox" align="TOP_RIGHT" spacing="true">
                         <button id="addTemperatureButton" icon="ADD_TO_SET_ACTION" action="addTemperature"/>
@@ -89,7 +89,7 @@
                 <chart:serialChart id="temperatureSerialChart"
                                    categoryField="localDateTime"
                                    dataDateFormat="YYYY-MM-DD"
-                                   dataContainer="temperatureMonitoringsDc"
+                                   dataContainer="temperatureMonitoringDc"
                                    width="100%" height="auto" box.expandRatio="1.0">
                     <chart:categoryAxis parseDates="true"/>
                     <chart:graphs>
@@ -111,7 +111,7 @@
                     <hbox id="pulsePeriodHBox" spacing="true">
                         <lookupField id="pulseDurationLookupField" nullOptionVisible="false"/>
                         <dateField id="pulseDateField"/>
-                        <button id="showPeriodPulseButton" caption="Show"/>
+                        <button id="showPulseByPeriodButton" caption="Show"/>
                     </hbox>
                     <hbox id="pulseEditorHBox" spacing="true" align="TOP_RIGHT">
                         <button id="addPulseButton" icon="ADD_TO_SET_ACTION" action="addPulse"/>
@@ -121,7 +121,7 @@
                 <chart:serialChart id="pulseSerialChart"
                                    categoryField="localDateTime"
                                    dataDateFormat="YYYY-MM-DD"
-                                   dataContainer="pulseMonitoringsDc"
+                                   dataContainer="pulseMonitoringDc"
                                    width="100%" box.expandRatio="1.0">
                     <chart:categoryAxis parseDates="true"/>
                     <chart:graphs>

@@ -7,19 +7,18 @@ import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
 import java.time.LocalDateTime;
 import java.util.List;
 
-//TODO переименовать методы
 public interface MonitoringService {
     String NAME = "medicalrecord_MonitoringService";
 
-    List<TemperatureMonitoring> getTemperatureValuesForMonth(LocalDateTime dateTime);
+    List<TemperatureMonitoring> getTemperatureMonitoringListForMonth(LocalDateTime dateTime);
 
-    List<TemperatureMonitoring> getTemperatureValuesForYear(LocalDateTime dateTime);
+    List<TemperatureMonitoring> getTemperatureMonitoringListForYear(LocalDateTime dateTime);
 
-    List<WeightMonitoring> getWeightValuesForMonth(LocalDateTime dateTime);
+    List<WeightMonitoring> getWeightMonitoringListForMonth(LocalDateTime dateTime);
 
-    List<WeightMonitoring> getWeightValuesForYear(LocalDateTime dateTime);
+    List<WeightMonitoring> getWeightMonitoringListForYear(LocalDateTime dateTime);
 
-    List<PulseMonitoring> getPulseValuesForMonth(LocalDateTime dateTime);
+    List<PulseMonitoring> getPulseMonitoringListForMonth(LocalDateTime dateTime);
 
-    List<PulseMonitoring> getPulseValuesForYear(LocalDateTime dateTime);
+    List<PulseMonitoring> getPulseMonitoringListForYear(LocalDateTime dateTime);
 }

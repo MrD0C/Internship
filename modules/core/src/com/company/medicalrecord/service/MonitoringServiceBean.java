@@ -13,7 +13,6 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO переименовать методы
 @Service(MonitoringService.NAME)
 public class MonitoringServiceBean implements MonitoringService {
 
@@ -21,84 +20,84 @@ public class MonitoringServiceBean implements MonitoringService {
     private DataManager dataManager;
 
     @Override
-    public List<TemperatureMonitoring> getTemperatureValuesForMonth(LocalDateTime dateTime) {
+    public List<TemperatureMonitoring> getTemperatureMonitoringListForMonth(LocalDateTime dateTime) {
         LocalDateTime startOfMonth = getStartOfMonth(dateTime);
         LocalDateTime endOfMonth = getEndOfMonth(dateTime);
-        return (startOfMonth != null) ? getTemperatureMonitoringValues(startOfMonth,endOfMonth): new ArrayList<>();
+        return (startOfMonth != null) ? getTemperatureMonitoringListFromDataBase(startOfMonth, endOfMonth) : new ArrayList<>();
     }
 
     @Override
-    public List<TemperatureMonitoring> getTemperatureValuesForYear(LocalDateTime dateTime) {
+    public List<TemperatureMonitoring> getTemperatureMonitoringListForYear(LocalDateTime dateTime) {
         LocalDateTime startOfYear = getStartOfYear(dateTime);
         LocalDateTime endOfYear = getEndOfYear(dateTime);
-        return (startOfYear != null) ? getTemperatureMonitoringValues(startOfYear,endOfYear): new ArrayList<>();
+        return (startOfYear != null) ? getTemperatureMonitoringListFromDataBase(startOfYear, endOfYear) : new ArrayList<>();
     }
 
-    private List<TemperatureMonitoring> getTemperatureMonitoringValues(LocalDateTime start,LocalDateTime end){
+    private List<TemperatureMonitoring> getTemperatureMonitoringListFromDataBase(LocalDateTime start, LocalDateTime end) {
         return dataManager.load(TemperatureMonitoring.class)
                 .query("select t from medicalrecord_TemperatureMonitoring t where t.localDateTime between :start AND :end order by t.localDateTime")
-                .parameter("start",start)
-                .parameter("end",end)
+                .parameter("start", start)
+                .parameter("end", end)
                 .list();
     }
 
     @Override
-    public List<WeightMonitoring> getWeightValuesForMonth(LocalDateTime dateTime) {
+    public List<WeightMonitoring> getWeightMonitoringListForMonth(LocalDateTime dateTime) {
         LocalDateTime startOfMonth = getStartOfMonth(dateTime);
         LocalDateTime endOfMonth = getEndOfMonth(dateTime);
-        return (startOfMonth != null) ? getWeightMonitoringValues(startOfMonth,endOfMonth): new ArrayList<>();
+        return (startOfMonth != null) ? getWeightMonitoringListFromDataBase(startOfMonth, endOfMonth) : new ArrayList<>();
     }
 
     @Override
-    public List<WeightMonitoring> getWeightValuesForYear(LocalDateTime dateTime) {
+    public List<WeightMonitoring> getWeightMonitoringListForYear(LocalDateTime dateTime) {
         LocalDateTime startOfYear = getStartOfYear(dateTime);
         LocalDateTime endOfYear = getEndOfYear(dateTime);
-        return (startOfYear != null) ? getWeightMonitoringValues(startOfYear,endOfYear): new ArrayList<>();
+        return (startOfYear != null) ? getWeightMonitoringListFromDataBase(startOfYear, endOfYear) : new ArrayList<>();
     }
 
-    private List<WeightMonitoring> getWeightMonitoringValues(LocalDateTime start,LocalDateTime end){
+    private List<WeightMonitoring> getWeightMonitoringListFromDataBase(LocalDateTime start, LocalDateTime end) {
         return dataManager.load(WeightMonitoring.class)
                 .query("select w from medicalrecord_WeightMonitoring  w where w.localDateTime between :start AND :end order by w.localDateTime")
-                .parameter("start",start)
-                .parameter("end",end)
+                .parameter("start", start)
+                .parameter("end", end)
                 .list();
     }
 
     @Override
-    public List<PulseMonitoring> getPulseValuesForMonth(LocalDateTime dateTime) {
+    public List<PulseMonitoring> getPulseMonitoringListForMonth(LocalDateTime dateTime) {
         LocalDateTime startOfMonth = getStartOfMonth(dateTime);
         LocalDateTime endOfMonth = getEndOfMonth(dateTime);
-        return (startOfMonth != null) ? getPulseMonitoringValues(startOfMonth,endOfMonth): new ArrayList<>();
+        return (startOfMonth != null) ? getPulseMonitoringListFromDataBase(startOfMonth, endOfMonth) : new ArrayList<>();
     }
 
     @Override
-    public List<PulseMonitoring> getPulseValuesForYear(LocalDateTime dateTime) {
+    public List<PulseMonitoring> getPulseMonitoringListForYear(LocalDateTime dateTime) {
         LocalDateTime startOfYear = getStartOfYear(dateTime);
         LocalDateTime endOfYear = getEndOfYear(dateTime);
-        return (startOfYear != null) ? getPulseMonitoringValues(startOfYear,endOfYear): new ArrayList<>();
+        return (startOfYear != null) ? getPulseMonitoringListFromDataBase(startOfYear, endOfYear) : new ArrayList<>();
     }
 
-    private List<PulseMonitoring> getPulseMonitoringValues(LocalDateTime start,LocalDateTime end){
+    private List<PulseMonitoring> getPulseMonitoringListFromDataBase(LocalDateTime start, LocalDateTime end) {
         return dataManager.load(PulseMonitoring.class)
                 .query("select p from medicalrecord_PulseMonitoring  p where p.localDateTime between :start AND :end order by p.localDateTime")
-                .parameter("start",start)
-                .parameter("end",end)
+                .parameter("start", start)
+                .parameter("end", end)
                 .list();
     }
 
-    private LocalDateTime getStartOfYear(LocalDateTime date){
-        return date != null ? LocalDate.of(date.getYear(), Month.JANUARY,1).atStartOfDay() : null;
+    private LocalDateTime getStartOfYear(LocalDateTime date) {
+        return date != null ? LocalDate.of(date.getYear(), Month.JANUARY, 1).atStartOfDay() : null;
     }
 
-    private LocalDateTime getEndOfYear(LocalDateTime date){
-       return date != null ? getStartOfYear(date.plusYears(1)).minusNanos(1) : null;
+    private LocalDateTime getEndOfYear(LocalDateTime date) {
+        return date != null ? getStartOfYear(date.plusYears(1)).minusNanos(1) : null;
     }
 
-    private LocalDateTime getStartOfMonth(LocalDateTime date){
+    private LocalDateTime getStartOfMonth(LocalDateTime date) {
         return date != null ? date.withDayOfMonth(1).toLocalDate().atStartOfDay() : null;
     }
 
-    private LocalDateTime getEndOfMonth(LocalDateTime date){
+    private LocalDateTime getEndOfMonth(LocalDateTime date) {
         return date != null ? getStartOfMonth(date.plusMonths(1)).minusNanos(1) : null;
     }
 }

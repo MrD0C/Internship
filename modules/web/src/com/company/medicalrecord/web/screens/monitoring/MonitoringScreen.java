@@ -8,7 +8,6 @@ import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.model.CollectionContainer;
-import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.screen.*;
 
 import javax.inject.Inject;
@@ -23,15 +22,14 @@ import java.util.Objects;
 @UiDescriptor("monitoring-screen.xml")
 public class MonitoringScreen extends Screen {
 
-    //Todo Переименовать переменные
     @Inject
     private MonitoringService monitoringService;
     @Inject
     private CollectionContainer<WeightMonitoring> weightMonitoringDc;
     @Inject
-    private CollectionContainer<TemperatureMonitoring> temperatureMonitoringsDc;
+    private CollectionContainer<TemperatureMonitoring> temperatureMonitoringDc;
     @Inject
-    private CollectionContainer<PulseMonitoring> pulseMonitoringsDc;
+    private CollectionContainer<PulseMonitoring> pulseMonitoringDc;
     @Inject
     private DateField<Date> weightDateField;
     @Inject
@@ -56,13 +54,13 @@ public class MonitoringScreen extends Screen {
         initDateFields();
     }
 
-    private void initCollectionContainers(){
-        List<WeightMonitoring> weightMonitoringList = monitoringService.getWeightValuesForMonth(LocalDateTime.now());
-        List<TemperatureMonitoring> temperatureMonitoringList = monitoringService.getTemperatureValuesForMonth(LocalDateTime.now());
-        List<PulseMonitoring> pulseMonitoringList = monitoringService.getPulseValuesForMonth(LocalDateTime.now());
+    private void initCollectionContainers() {
+        List<WeightMonitoring> weightMonitoringList = monitoringService.getWeightMonitoringListForMonth(LocalDateTime.now());
+        List<TemperatureMonitoring> temperatureMonitoringList = monitoringService.getTemperatureMonitoringListForMonth(LocalDateTime.now());
+        List<PulseMonitoring> pulseMonitoringList = monitoringService.getPulseMonitoringListForMonth(LocalDateTime.now());
         weightMonitoringDc.setItems(weightMonitoringList);
-        temperatureMonitoringsDc.setItems(temperatureMonitoringList);
-        pulseMonitoringsDc.setItems(pulseMonitoringList);
+        temperatureMonitoringDc.setItems(temperatureMonitoringList);
+        pulseMonitoringDc.setItems(pulseMonitoringList);
     }
 
     private void initLookUpFields() {
@@ -71,7 +69,7 @@ public class MonitoringScreen extends Screen {
         setBaseLookupFieldValues(pulseDurationLookupField);
     }
 
-    private void setBaseLookupFieldValues(LookupField<String> field){
+    private void setBaseLookupFieldValues(LookupField<String> field) {
         List<String> durationList = List.of("Year", "Month");
         field.setOptionsList(durationList);
         field.setValue("Month");
@@ -83,7 +81,7 @@ public class MonitoringScreen extends Screen {
         pulseDateField.setValue(getNowDate());
     }
 
-    private Date getNowDate(){
+    private Date getNowDate() {
         return Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
     }
 
@@ -102,19 +100,18 @@ public class MonitoringScreen extends Screen {
         pulseDateField.setDateFormat(getDateFormat(Objects.requireNonNull(event.getValue())));
     }
 
-    private String getDateFormat(String value){
-        if (value.equals("Year")){
+    private String getDateFormat(String value) {
+        if (value.equals("Year")) {
             return "yyyy";
         }
-        if (value.equals("Month")){
+        if (value.equals("Month")) {
             return "MM/yyyy";
         }
         return "dd.MM.yyyy";
     }
 
-    //todo переименовать кнопки
-    @Subscribe("showPeriodWeightButton")
-    public void onShowPeriodWeightButtonClick(Button.ClickEvent event) {
+    @Subscribe("showWeightByPeriodButton")
+    public void onShowWeightByPeriodButtonClick(Button.ClickEvent event) {
         if (weightDateField.getValue() == null || weightPeriodLookupField.getValue() == null) {
             createTrayNotification("Enter values to field(s)!");
             return;
@@ -132,16 +129,16 @@ public class MonitoringScreen extends Screen {
     private List<WeightMonitoring> getWeightMonitoringListForPeriod(LocalDateTime date, String period) {
         List<WeightMonitoring> list = new ArrayList<>();
         if (period.equals("Month")) {
-            list = monitoringService.getWeightValuesForMonth(date);
+            list = monitoringService.getWeightMonitoringListForMonth(date);
         }
         if (period.equals("Year")) {
-            list = monitoringService.getWeightValuesForYear(date);
+            list = monitoringService.getWeightMonitoringListForYear(date);
         }
         return list;
     }
 
-    @Subscribe("showPeriodTemperatureButton")
-    public void onShowPeriodTemperatureButtonClick(Button.ClickEvent event) {
+    @Subscribe("showTemperatureByPeriodButton")
+    public void onShowTemperatureByPeriodButtonClick(Button.ClickEvent event) {
         if (temperatureDateField.getValue() == null || temperatureDurationLookupField.getValue() == null) {
             createTrayNotification("Enter values to field(s)!");
             return;
@@ -152,24 +149,24 @@ public class MonitoringScreen extends Screen {
         if (list.isEmpty()) {
             createTrayNotification("There is no info during this period..");
         } else {
-            temperatureMonitoringsDc.setItems(list);
+            temperatureMonitoringDc.setItems(list);
         }
     }
 
-    private List<TemperatureMonitoring> getTemperatureMonitoringListForPeriod(LocalDateTime date,String period) {
+    private List<TemperatureMonitoring> getTemperatureMonitoringListForPeriod(LocalDateTime date, String period) {
         List<TemperatureMonitoring> list = new ArrayList<>();
         if (period.equals("Month")) {
-            list = monitoringService.getTemperatureValuesForMonth(date);
+            list = monitoringService.getTemperatureMonitoringListForMonth(date);
         }
         if (period.equals("Year")) {
-            list = monitoringService.getTemperatureValuesForYear(date);
+            list = monitoringService.getTemperatureMonitoringListForYear(date);
         }
         return list;
     }
 
     //Может в отдельный метод проверку??
-    @Subscribe("showPeriodPulseButton")
-    public void onShowPeriodPulseButtonClick(Button.ClickEvent event) {
+    @Subscribe("showPulseByPeriodButton")
+    public void onShowPulseByPeriodButtonClick(Button.ClickEvent event) {
         if (pulseDateField.getValue() == null || pulseDurationLookupField.getValue() == null) {
             createTrayNotification("Enter values to field(s)!");
             return;
@@ -180,17 +177,17 @@ public class MonitoringScreen extends Screen {
         if (list.isEmpty()) {
             createTrayNotification("There is no info during this period..");
         } else {
-            pulseMonitoringsDc.setItems(list);
+            pulseMonitoringDc.setItems(list);
         }
     }
 
-    private List<PulseMonitoring> getPulseMonitoringListForPeriod(LocalDateTime date,String period) {
+    private List<PulseMonitoring> getPulseMonitoringListForPeriod(LocalDateTime date, String period) {
         List<PulseMonitoring> list = new ArrayList<>();
         if (period.equals("Month")) {
-            list = monitoringService.getPulseValuesForMonth(date);
+            list = monitoringService.getPulseMonitoringListForMonth(date);
         }
         if (period.equals("Year")) {
-            list = monitoringService.getPulseValuesForYear(date);
+            list = monitoringService.getPulseMonitoringListForYear(date);
         }
         return list;
     }
@@ -205,42 +202,42 @@ public class MonitoringScreen extends Screen {
 
     @Subscribe("addWeight")
     public void onAddWeight(Action.ActionPerformedEvent event) {
-        screenBuilders.editor(WeightMonitoring.class,this)
+        screenBuilders.editor(WeightMonitoring.class, this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
     }
 
     @Subscribe("addTemperature")
     public void onAddTemperature(Action.ActionPerformedEvent event) {
-        screenBuilders.editor(TemperatureMonitoring.class,this)
+        screenBuilders.editor(TemperatureMonitoring.class, this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
     }
 
     @Subscribe("addPulse")
     public void onAddPulse(Action.ActionPerformedEvent event) {
-        screenBuilders.editor(PulseMonitoring.class,this)
+        screenBuilders.editor(PulseMonitoring.class, this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
     }
 
     @Subscribe("showAllWeight")
     public void onShowAllWeight(Action.ActionPerformedEvent event) {
-        screenBuilders.lookup(WeightMonitoring.class,this)
+        screenBuilders.lookup(WeightMonitoring.class, this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
     }
 
     @Subscribe("showAllTemperature")
     public void onShowAllTemperature(Action.ActionPerformedEvent event) {
-        screenBuilders.lookup(TemperatureMonitoring.class,this)
+        screenBuilders.lookup(TemperatureMonitoring.class, this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
     }
 
     @Subscribe("showAllPulse")
     public void onShowAllPulse(Action.ActionPerformedEvent event) {
-        screenBuilders.lookup(PulseMonitoring.class,this)
+        screenBuilders.lookup(PulseMonitoring.class, this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
     }
