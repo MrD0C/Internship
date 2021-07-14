@@ -3,16 +3,13 @@ package com.company.medicalrecord.web.screens.monitoring;
 import com.company.medicalrecord.entity.monitoring.TemperatureMonitoring;
 import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
 import com.company.medicalrecord.service.MonitoringService;
+import com.company.medicalrecord.web.screens.weightmonitoring.WeightMonitoringEdit;
 import com.haulmont.cuba.gui.Notifications;
-import com.haulmont.cuba.gui.components.Button;
-import com.haulmont.cuba.gui.components.DateField;
-import com.haulmont.cuba.gui.components.HasValue;
-import com.haulmont.cuba.gui.components.LookupField;
+import com.haulmont.cuba.gui.ScreenBuilders;
+import com.haulmont.cuba.gui.Screens;
+import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.model.CollectionContainer;
-import com.haulmont.cuba.gui.screen.Screen;
-import com.haulmont.cuba.gui.screen.Subscribe;
-import com.haulmont.cuba.gui.screen.UiController;
-import com.haulmont.cuba.gui.screen.UiDescriptor;
+import com.haulmont.cuba.gui.screen.*;
 
 import javax.inject.Inject;
 import java.time.LocalDateTime;
@@ -42,6 +39,10 @@ public class MonitoringScreen extends Screen {
     private LookupField<String> temperatureDurationLookupField;
     @Inject
     private Notifications notifications;
+    @Inject
+    private Screens screens;
+    @Inject
+    private ScreenBuilders screenBuilders;
 
     @Subscribe
     public void onInit(InitEvent event) {
@@ -149,6 +150,20 @@ public class MonitoringScreen extends Screen {
                 .withCaption(caption)
                 .withType(Notifications.NotificationType.TRAY)
                 .withPosition(Notifications.Position.TOP_CENTER)
+                .show();
+    }
+
+    @Subscribe("addWeight")
+    public void onAddWeight(Action.ActionPerformedEvent event) {
+        screenBuilders.editor(WeightMonitoring.class,this)
+                .withOpenMode(OpenMode.DIALOG)
+                .show();
+    }
+
+    @Subscribe("addTemperature")
+    public void onAddTemperature(Action.ActionPerformedEvent event) {
+        screenBuilders.editor(TemperatureMonitoring.class,this)
+                .withOpenMode(OpenMode.DIALOG)
                 .show();
     }
 }

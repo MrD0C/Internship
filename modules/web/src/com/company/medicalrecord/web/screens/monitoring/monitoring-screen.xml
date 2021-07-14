@@ -30,6 +30,10 @@
             </loader>
         </collection>
     </data>
+    <actions>
+        <action id="addWeight"/>
+        <action id="addTemperature"/>
+    </actions>
     <layout>
         <vbox id="monitoringVBox" height="100%">
             <vbox id="vBoxWeightMonitoring" height="100%" spacing="true"
@@ -42,7 +46,7 @@
                         <button id="showWeightButton" caption="Show"/>
                     </hbox>
                     <hbox id="weightEditorHBox" spacing="true" align="TOP_RIGHT">
-                        <button id="addWeightButton" icon="ADD_TO_SET_ACTION"/>
+                        <button id="addWeightButton" icon="ADD_TO_SET_ACTION" action="addWeight"/>
                         <button id="showAllWeightButton" icon="ALIGN_JUSTIFY"/>
                     </hbox>
                 </hbox>
@@ -74,7 +78,7 @@
                         <button id="showTemperature" caption="Show"/>
                     </hbox>
                     <hbox id="temperatureEditorHBox" align="TOP_RIGHT" spacing="true">
-                        <button id="addTemperatureButton" icon="ADD_TO_SET_ACTION"/>
+                        <button id="addTemperatureButton" icon="ADD_TO_SET_ACTION" action="addTemperature"/>
                         <button id="showAllTemperatureButton" icon="ALIGN_JUSTIFY"/>
                     </hbox>
                 </hbox>

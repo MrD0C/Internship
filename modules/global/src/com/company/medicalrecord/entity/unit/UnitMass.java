@@ -7,8 +7,7 @@ import javax.annotation.Nullable;
 
 public enum UnitMass implements EnumClass<String> {
 
-    KILOGRAMS("kg"),
-    GRAMS("g");
+    KILOGRAMS("kg");
 
     private String id;
 
