@@ -21,7 +21,8 @@
             spacing="true">
         <groupTable id="analysisIndicatorsTable"
                     width="100%"
-                    dataContainer="analysisIndicatorsDc">
+                    dataContainer="analysisIndicatorsDc" reorderingAllowed="false" settingsEnabled="false"
+                    contextMenuEnabled="false">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>

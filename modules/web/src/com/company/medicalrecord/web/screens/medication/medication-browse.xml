@@ -21,7 +21,7 @@
             spacing="true">
         <groupTable id="medicationsTable"
                     width="100%"
-                    dataContainer="medicationsDc">
+                    dataContainer="medicationsDc" reorderingAllowed="false" contextMenuEnabled="false">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>

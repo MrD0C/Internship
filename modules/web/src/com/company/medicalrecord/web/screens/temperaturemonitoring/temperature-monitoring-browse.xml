@@ -21,7 +21,7 @@
             spacing="true">
         <groupTable id="temperatureMonitoringsTable"
                     width="100%"
-                    dataContainer="temperatureMonitoringsDc">
+                    dataContainer="temperatureMonitoringsDc" reorderingAllowed="false" contextMenuEnabled="false">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>

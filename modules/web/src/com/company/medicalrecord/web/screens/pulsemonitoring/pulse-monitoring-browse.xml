@@ -21,7 +21,7 @@
             spacing="true">
         <groupTable id="pulseMonitoringsTable"
                     width="100%"
-                    dataContainer="pulseMonitoringsDc">
+                    dataContainer="pulseMonitoringsDc" contextMenuEnabled="false" reorderingAllowed="false">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>

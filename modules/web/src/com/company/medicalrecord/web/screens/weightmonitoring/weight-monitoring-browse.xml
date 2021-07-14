@@ -21,7 +21,9 @@
             spacing="true">
         <groupTable id="weightMonitoringsTable"
                     width="100%"
-                    dataContainer="weightMonitoringsDc">
+                    dataContainer="weightMonitoringsDc"
+                    reorderingAllowed="false"
+                    contextMenuEnabled="false">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
