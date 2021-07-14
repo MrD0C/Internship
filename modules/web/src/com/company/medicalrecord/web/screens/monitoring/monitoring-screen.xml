@@ -31,14 +31,20 @@
         </collection>
     </data>
     <layout>
-        <vbox id="monitoringVBox" spacing="true" height="100%">
+        <vbox id="monitoringVBox" height="100%">
             <vbox id="vBoxWeightMonitoring" height="100%" spacing="true"
                   width="100%">
                 <label id="weightLabel" value="msg://labelWeight.value" stylename="bold h3"/>
-                <hbox id="weightPeriodHBox" spacing="true">
-                    <lookupField id="weightPeriodLookupField" nullOptionVisible="false"/>
-                    <dateField id="weightDateField"/>
-                    <button id="showWeightButton" caption="Show"/>
+                <hbox id="weightOptionsHBox" width="100%" margin="false,true,false,false">
+                    <hbox id="weightPeriodHBox" spacing="true">
+                        <lookupField id="weightPeriodLookupField" nullOptionVisible="false"/>
+                        <dateField id="weightDateField"/>
+                        <button id="showWeightButton" caption="Show"/>
+                    </hbox>
+                    <hbox id="weightEditorHBox" spacing="true" align="TOP_RIGHT">
+                        <button id="addWeightButton" icon="ADD_TO_SET_ACTION"/>
+                        <button id="showAllWeightButton" icon="ALIGN_JUSTIFY"/>
+                    </hbox>
                 </hbox>
                 <chart:serialChart id="weightSerialChart"
                                    categoryField="localDateTime"
@@ -68,7 +74,7 @@
                         <button id="showTemperature" caption="Show"/>
                     </hbox>
                     <hbox id="temperatureEditorHBox" align="TOP_RIGHT" spacing="true">
-                        <button id="addTemperatureButton" align="TOP_RIGHT" icon="ADD_TO_SET_ACTION"/>
+                        <button id="addTemperatureButton" icon="ADD_TO_SET_ACTION"/>
                         <button id="showAllTemperatureButton" icon="ALIGN_JUSTIFY"/>
                     </hbox>
                 </hbox>
@@ -76,7 +82,7 @@
                                    categoryField="localDateTime"
                                    dataDateFormat="YYYY-MM-DD"
                                    dataContainer="temperatureMonitoringsDc"
-                                   width="100%" height="auto">
+                                   width="100%" height="auto" box.expandRatio="1.0">
                     <chart:categoryAxis parseDates="true"/>
                     <chart:graphs>
                         <chart:graph valueField="value"
