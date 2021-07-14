@@ -37,8 +37,8 @@
         <action id="showAllTemperature"/>
     </actions>
     <layout>
-        <vbox id="monitoringVBox" height="100%">
-            <vbox id="vBoxWeightMonitoring" height="100%" spacing="true"
+        <vbox id="monitoringVBox">
+            <vbox id="vBoxWeightMonitoring" spacing="true"
                   width="100%">
                 <label id="weightLabel" value="msg://labelWeight.value" stylename="bold h3"/>
                 <hbox id="weightOptionsHBox" width="100%" margin="false,true,false,false">
@@ -56,7 +56,7 @@
                                    categoryField="localDateTime"
                                    dataDateFormat="YYYY-MM-DD"
                                    dataContainer="weightMonitoringDc"
-                                   width="100%" height="100%" box.expandRatio="1.0">
+                                   width="100%" box.expandRatio="1.0">
                     <chart:categoryAxis parseDates="true"/>
                     <chart:graphs>
                     <chart:graph valueField="value"
@@ -89,6 +89,38 @@
                                    dataDateFormat="YYYY-MM-DD"
                                    dataContainer="temperatureMonitoringsDc"
                                    width="100%" height="auto" box.expandRatio="1.0">
+                    <chart:categoryAxis parseDates="true"/>
+                    <chart:graphs>
+                        <chart:graph valueField="value"
+                                     lineColor="RED"
+                                     bullet="TRIANGLE_DOWN"/>
+                    </chart:graphs>
+                    <chart:chartCursor cursorAlpha="1"
+                                       cursorColor="#FF0000"
+                                       cursorPosition="MOUSE"
+                                       limitToGraph="g1"
+                                       pan="true"
+                    />
+                </chart:serialChart>
+            </vbox>
+            <vbox id="pulseVBox" spacing="true" width="100%">
+                <label id="pulseLabel" value="Pulse" stylename="bold h3"/>
+                <hbox id="pulseOptionsHBox" spacing="true" margin="false,true,false,false" width="100%">
+                    <hbox id="pulsePeriodHBox" spacing="true">
+                        <lookupField id="pulseDurationLookupField" nullOptionVisible="false"/>
+                        <dateField id="pulseDateField"/>
+                        <button id="showPeriodPulseButton" caption="Show"/>
+                    </hbox>
+                    <hbox id="pulseEditorHBox" spacing="true" align="TOP_RIGHT">
+                        <button id="addPulseButton" icon="ADD_TO_SET_ACTION"/>
+                        <button id="showAllPulseButton" icon="ALIGN_JUSTIFY"/>
+                    </hbox>
+                </hbox>
+                <chart:serialChart id="pulseSerialChart"
+                                   categoryField="localDateTime"
+                                   dataDateFormat="YYYY-MM-DD"
+                                   dataContainer="pulseMonitoringsDc"
+                                   width="100%" box.expandRatio="1.0">
                     <chart:categoryAxis parseDates="true"/>
                     <chart:graphs>
                         <chart:graph valueField="value"

@@ -1,5 +1,6 @@
 package com.company.medicalrecord.web.screens.monitoring;
 
+import com.company.medicalrecord.entity.monitoring.PulseMonitoring;
 import com.company.medicalrecord.entity.monitoring.TemperatureMonitoring;
 import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
 import com.company.medicalrecord.service.MonitoringService;
@@ -7,6 +8,7 @@ import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.model.CollectionContainer;
+import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.screen.*;
 
 import javax.inject.Inject;
@@ -28,6 +30,8 @@ public class MonitoringScreen extends Screen {
     @Inject
     private CollectionContainer<TemperatureMonitoring> temperatureMonitoringsDc;
     @Inject
+    private CollectionLoader<PulseMonitoring> pulseMonitoringsDl;
+    @Inject
     private DateField<Date> weightDateField;
     @Inject
     private DateField<Date> temperatureDateField;
@@ -42,6 +46,7 @@ public class MonitoringScreen extends Screen {
 
     @Subscribe
     public void onInit(InitEvent event) {
+        pulseMonitoringsDl.load();
         initCollectionContainers();
         initLookUpField();
         initDateField();

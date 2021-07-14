@@ -1,5 +1,6 @@
 package com.company.medicalrecord.service;
 
+import com.company.medicalrecord.entity.monitoring.PulseMonitoring;
 import com.company.medicalrecord.entity.monitoring.TemperatureMonitoring;
 import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
 import com.haulmont.cuba.core.global.DataManager;
@@ -52,6 +53,16 @@ public class MonitoringServiceBean implements MonitoringService {
         LocalDateTime startOfYear = getStartOfYear(dateTime);
         LocalDateTime endOfYear = getEndOfYear(dateTime);
         return (startOfYear != null) ? getWeightMonitoringValues(startOfYear,endOfYear): new ArrayList<>();
+    }
+
+    @Override
+    public List<PulseMonitoring> getPulseValuesForMonth(LocalDateTime dateTime) {
+        return null;
+    }
+
+    @Override
+    public List<PulseMonitoring> getPulseValuesForYear(LocalDateTime dateTime) {
+        return null;
     }
 
     private List<WeightMonitoring> getWeightMonitoringValues(LocalDateTime start,LocalDateTime end){
