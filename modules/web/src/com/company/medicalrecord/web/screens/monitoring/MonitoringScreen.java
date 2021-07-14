@@ -23,6 +23,7 @@ import java.util.Objects;
 @UiDescriptor("monitoring-screen.xml")
 public class MonitoringScreen extends Screen {
 
+    //Todo Переименовать переменные
     @Inject
     private MonitoringService monitoringService;
     @Inject
@@ -30,15 +31,19 @@ public class MonitoringScreen extends Screen {
     @Inject
     private CollectionContainer<TemperatureMonitoring> temperatureMonitoringsDc;
     @Inject
-    private CollectionLoader<PulseMonitoring> pulseMonitoringsDl;
+    private CollectionContainer<PulseMonitoring> pulseMonitoringsDc;
     @Inject
     private DateField<Date> weightDateField;
     @Inject
     private DateField<Date> temperatureDateField;
     @Inject
+    private DateField<Date> pulseDateField;
+    @Inject
     private LookupField<String> weightPeriodLookupField;
     @Inject
     private LookupField<String> temperatureDurationLookupField;
+    @Inject
+    private LookupField<String> pulseDurationLookupField;
     @Inject
     private Notifications notifications;
     @Inject
@@ -46,30 +51,40 @@ public class MonitoringScreen extends Screen {
 
     @Subscribe
     public void onInit(InitEvent event) {
-        pulseMonitoringsDl.load();
         initCollectionContainers();
-        initLookUpField();
-        initDateField();
+        initLookUpFields();
+        initDateFields();
     }
 
     private void initCollectionContainers(){
         List<WeightMonitoring> weightMonitoringList = monitoringService.getWeightValuesForMonth(LocalDateTime.now());
         List<TemperatureMonitoring> temperatureMonitoringList = monitoringService.getTemperatureValuesForMonth(LocalDateTime.now());
+        List<PulseMonitoring> pulseMonitoringList = monitoringService.getPulseValuesForMonth(LocalDateTime.now());
         weightMonitoringDc.setItems(weightMonitoringList);
         temperatureMonitoringsDc.setItems(temperatureMonitoringList);
+        pulseMonitoringsDc.setItems(pulseMonitoringList);
     }
 
-    private void initLookUpField() {
+    private void initLookUpFields() {
+        setBaseLookupFieldValues(weightPeriodLookupField);
+        setBaseLookupFieldValues(temperatureDurationLookupField);
+        setBaseLookupFieldValues(pulseDurationLookupField);
+    }
+
+    private void setBaseLookupFieldValues(LookupField<String> field){
         List<String> durationList = List.of("Year", "Month");
-        weightPeriodLookupField.setOptionsList(durationList);
-        weightPeriodLookupField.setValue("Month");
-        temperatureDurationLookupField.setOptionsList(durationList);
-        temperatureDurationLookupField.setValue("Month");
+        field.setOptionsList(durationList);
+        field.setValue("Month");
     }
 
-    private void initDateField() {
-        weightDateField.setValue(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
-        temperatureDateField.setValue(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
+    private void initDateFields() {
+        weightDateField.setValue(getNowDate());
+        temperatureDateField.setValue(getNowDate());
+        pulseDateField.setValue(getNowDate());
+    }
+
+    private Date getNowDate(){
+        return Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
     }
 
     @Subscribe("weightPeriodLookupField")
@@ -80,6 +95,11 @@ public class MonitoringScreen extends Screen {
     @Subscribe("temperatureDurationLookupField")
     public void onTemperatureDurationLookupFieldFieldValueChange(HasValue.ValueChangeEvent<String> event) {
         temperatureDateField.setDateFormat(getDateFormat(Objects.requireNonNull(event.getValue())));
+    }
+
+    @Subscribe("pulseDurationLookupField")
+    public void onPulseDurationLookupFieldValueChange(HasValue.ValueChangeEvent<String> event) {
+        pulseDateField.setDateFormat(getDateFormat(Objects.requireNonNull(event.getValue())));
     }
 
     private String getDateFormat(String value){
@@ -143,6 +163,34 @@ public class MonitoringScreen extends Screen {
         }
         if (period.equals("Year")) {
             list = monitoringService.getTemperatureValuesForYear(date);
+        }
+        return list;
+    }
+
+    //Может в отдельный метод проверку??
+    @Subscribe("showPeriodPulseButton")
+    public void onShowPeriodPulseButtonClick(Button.ClickEvent event) {
+        if (pulseDateField.getValue() == null || pulseDurationLookupField.getValue() == null) {
+            createTrayNotification("Enter values to field(s)!");
+            return;
+        }
+        LocalDateTime date = LocalDateTime.ofInstant(pulseDateField.getValue().toInstant(), ZoneId.systemDefault());
+        String periodName = pulseDurationLookupField.getValue();
+        List<PulseMonitoring> list = getPulseMonitoringListForPeriod(date, periodName);
+        if (list.isEmpty()) {
+            createTrayNotification("There is no info during this period..");
+        } else {
+            pulseMonitoringsDc.setItems(list);
+        }
+    }
+
+    private List<PulseMonitoring> getPulseMonitoringListForPeriod(LocalDateTime date,String period) {
+        List<PulseMonitoring> list = new ArrayList<>();
+        if (period.equals("Month")) {
+            list = monitoringService.getPulseValuesForMonth(date);
+        }
+        if (period.equals("Year")) {
+            list = monitoringService.getPulseValuesForYear(date);
         }
         return list;
     }

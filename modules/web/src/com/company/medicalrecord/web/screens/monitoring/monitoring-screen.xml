@@ -37,7 +37,7 @@
         <action id="showAllTemperature"/>
     </actions>
     <layout>
-        <vbox id="monitoringVBox">
+        <scrollBox id="monitoringVBox">
             <vbox id="vBoxWeightMonitoring" spacing="true"
                   width="100%">
                 <label id="weightLabel" value="msg://labelWeight.value" stylename="bold h3"/>
@@ -135,6 +135,6 @@
                     />
                 </chart:serialChart>
             </vbox>
-        </vbox>
+        </scrollBox>
     </layout>
 </window>
