@@ -31,9 +31,9 @@ public class MonitoringScreen extends Screen {
     @Inject
     private CollectionContainer<WeightMonitoring> weightMonitoringDc;
     @Inject
-    private DateField<Date> dateField;
+    private DateField<Date> weightDateField;
     @Inject
-    private LookupField<String> lookupFieldDuration;
+    private LookupField<String> weightPeriodLookupField;
     @Inject
     private CollectionLoader<TemperatureMonitoring> temperatureMonitoringsDl;
     @Inject
@@ -50,38 +50,38 @@ public class MonitoringScreen extends Screen {
 
     private void initLookUpField() {
         List<String> durationList = List.of("Year", "Month");
-        lookupFieldDuration.setOptionsList(durationList);
-        lookupFieldDuration.setValue("Month");
+        weightPeriodLookupField.setOptionsList(durationList);
+        weightPeriodLookupField.setValue("Month");
     }
 
     private void initDateField() {
-        dateField.setValue(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
+        weightDateField.setValue(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
     }
 
-    @Subscribe("lookupFieldDuration")
-    public void onLookupFieldDurationValueChange(HasValue.ValueChangeEvent<String> event) {
+    @Subscribe("weightPeriodLookupField")
+    public void onWeightPeriodLookupFieldValueChange(HasValue.ValueChangeEvent<String> event) {
         if (event.getValue() == null) {
             createTrayNotification("Select period!");
-            lookupFieldDuration.setValue(event.getPrevValue());
+            weightPeriodLookupField.setValue(event.getPrevValue());
             return;
         }
         if (event.getValue().equals("Year")) {
-            dateField.setDateFormat("yyyy");
+            weightDateField.setDateFormat("yyyy");
             return;
         }
         if (event.getValue().equals("Month")) {
-            dateField.setDateFormat("MM/yyyy");
+            weightDateField.setDateFormat("MM/yyyy");
         }
     }
 
-    @Subscribe("buttonShow")
-    public void onButtonShowClick(Button.ClickEvent event) {
-        if (dateField.getValue() == null || lookupFieldDuration.getValue() == null) {
+    @Subscribe("showWeightButton")
+    public void onShowWeightButtonClick(Button.ClickEvent event) {
+        if (weightDateField.getValue() == null || weightPeriodLookupField.getValue() == null) {
             createTrayNotification("Enter values to field(s)!");
             return;
         }
-        LocalDateTime date = LocalDateTime.ofInstant(dateField.getValue().toInstant(), ZoneId.systemDefault());
-        String periodName = lookupFieldDuration.getValue();
+        LocalDateTime date = LocalDateTime.ofInstant(weightDateField.getValue().toInstant(), ZoneId.systemDefault());
+        String periodName = weightPeriodLookupField.getValue();
         List<WeightMonitoring> list = getWeightMonitoringListForPeriod(date, periodName);
         if (list.isEmpty()) {
             createTrayNotification("There is no info during this period..");

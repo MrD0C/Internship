@@ -31,42 +31,48 @@
         </collection>
     </data>
     <layout>
-        <vbox id="vBoxWeightMonitoring" box.expandRatio="0.7" height="100%" spacing="true"
-              width="100%">
-            <label id="labelWeight" value="msg://labelWeight.value" stylename="bold h3"/>
-            <hbox id="hBoxWeightPeriod" spacing="true">
-                <lookupField id="lookupFieldDuration" nullOptionVisible="false"/>
-                <dateField id="dateField"/>
-                <button id="buttonShow" caption="Show"/>
-            </hbox>
-            <chart:serialChart id="serialChartWeight"
-                               categoryField="localDateTime"
-                               dataDateFormat="YYYY-MM-DD"
-                               dataContainer="weightMonitoringDc"
-                               width="100%" height="80%" box.expandRatio="1.0">
-                <chart:categoryAxis parseDates="true"/>
-                <chart:graphs>
-                <chart:graph valueField="value"
-                             lineColor="RED"
-                             bullet="TRIANGLE_DOWN"/>
-                </chart:graphs>
-                <chart:chartCursor cursorAlpha="1"
-                                   cursorColor="#FF0000"
-                                   cursorPosition="MOUSE"
-                                   limitToGraph="g1"
-                                   pan="true"
-                />
-            </chart:serialChart>
-        </vbox>
-        <hbox id="hBoxTemperatureAndPulse" width="100%">
-            <vbox id="vBoxTest" spacing="true">
-                <button/>
-                <button/>
-                <button/>
-                <button/>
-                <button/>
-                <chart:serialChart id="serialChartTemp"
-                                   box.expandRatio="1.0"
+        <vbox id="monitoringVBox" spacing="true" height="100%">
+            <vbox id="vBoxWeightMonitoring" height="100%" spacing="true"
+                  width="100%">
+                <label id="weightLabel" value="msg://labelWeight.value" stylename="bold h3"/>
+                <hbox id="weightPeriodHBox" spacing="true">
+                    <lookupField id="weightPeriodLookupField" nullOptionVisible="false"/>
+                    <dateField id="weightDateField"/>
+                    <button id="showWeightButton" caption="Show"/>
+                </hbox>
+                <chart:serialChart id="weightSerialChart"
+                                   categoryField="localDateTime"
+                                   dataDateFormat="YYYY-MM-DD"
+                                   dataContainer="weightMonitoringDc"
+                                   width="100%" height="80%" box.expandRatio="1.0">
+                    <chart:categoryAxis parseDates="true"/>
+                    <chart:graphs>
+                    <chart:graph valueField="value"
+                                 lineColor="RED"
+                                 bullet="TRIANGLE_DOWN"/>
+                    </chart:graphs>
+                    <chart:chartCursor cursorAlpha="1"
+                                       cursorColor="#FF0000"
+                                       cursorPosition="MOUSE"
+                                       limitToGraph="g1"
+                                       pan="true"
+                    />
+                </chart:serialChart>
+            </vbox>
+            <vbox id="temperatureHBox" width="100%" spacing="true">
+                <label id="temperatureLabel" value="Temperature" stylename="bold h3"/>
+                <hbox id="temperatureOptionsHBox" spacing="true" width="100%" margin="false,true,false,false">
+                    <hbox id="temperaturePeriodHBox" spacing="true">
+                        <lookupField id="temperatureDurationLookupField"/>
+                        <dateField id="temperatureDateField"/>
+                        <button id="showTemperature" caption="Show"/>
+                    </hbox>
+                    <hbox id="temperatureEditorHBox" align="TOP_RIGHT" spacing="true">
+                        <button id="addTemperatureButton" align="TOP_RIGHT" icon="ADD_TO_SET_ACTION"/>
+                        <button id="showAllTemperatureButton" icon="ALIGN_JUSTIFY"/>
+                    </hbox>
+                </hbox>
+                <chart:serialChart id="temperatureSerialChart"
                                    categoryField="localDateTime"
                                    dataDateFormat="YYYY-MM-DD"
                                    dataContainer="temperatureMonitoringsDc"
@@ -85,10 +91,6 @@
                     />
                 </chart:serialChart>
             </vbox>
-            <vbox spacing="true">
-                <button caption="TEST"/>
-                <button/>
-            </vbox>
-        </hbox>
+        </vbox>
     </layout>
 </window>
