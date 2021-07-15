@@ -1,6 +1,7 @@
 package com.company.medicalrecord.web.screens.medicalrecord;
 
 import com.company.medicalrecord.entity.record.AnalysisRecord;
+import com.company.medicalrecord.entity.record.ConsultationRecord;
 import com.company.medicalrecord.entity.record.ExaminationRecord;
 import com.company.medicalrecord.entity.record.NoteRecord;
 import com.haulmont.cuba.gui.Notifications;
@@ -13,11 +14,18 @@ import com.haulmont.cuba.gui.screen.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+//TODO Разобраться со скрином
 @UiController("medicalrecord_MedicalRecordScreen")
 @UiDescriptor("medical-record-screen.xml")
 public class MedicalRecordScreen extends Screen {
     @Inject
     private CollectionLoader<NoteRecord> noteRecordsDl;
+    @Inject
+    private CollectionLoader<ExaminationRecord> examinationRecordsDl;
+    @Inject
+    private CollectionLoader<AnalysisRecord> analysisRecordsDl;
+    @Inject
+    private CollectionLoader<ConsultationRecord> consultationRecordsDl;
     @Inject
     private DataGrid<NoteRecord> noteRecordsTable;
     @Named("noteRecordsTable.view")
@@ -27,8 +35,15 @@ public class MedicalRecordScreen extends Screen {
 
     @Subscribe
     public void onInit(InitEvent event) {
-        noteRecordsDl.load();
+        initDataCollections();
         noteRecordsTable.setItemClickAction(noteRecordsTableView);
+    }
+
+    private void initDataCollections(){
+        noteRecordsDl.load();
+        examinationRecordsDl.load();
+        analysisRecordsDl.load();
+        consultationRecordsDl.load();
     }
 
     @Install(to = "noteRecordsTable.create", subject = "afterCommitHandler")
