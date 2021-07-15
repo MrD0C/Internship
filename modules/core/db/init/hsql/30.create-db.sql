@@ -31,3 +31,10 @@ VALUES
 ('9b65be90-e55f-11eb-ba80-0242ac130004',2, '2018-11-05 17:38:39', 'admin', '2018-11-05 17:45:54', null, null, null,90,'bpm','2021-07-05'),
 ('a23b700c-e55f-11eb-ba80-0242ac130004',2, '2018-11-05 17:38:39', 'admin', '2018-11-05 17:45:54', null, null, null,100,'bpm','2021-07-10'),
 ('a60e2ea4-e55f-11eb-ba80-0242ac130004',2, '2018-11-05 17:38:39', 'admin', '2018-11-05 17:45:54', null, null, null,110,'bpm','2021-07-15');
+
+INSERT INTO MEDICALRECORD_TEMPERATURE_MONITORING
+(ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY,VALUE_,UNIT,LOCAL_DATE_TIME)
+VALUES
+('7cfaf9d8-e560-11eb-ba80-0242ac130004',2, '2018-11-05 17:38:39', 'admin', '2018-11-05 17:45:54', null, null, null,38,'°C','2021-07-05'),
+('810f2300-e560-11eb-ba80-0242ac130004',2, '2018-11-05 17:38:39', 'admin', '2018-11-05 17:45:54', null, null, null,36.6,'°C','2021-07-10'),
+('8bde060c-e560-11eb-ba80-0242ac130004',2, '2018-11-05 17:38:39', 'admin', '2018-11-05 17:45:54', null, null, null,37,'°C','2021-07-15');
