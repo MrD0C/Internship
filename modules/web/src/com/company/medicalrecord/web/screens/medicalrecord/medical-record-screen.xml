@@ -161,7 +161,7 @@
                         <button id="analysisRecordsTableRemoveBtn" action="analysisRecordsTable.remove" stylename="danger"/>
                     </buttonsPanel>
                     <columns>
-                        <column id="name" property="conclusion"/>
+                        <column id="name" property="name"/>
                         <column id="conclusion" property="conclusion"/>
                         <column id="creationInfo.date" property="creationInfo.date"/>
                     </columns>
