@@ -63,7 +63,7 @@
                         <buttonsPanel alwaysVisible="true">
                             <button id="medicationsTableCreateBtn" action="medicationsTable.create"/>
                             <button id="medicationsTableEditBtn" action="medicationsTable.edit"/>
-                            <button id="medicationsTableRemoveBtn" action="medicationsTable.remove"/>
+                            <button id="medicationsTableRemoveBtn" action="medicationsTable.remove" stylename="danger"/>
                             <button id="medicationsTableViewBtn" action="medicationsTable.view"/>
                         </buttonsPanel>
                         <columns>

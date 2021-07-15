@@ -63,11 +63,17 @@
                             </properties>
                         </action>
                         <action id="remove" type="remove"/>
+                        <action id="view" type="view">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
                     </actions>
                     <buttonsPanel alwaysVisible="true" margin="true,false,false,false">
                         <button id="consultationRecordsTableCreateBtn" action="consultationRecordsTable.create" stylename="friendly"/>
                         <button id="consultationRecordsTableEditBtn" action="consultationRecordsTable.edit"/>
                         <button id="consultationRecordsTableRemoveBtn" action="consultationRecordsTable.remove" stylename="danger"/>
+                        <button id="consultationRecordsTableViewBtn" action="consultationRecordsTable.view"/>
                     </buttonsPanel>
                     <columns>
                         <column id="diagnosis.icd10Name" property="diagnosis.icd10Name"/>
@@ -90,12 +96,17 @@
                             </properties>
                         </action>
                         <action id="remove" type="remove"/>
-                        <action id="view" type="view"/>
+                        <action id="view" type="view">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
                     </actions>
                     <buttonsPanel alwaysVisible="true" margin="true,false,false,false">
                         <button id="examinationRecordsTableCreateBtn" action="examinationRecordsTable.create"/>
                         <button id="examinationRecordsTableEditBtn" action="examinationRecordsTable.edit"/>
                         <button id="examinationRecordsTableRemoveBtn" action="examinationRecordsTable.remove" stylename="danger"/>
+                        <button id="examinationRecordsTableViewBtn" action="examinationRecordsTable.view"/>
                     </buttonsPanel>
                     <columns>
                         <column id="examinationType" property="examinationType"/>
@@ -130,6 +141,7 @@
                         <button id="noteRecordsTableCreateBtn" action="noteRecordsTable.create"/>
                         <button id="noteRecordsTableEditBtn" action="noteRecordsTable.edit"/>
                         <button id="noteRecordsTableRemoveBtn" action="noteRecordsTable.remove" stylename="danger"/>
+                        <button id="noteRecordsTableViewBtn" action="noteRecordsTable.view"/>
                     </buttonsPanel>
                     <columns>
                         <column id="name" property="name"/>
@@ -153,12 +165,17 @@
                             </properties>
                         </action>
                         <action id="remove" type="remove"/>
-                        <action id="view" type="view"/>
+                        <action id="view" type="view">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
                     </actions>
                     <buttonsPanel alwaysVisible="true" margin="true,false,false,false">
                         <button id="analysisRecordsTableCreateBtn" action="analysisRecordsTable.create"/>
                         <button id="analysisRecordsTableEditBtn" action="analysisRecordsTable.edit"/>
                         <button id="analysisRecordsTableRemoveBtn" action="analysisRecordsTable.remove" stylename="danger"/>
+                        <button id="analysisRecordsTableViewBtn" action="analysisRecordsTable.view"/>
                     </buttonsPanel>
                     <columns>
                         <column id="name" property="name"/>

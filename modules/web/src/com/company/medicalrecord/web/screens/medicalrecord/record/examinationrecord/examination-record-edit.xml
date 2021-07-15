@@ -80,11 +80,13 @@
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
+                <action id="view" type="view"/>
             </actions>
             <buttonsPanel alwaysVisible="true">
                 <button id="treatmentPlansTableCreateBtn" action="treatmentPlansTable.create" stylename="friendly"/>
                 <button id="treatmentPlansTableEditBtn" action="treatmentPlansTable.edit"/>
                 <button id="treatmentPlansTableRemoveBtn" action="treatmentPlansTable.remove" stylename="danger"/>
+                <button id="treatmentPlansTableViewBtn" action="treatmentPlansTable.view"/>
             </buttonsPanel>
             <columns>
                 <column id="treatmentType" property="treatmentType"/>

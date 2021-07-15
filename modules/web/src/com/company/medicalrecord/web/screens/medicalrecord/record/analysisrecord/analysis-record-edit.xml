@@ -49,11 +49,13 @@
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
+                <action id="view" type="view"/>
             </actions>
             <buttonsPanel alwaysVisible="true">
                 <button id="analysisIndicatorsTableCreateBtn" action="analysisIndicatorsTable.create"/>
                 <button id="analysisIndicatorsTableEditBtn" action="analysisIndicatorsTable.edit"/>
-                <button id="analysisIndicatorsTableRemoveBtn" action="analysisIndicatorsTable.remove"/>
+                <button id="analysisIndicatorsTableRemoveBtn" action="analysisIndicatorsTable.remove" stylename="danger"/>
+                <button id="analysisIndicatorsTableViewBtn" action="analysisIndicatorsTable.view"/>
             </buttonsPanel>
             <columns>
                 <column id="name" property="name"/>
