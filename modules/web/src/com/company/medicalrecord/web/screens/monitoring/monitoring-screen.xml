@@ -47,7 +47,7 @@
                     <hbox id="weightPeriodHBox" spacing="true">
                         <lookupField id="weightPeriodLookupField" nullOptionVisible="false"/>
                         <dateField id="weightDateField"/>
-                        <button id="showWeightByPeriodButton" caption="Show"/>
+                        <button id="showWeightByPeriodButton" caption="msg://showWeightByPeriodButton.caption"/>
                     </hbox>
                     <hbox id="weightEditorHBox" spacing="true" align="TOP_RIGHT">
                         <button id="addWeightButton" icon="ADD_TO_SET_ACTION" action="addWeight"/>
@@ -74,12 +74,12 @@
                 </chart:serialChart>
             </vbox>
             <vbox id="temperatureHBox" width="100%" spacing="true">
-                <label id="temperatureLabel" value="Temperature" stylename="bold h3"/>
+                <label id="temperatureLabel" value="msg://temperatureLabel.value" stylename="bold h3"/>
                 <hbox id="temperatureOptionsHBox" spacing="true" width="100%" margin="false,true,false,false">
                     <hbox id="temperaturePeriodHBox" spacing="true">
                         <lookupField id="temperatureDurationLookupField" nullOptionVisible="false"/>
                         <dateField id="temperatureDateField"/>
-                        <button id="showTemperatureByPeriodButton" caption="Show"/>
+                        <button id="showTemperatureByPeriodButton" caption="msg://showTemperatureByPeriodButton.caption"/>
                     </hbox>
                     <hbox id="temperatureEditorHBox" align="TOP_RIGHT" spacing="true">
                         <button id="addTemperatureButton" icon="ADD_TO_SET_ACTION" action="addTemperature"/>
@@ -106,12 +106,12 @@
                 </chart:serialChart>
             </vbox>
             <vbox id="pulseVBox" spacing="true" width="100%">
-                <label id="pulseLabel" value="Pulse" stylename="bold h3"/>
+                <label id="pulseLabel" value="msg://pulseLabel.value" stylename="bold h3"/>
                 <hbox id="pulseOptionsHBox" spacing="true" margin="false,true,false,false" width="100%">
                     <hbox id="pulsePeriodHBox" spacing="true">
                         <lookupField id="pulseDurationLookupField" nullOptionVisible="false"/>
                         <dateField id="pulseDateField"/>
-                        <button id="showPulseByPeriodButton" caption="Show"/>
+                        <button id="showPulseByPeriodButton" caption="msg://showPulseByPeriodButton.caption"/>
                     </hbox>
                     <hbox id="pulseEditorHBox" spacing="true" align="TOP_RIGHT">
                         <button id="addPulseButton" icon="ADD_TO_SET_ACTION" action="addPulse"/>

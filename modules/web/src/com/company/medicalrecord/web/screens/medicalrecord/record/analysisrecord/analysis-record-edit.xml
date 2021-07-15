@@ -26,23 +26,23 @@
         <scrollBox id="scrollBox" width="AUTO">
             <hbox id="analysisHBox" spacing="true">
                 <vbox id="analysisVBox" spacing="true">
-                    <label id="analysisLabel" value="Analysis" stylename="bold h2"/>
-                    <textField id="nameField" dataContainer="analysisRecordDc" property="name" inputPrompt="Name"
+                    <label id="analysisLabel" value="msg://analysisLabel.value" stylename="bold h2"/>
+                    <textField id="nameField" dataContainer="analysisRecordDc" property="name" inputPrompt="msg://nameField.inputPrompt"
                                width="500"/>
-                    <textArea id="conclusionField" dataContainer="analysisRecordDc" property="conclusion" inputPrompt="Conclusion"
+                    <textArea id="conclusionField" dataContainer="analysisRecordDc" property="conclusion" inputPrompt="msg://conclusionField.inputPrompt"
                               width="500" height="70"/>
                 </vbox>
                 <vbox id="creationInfoVBox" spacing="true">
-                    <label id="creationInfoLabel" value="Created By" stylename="bold h2"/>
+                    <label id="creationInfoLabel" value="msg://creationInfoLabel.value" stylename="bold h2"/>
                     <textField id="creationInfoClinicNameField" dataContainer="analysisRecordDc" property="creationInfo.clinicName"
-                               inputPrompt="Clinic name"/>
+                               inputPrompt="msg://creationInfoClinicNameField.inputPrompt"/>
                     <textField id="creationInfoDoctorSurnameField" dataContainer="analysisRecordDc" property="creationInfo.doctorSurname"
-                               inputPrompt="Doctor's surname"/>
+                               inputPrompt="msg://creationInfoDoctorSurnameField.inputPrompt"/>
                     <dateField id="creationInfoDateField" dataContainer="analysisRecordDc" property="creationInfo.date"/>
                 </vbox>
             </hbox>
         </scrollBox>
-        <label id="indicatorLabel" value="Indicators" stylename="bold h2"/>
+        <label id="indicatorLabel" value="msg://indicatorLabel.value" stylename="bold h2"/>
         <dataGrid id="analysisIndicatorsTable" height="auto" width="100%" dataContainer="indicatorsDc"
                   reorderingAllowed="false" settingsEnabled="false" columnsCollapsingAllowed="false">
             <actions>

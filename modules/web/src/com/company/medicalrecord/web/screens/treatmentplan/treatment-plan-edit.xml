@@ -13,12 +13,12 @@
                 width="auto"/>
     <layout expand="editActions" spacing="true">
         <vbox id="treatmentPlanVBox" spacing="true">
-            <label id="treatmentPlanLabel" value="Treatment Plan" stylename="bold h2"/>
+            <label id="treatmentPlanLabel" value="msg://treatmentPlanLabel.value" stylename="bold h2"/>
             <lookupField id="treatmentTypeField" dataContainer="treatmentPlanDc" property="treatmentType" inputPrompt="Treatment plan"/>
             <dateField id="dateField" dataContainer="treatmentPlanDc" property="date"/>
-            <textField id="titleField" dataContainer="treatmentPlanDc" property="title" inputPrompt="Title"
+            <textField id="titleField" dataContainer="treatmentPlanDc" property="title" inputPrompt="msg://titleField.inputPrompt"
                        width="500"/>
-            <textField id="nameField" dataContainer="treatmentPlanDc" property="name" inputPrompt="Title in free-form"
+            <textField id="nameField" dataContainer="treatmentPlanDc" property="name" inputPrompt="msg://nameField.inputPrompt"
                        width="500"/>
         </vbox>
         <hbox id="editActions" spacing="true">

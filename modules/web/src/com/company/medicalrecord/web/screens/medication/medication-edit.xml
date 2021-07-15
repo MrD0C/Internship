@@ -13,7 +13,7 @@
                 width="auto"/>
     <layout expand="editActions" spacing="true">
         <vbox id="medicationVBox" spacing="true">
-            <label id="medicationLabel" value="Medication" stylename="bold h2"/>
+            <label id="medicationLabel" value="msg://medicationLabel.value" stylename="bold h2"/>
             <textField id="medicineNameField" dataContainer="medicationDc" property="medicineName" inputPrompt="Medicine name"
                        width="500"/>
             <textArea id="intakeRecommendationField" dataContainer="medicationDc" property="intakeRecommendation" rows="5" inputPrompt="Recommendations on intake"

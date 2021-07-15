@@ -45,9 +45,9 @@
         </collection>
     </data>
     <layout expand="medicalRecordTabSheet" spacing="true">
-        <label id="medicalRecordLabel" value="Medical Record" stylename="bold h3"/>
+        <label id="medicalRecordLabel" value="msg://medicalRecordLabel.value" stylename="bold h3"/>
         <tabSheet id="medicalRecordTabSheet">
-            <tab id="consultationTab" caption="Consultation" spacing="true">
+            <tab id="consultationTab" caption="msg://consultationTab.caption" spacing="true">
                 <dataGrid id="consultationRecordsTable" height="auto" width="100%"
                           dataContainer="consultationRecordsDc" reorderingAllowed="false" settingsEnabled="false"
                           columnsCollapsingAllowed="false">
@@ -75,7 +75,7 @@
                     </columns>
                 </dataGrid>
             </tab>
-            <tab id="examinationTab" caption="Examinations" spacing="true">
+            <tab id="examinationTab" caption="msg://examinationTab.caption" spacing="true">
                 <dataGrid id="examinationRecordsTable" height="auto" width="100%" dataContainer="examinationRecordsDc"
                           reorderingAllowed="false" settingsEnabled="false" columnsCollapsingAllowed="false">
                     <actions>
@@ -105,7 +105,7 @@
                     </columns>
                 </dataGrid>
             </tab>
-            <tab id="noteTab" caption="Notes" spacing="true">
+            <tab id="noteTab" caption="msg://noteTab.caption" spacing="true">
                 <dataGrid id="noteRecordsTable" height="auto" width="100%" dataContainer="noteRecordsDc"
                           reorderingAllowed="false" settingsEnabled="false" columnsCollapsingAllowed="false">
                     <actions>
@@ -138,7 +138,7 @@
                     </columns>
                 </dataGrid>
             </tab>
-            <tab id="analysisTab" caption="Analysis" spacing="true">
+            <tab id="analysisTab" caption="msg://analysisTab.caption" spacing="true">
                 <dataGrid id="analysisRecordsTable" height="auto" width="100%" dataContainer="analysisRecordsDc"
                           reorderingAllowed="false" settingsEnabled="false" columnsCollapsingAllowed="false">
                     <actions>

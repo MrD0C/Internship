@@ -13,13 +13,13 @@
                 width="auto"/>
     <layout expand="editActions" spacing="true">
         <vbox id="indicatorVBox" spacing="true">
-            <label id="indicatorLabel" value="Indicator" stylename="bold h2"/>
-            <textField id="nameField" dataContainer="analysisIndicatorDc" property="name" width="530px" inputPrompt="Name"/>
+            <label id="indicatorLabel" value="msg://indicatorLabel.value" stylename="bold h2"/>
+            <textField id="nameField" dataContainer="analysisIndicatorDc" property="name" width="530px" inputPrompt="msg://nameField.inputPrompt"/>
             <hbox id="indicatorResultVBox" spacing="true">
-                <textField id="resultField" dataContainer="analysisIndicatorDc" property="result" width="100" inputPrompt="Result"/>
-                <textField id="normField" dataContainer="analysisIndicatorDc" property="norm" width="100" inputPrompt="Norm"/>
-                <textField id="unitField" dataContainer="analysisIndicatorDc" property="unit" width="100" inputPrompt="Unit"/>
-                <textField id="commentField" dataContainer="analysisIndicatorDc" property="comment" width="200" inputPrompt="Comment"/>
+                <textField id="resultField" dataContainer="analysisIndicatorDc" property="result" width="100" inputPrompt="msg://resultField.inputPrompt"/>
+                <textField id="normField" dataContainer="analysisIndicatorDc" property="norm" width="100" inputPrompt="msg://normField.inputPrompt"/>
+                <textField id="unitField" dataContainer="analysisIndicatorDc" property="unit" width="100" inputPrompt="msg://unitField.inputPrompt"/>
+                <textField id="commentField" dataContainer="analysisIndicatorDc" property="comment" width="200" inputPrompt="msg://commentField.inputPrompt"/>
             </hbox>
         </vbox>
         <hbox id="editActions" spacing="true">

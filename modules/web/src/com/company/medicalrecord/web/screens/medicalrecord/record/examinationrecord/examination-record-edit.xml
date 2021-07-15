@@ -36,44 +36,44 @@
             <hbox id="examinationHBox" spacing="true">
                 <scrollBox id="examinationInfoVBox" spacing="true">
                     <vbox id="examinationVBox" spacing="true">
-                        <label id="examinationInfo" value="Name" stylename="bold h2"/>
-                        <textField id="examinationTypeField" dataContainer="examinationRecordDc" property="examinationType" inputPrompt="Type of examination"
+                        <label id="examinationInfo" value="msg://examinationInfo.value" stylename="bold h2"/>
+                        <textField id="examinationTypeField" dataContainer="examinationRecordDc" property="examinationType" inputPrompt="msg://examinationTypeField.inputPrompt"
                                    width="500"/>
-                        <textField id="nameField" dataContainer="examinationRecordDc" property="name" inputPrompt="Examination name"
+                        <textField id="nameField" dataContainer="examinationRecordDc" property="name" inputPrompt="msg://nameField.inputPrompt"
                                    width="500"/>
                     </vbox>
                     <vbox id="diagnosisIVBox" spacing="true">
-                        <label id="diagnosisLabel" value="Diagnosis" stylename="bold h2"/>
-                        <textField id="diagnosisIcd10NameField" dataContainer="examinationRecordDc" property="diagnosis.icd10Name" inputPrompt="ICD-10 name or code"
+                        <label id="diagnosisLabel" value="msg://diagnosisLabel.value" stylename="bold h2"/>
+                        <textField id="diagnosisIcd10NameField" dataContainer="examinationRecordDc" property="diagnosis.icd10Name" inputPrompt="msg://diagnosisIcdNameField.inputPrompt"
                                    width="500"/>
-                        <textField id="diagnosisNameField" dataContainer="examinationRecordDc" property="diagnosis.name" inputPrompt="Diagnosis: in free-form"
+                        <textField id="diagnosisNameField" dataContainer="examinationRecordDc" property="diagnosis.name" inputPrompt="msg://diagnosisNameField.inputPrompt"
                                    width="500"/>
                     </vbox>
                     <vbox id="descriptionVBox" spacing="true">
-                        <label id="labelDescription" value="Description" stylename="bold h2"/>
-                        <textArea id="descriptionComplaintsField" dataContainer="examinationRecordDc" property="description.complaints" rows="5" inputPrompt="Complains"
+                        <label id="labelDescription" value="msg://labelDescription.value" stylename="bold h2"/>
+                        <textArea id="descriptionComplaintsField" dataContainer="examinationRecordDc" property="description.complaints" rows="5" inputPrompt="msg://descriptionComplaintsField.inputPrompt"
                                   width="500" height="75"/>
-                        <textArea id="descriptionAnamnesisField" dataContainer="examinationRecordDc" property="description.anamnesis" rows="5" inputPrompt="Anamnesis"
+                        <textArea id="descriptionAnamnesisField" dataContainer="examinationRecordDc" property="description.anamnesis" rows="5" inputPrompt="msg://descriptionAnamnesisField.inputPrompt"
                                   width="500" height="75"/>
-                        <textArea id="descriptionObjectivelyField" dataContainer="examinationRecordDc" property="description.objectively" rows="5" inputPrompt="Objectively"
+                        <textArea id="descriptionObjectivelyField" dataContainer="examinationRecordDc" property="description.objectively" rows="5" inputPrompt="msg://descriptionObjectivelyField.inputPrompt"
                                   width="500" height="75"/>
-                        <textArea id="descriptionConclusionField" dataContainer="examinationRecordDc" property="description.conclusion" rows="5" inputPrompt="Conclusion"
+                        <textArea id="descriptionConclusionField" dataContainer="examinationRecordDc" property="description.conclusion" rows="5" inputPrompt="msg://descriptionConclusionField.inputPrompt"
                                   width="500" height="75"/>
                     </vbox>
                 </scrollBox>
                 <vbox id="creationInfoVBox" spacing="true" margin="false,true,false,true">
-                    <label id="creationInfoLabel" value="Created by" stylename="bold h2"/>
+                    <label id="creationInfoLabel" value="msg://creationInfoLabel.value" stylename="bold h2"/>
                     <textField id="creationInfoClinicNameField" dataContainer="examinationRecordDc" property="creationInfo.clinicName"
-                               inputPrompt="Clinic name"
+                               inputPrompt="msg://creationInfoClinicNameField.inputPrompt"
                                width="200" height="auto"/>
-                    <textField id="creationInfoDoctorSurnameField" dataContainer="examinationRecordDc" property="creationInfo.doctorSurname" inputPrompt="Doctor's surname"
+                    <textField id="creationInfoDoctorSurnameField" dataContainer="examinationRecordDc" property="creationInfo.doctorSurname" inputPrompt="msg://creationInfoDoctorSurnameField.inputPrompt"
                                height="auto" width="200"/>
                     <dateField id="creationInfoDateField" dataContainer="examinationRecordDc" property="creationInfo.date"
                                width="200"/>
                 </vbox>
             </hbox>
         </scrollBox>
-        <label id="treatmentPlanLabel" value="Treatment plans" stylename="bold h2"/>
+        <label id="treatmentPlanLabel" value="msg://treatmentPlanLabel.value" stylename="bold h2"/>
         <dataGrid id="treatmentPlansTable" width="100%" dataContainer="treatmentPlansDc" reorderingAllowed="false"
                   settingsEnabled="false" columnsCollapsingAllowed="false">
             <actions>
