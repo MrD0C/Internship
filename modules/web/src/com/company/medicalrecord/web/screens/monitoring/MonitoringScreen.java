@@ -70,9 +70,9 @@ public class MonitoringScreen extends Screen {
     }
 
     private void setBaseLookupFieldValues(LookupField<String> field) {
-        List<String> durationList = List.of("Year", "Month");
+        List<String> durationList = List.of("Год", "Месяц");
         field.setOptionsList(durationList);
-        field.setValue("Month");
+        field.setValue("Месяц");
     }
 
     private void initDateFields() {
@@ -101,10 +101,10 @@ public class MonitoringScreen extends Screen {
     }
 
     private String getDateFormat(String value) {
-        if (value.equals("Year")) {
+        if (value.equals("Год")) {
             return "yyyy";
         }
-        if (value.equals("Month")) {
+        if (value.equals("Месяц")) {
             return "MM/yyyy";
         }
         return "dd.MM.yyyy";
@@ -113,14 +113,14 @@ public class MonitoringScreen extends Screen {
     @Subscribe("showWeightByPeriodButton")
     public void onShowWeightByPeriodButtonClick(Button.ClickEvent event) {
         if (weightDateField.getValue() == null || weightPeriodLookupField.getValue() == null) {
-            createTrayNotification("Enter values to field(s)!");
+            createTrayNotification("Введите значения в поля!");
             return;
         }
         LocalDateTime date = LocalDateTime.ofInstant(weightDateField.getValue().toInstant(), ZoneId.systemDefault());
         String periodName = weightPeriodLookupField.getValue();
         List<WeightMonitoring> list = getWeightMonitoringListForPeriod(date, periodName);
         if (list.isEmpty()) {
-            createTrayNotification("There is no info during this period..");
+            createTrayNotification("Нет данных в выбранном периоде..");
         } else {
             weightMonitoringDc.setItems(list);
         }
@@ -128,10 +128,10 @@ public class MonitoringScreen extends Screen {
 
     private List<WeightMonitoring> getWeightMonitoringListForPeriod(LocalDateTime date, String period) {
         List<WeightMonitoring> list = new ArrayList<>();
-        if (period.equals("Month")) {
+        if (period.equals("Месяц")) {
             list = monitoringService.getWeightMonitoringListForMonth(date);
         }
-        if (period.equals("Year")) {
+        if (period.equals("Год")) {
             list = monitoringService.getWeightMonitoringListForYear(date);
         }
         return list;
@@ -140,14 +140,14 @@ public class MonitoringScreen extends Screen {
     @Subscribe("showTemperatureByPeriodButton")
     public void onShowTemperatureByPeriodButtonClick(Button.ClickEvent event) {
         if (temperatureDateField.getValue() == null || temperatureDurationLookupField.getValue() == null) {
-            createTrayNotification("Enter values to field(s)!");
+            createTrayNotification("Введите значения в поля!");
             return;
         }
         LocalDateTime date = LocalDateTime.ofInstant(temperatureDateField.getValue().toInstant(), ZoneId.systemDefault());
         String periodName = temperatureDurationLookupField.getValue();
         List<TemperatureMonitoring> list = getTemperatureMonitoringListForPeriod(date, periodName);
         if (list.isEmpty()) {
-            createTrayNotification("There is no info during this period..");
+            createTrayNotification("Нет данных в выбранном периоде..");
         } else {
             temperatureMonitoringDc.setItems(list);
         }
@@ -155,10 +155,10 @@ public class MonitoringScreen extends Screen {
 
     private List<TemperatureMonitoring> getTemperatureMonitoringListForPeriod(LocalDateTime date, String period) {
         List<TemperatureMonitoring> list = new ArrayList<>();
-        if (period.equals("Month")) {
+        if (period.equals("Месяц")) {
             list = monitoringService.getTemperatureMonitoringListForMonth(date);
         }
-        if (period.equals("Year")) {
+        if (period.equals("Год")) {
             list = monitoringService.getTemperatureMonitoringListForYear(date);
         }
         return list;
@@ -168,14 +168,14 @@ public class MonitoringScreen extends Screen {
     @Subscribe("showPulseByPeriodButton")
     public void onShowPulseByPeriodButtonClick(Button.ClickEvent event) {
         if (pulseDateField.getValue() == null || pulseDurationLookupField.getValue() == null) {
-            createTrayNotification("Enter values to field(s)!");
+            createTrayNotification("Введите значения в поля!");
             return;
         }
         LocalDateTime date = LocalDateTime.ofInstant(pulseDateField.getValue().toInstant(), ZoneId.systemDefault());
         String periodName = pulseDurationLookupField.getValue();
         List<PulseMonitoring> list = getPulseMonitoringListForPeriod(date, periodName);
         if (list.isEmpty()) {
-            createTrayNotification("There is no info during this period..");
+            createTrayNotification("Нет данных в выбранном периоде..");
         } else {
             pulseMonitoringDc.setItems(list);
         }
@@ -183,10 +183,10 @@ public class MonitoringScreen extends Screen {
 
     private List<PulseMonitoring> getPulseMonitoringListForPeriod(LocalDateTime date, String period) {
         List<PulseMonitoring> list = new ArrayList<>();
-        if (period.equals("Month")) {
+        if (period.equals("Месяц")) {
             list = monitoringService.getPulseMonitoringListForMonth(date);
         }
-        if (period.equals("Year")) {
+        if (period.equals("Год")) {
             list = monitoringService.getPulseMonitoringListForYear(date);
         }
         return list;
