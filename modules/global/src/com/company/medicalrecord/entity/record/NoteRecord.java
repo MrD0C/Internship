@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Table(name = "MEDICALRECORD_NOTE_RECORD")
 @Entity(name = "medicalrecord_NoteRecord")
@@ -24,6 +25,17 @@ public class NoteRecord extends StandardEntity {
     @NotNull
     @Column(name = "DATE_", nullable = false)
     private LocalDateTime date;
+
+    @Column(name = "USER_ID")
+    private UUID userId;
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
 
     public LocalDateTime getDate() {
         return date;

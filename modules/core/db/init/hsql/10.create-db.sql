@@ -78,6 +78,7 @@ create table MEDICALRECORD_NOTE_RECORD (
     NAME varchar(255),
     DESCRIPTION varchar(255),
     DATE_ timestamp not null,
+    USER_ID varchar(36),
     --
     primary key (ID)
 )^

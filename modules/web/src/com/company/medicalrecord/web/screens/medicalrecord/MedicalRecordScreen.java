@@ -4,28 +4,33 @@ import com.company.medicalrecord.entity.record.AnalysisRecord;
 import com.company.medicalrecord.entity.record.ConsultationRecord;
 import com.company.medicalrecord.entity.record.ExaminationRecord;
 import com.company.medicalrecord.entity.record.NoteRecord;
+import com.company.medicalrecord.service.NoteService;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.RemoveOperation;
 import com.haulmont.cuba.gui.actions.list.ViewAction;
 import com.haulmont.cuba.gui.components.DataGrid;
+import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.CollectionLoader;
 import com.haulmont.cuba.gui.screen.*;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 
-//TODO Разобраться со скрином
 @UiController("medicalrecord_MedicalRecordScreen")
 @UiDescriptor("medical-record-screen.xml")
 public class MedicalRecordScreen extends Screen {
+
     @Inject
-    private CollectionLoader<NoteRecord> noteRecordsDl;
+    private CollectionContainer<NoteRecord> noteRecordsDc;
     @Inject
     private CollectionLoader<ExaminationRecord> examinationRecordsDl;
     @Inject
     private CollectionLoader<AnalysisRecord> analysisRecordsDl;
     @Inject
     private CollectionLoader<ConsultationRecord> consultationRecordsDl;
+    @Inject
+    private NoteService noteService;
     @Inject
     private DataGrid<NoteRecord> noteRecordsTable;
     @Named("noteRecordsTable.view")
@@ -40,7 +45,8 @@ public class MedicalRecordScreen extends Screen {
     }
 
     private void initDataCollections(){
-        noteRecordsDl.load();
+        List<NoteRecord> list = noteService.getAllUserNoteRecords();
+        noteRecordsDc.setItems(list);
         examinationRecordsDl.load();
         analysisRecordsDl.load();
         consultationRecordsDl.load();
