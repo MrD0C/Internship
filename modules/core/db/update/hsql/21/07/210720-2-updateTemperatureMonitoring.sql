@@ -1,0 +1,1 @@
+alter table MEDICALRECORD_TEMPERATURE_MONITORING add column USER_ID varchar(36) ;

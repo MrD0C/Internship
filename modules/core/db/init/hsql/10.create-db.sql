@@ -12,6 +12,7 @@ create table MEDICALRECORD_WEIGHT_MONITORING (
     MASS_VALUE double precision not null,
     UNIT varchar(50) not null,
     LOCAL_DATE_TIME timestamp not null,
+    USER_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -99,6 +100,7 @@ create table MEDICALRECORD_PULSE_MONITORING (
     VALUE_ double precision not null,
     UNIT varchar(50) not null,
     LOCAL_DATE_TIME timestamp not null,
+    USER_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -176,6 +178,7 @@ create table MEDICALRECORD_TEMPERATURE_MONITORING (
     VALUE_ double precision not null,
     UNIT varchar(50) not null,
     LOCAL_DATE_TIME timestamp not null,
+    USER_ID varchar(36),
     --
     primary key (ID)
 )^

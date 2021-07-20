@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Table(name = "MEDICALRECORD_TEMPERATURE_MONITORING")
 @Entity(name = "medicalrecord_TemperatureMonitoring")
@@ -27,6 +28,17 @@ public class TemperatureMonitoring extends StandardEntity {
     @NotNull
     @Column(name = "LOCAL_DATE_TIME", nullable = false)
     private LocalDateTime localDateTime;
+
+    @Column(name = "USER_ID")
+    private UUID userId;
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
 
     public LocalDateTime getLocalDateTime() {
         return localDateTime;

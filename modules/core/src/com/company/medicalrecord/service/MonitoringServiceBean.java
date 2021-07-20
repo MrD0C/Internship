@@ -4,6 +4,7 @@ import com.company.medicalrecord.entity.monitoring.PulseMonitoring;
 import com.company.medicalrecord.entity.monitoring.TemperatureMonitoring;
 import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.UserSessionSource;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -18,6 +19,8 @@ public class MonitoringServiceBean implements MonitoringService {
 
     @Inject
     private DataManager dataManager;
+    @Inject
+    private UserSessionSource userSessionSource;
 
     @Override
     public List<TemperatureMonitoring> getTemperatureMonitoringListForMonth(LocalDateTime dateTime) {
@@ -35,9 +38,10 @@ public class MonitoringServiceBean implements MonitoringService {
 
     private List<TemperatureMonitoring> getTemperatureMonitoringListFromDataBase(LocalDateTime start, LocalDateTime end) {
         return dataManager.load(TemperatureMonitoring.class)
-                .query("select t from medicalrecord_TemperatureMonitoring t where t.localDateTime between :start AND :end order by t.localDateTime")
+                .query("select t from medicalrecord_TemperatureMonitoring t where t.localDateTime between :start AND :end AND t.userId=:userId order by t.localDateTime")
                 .parameter("start", start)
                 .parameter("end", end)
+                .parameter("userId",userSessionSource.getUserSession().getUser().getId())
                 .list();
     }
 
@@ -57,9 +61,10 @@ public class MonitoringServiceBean implements MonitoringService {
 
     private List<WeightMonitoring> getWeightMonitoringListFromDataBase(LocalDateTime start, LocalDateTime end) {
         return dataManager.load(WeightMonitoring.class)
-                .query("select w from medicalrecord_WeightMonitoring  w where w.localDateTime between :start AND :end order by w.localDateTime")
+                .query("select w from medicalrecord_WeightMonitoring  w where w.localDateTime between :start AND :end ANd w.userId=:userId order by w.localDateTime")
                 .parameter("start", start)
                 .parameter("end", end)
+                .parameter("userId",userSessionSource.getUserSession().getUser().getId())
                 .list();
     }
 
@@ -79,9 +84,10 @@ public class MonitoringServiceBean implements MonitoringService {
 
     private List<PulseMonitoring> getPulseMonitoringListFromDataBase(LocalDateTime start, LocalDateTime end) {
         return dataManager.load(PulseMonitoring.class)
-                .query("select p from medicalrecord_PulseMonitoring  p where p.localDateTime between :start AND :end order by p.localDateTime")
+                .query("select p from medicalrecord_PulseMonitoring  p where p.localDateTime between :start AND :end and p.userId=:userId order by p.localDateTime")
                 .parameter("start", start)
                 .parameter("end", end)
+                .parameter("userId",userSessionSource.getUserSession().getUser().getId())
                 .list();
     }
 
