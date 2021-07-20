@@ -39,6 +39,7 @@ create table MEDICALRECORD_EXAMINATION_RECORD (
     --
     EXAMINATION_TYPE varchar(255) not null,
     NAME varchar(255),
+    USER_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -60,6 +61,7 @@ create table MEDICALRECORD_ANALYSIS_RECORD (
     --
     NAME varchar(255),
     CONCLUSION varchar(255),
+    USER_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -198,6 +200,8 @@ create table MEDICALRECORD_CONSULTATION_RECORD (
     DESCRIPTION_ANAMNESIS longvarchar,
     DESCRIPTION_OBJECTIVELY longvarchar,
     DESCRIPTION_CONCLUSION longvarchar,
+    --
+    USER_ID varchar(36),
     --
     primary key (ID)
 )^

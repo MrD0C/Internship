@@ -1,4 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
+    <view entity="medicalrecord_AnalysisRecord" name="analysisRecord-full-private-view" extends="_minimal">
+        <property name="conclusion"/>
+        <property name="creationInfo" view="_minimal">
+            <property name="clinicName"/>
+            <property name="doctorSurname"/>
+        </property>
+        <property name="indicators" view="_minimal">
+            <property name="norm"/>
+            <property name="unit"/>
+            <property name="comment"/>
+        </property>
+    </view>
+    <view entity="medicalrecord_ConsultationRecord" name="consultationRecord-full-private-view" extends="_minimal">
+        <property name="diagnosis" view="_minimal">
+            <property name="name"/>
+        </property>
+        <property name="creationInfo" view="_minimal">
+            <property name="clinicName"/>
+            <property name="doctorSurname"/>
+        </property>
+        <property name="description" view="_minimal">
+            <property name="complaints"/>
+            <property name="anamnesis"/>
+            <property name="objectively"/>
+            <property name="conclusion"/>
+        </property>
+        <property name="medications" view="_minimal">
+            <property name="intakeRecommendation"/>
+        </property>
+    </view>
+    <view entity="medicalrecord_ExaminationRecord" name="examinationRecord-full-private-view" extends="_minimal">
+        <property name="examinationType"/>
+        <property name="diagnosis" view="_minimal">
+            <property name="name"/>
+        </property>
+        <property name="description" view="_minimal">
+            <property name="complaints"/>
+            <property name="anamnesis"/>
+            <property name="objectively"/>
+            <property name="conclusion"/>
+        </property>
+        <property name="creationInfo" view="_minimal">
+            <property name="clinicName"/>
+            <property name="doctorSurname"/>
+        </property>
+        <property name="treatmentPlans" view="_minimal">
+            <property name="treatmentType"/>
+            <property name="name"/>
+            <property name="date"/>
+        </property>
+    </view>
+    <view entity="medicalrecord_NoteRecord" name="noteRecord-full-private-view" extends="_minimal">
+        <property name="description"/>
+        <property name="date"/>
+    </view>
 </views>

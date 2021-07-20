@@ -13,7 +13,8 @@
             <map>
                 <entry key="medicalrecord_MonitoringService"
                        value="com.company.medicalrecord.service.MonitoringService"/>
-                <entry key="medicalrecord_NoteService" value="com.company.medicalrecord.service.NoteService"/>
+                <entry key="medicalrecord_MedicalRecordService"
+                       value="com.company.medicalrecord.service.MedicalRecordService"/>
             </map>
         </property>
     </bean>

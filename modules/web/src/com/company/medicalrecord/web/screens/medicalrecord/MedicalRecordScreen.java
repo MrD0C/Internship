@@ -4,7 +4,7 @@ import com.company.medicalrecord.entity.record.AnalysisRecord;
 import com.company.medicalrecord.entity.record.ConsultationRecord;
 import com.company.medicalrecord.entity.record.ExaminationRecord;
 import com.company.medicalrecord.entity.record.NoteRecord;
-import com.company.medicalrecord.service.NoteService;
+import com.company.medicalrecord.service.MedicalRecordService;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.RemoveOperation;
 import com.haulmont.cuba.gui.actions.list.ViewAction;
@@ -24,13 +24,13 @@ public class MedicalRecordScreen extends Screen {
     @Inject
     private CollectionContainer<NoteRecord> noteRecordsDc;
     @Inject
-    private CollectionLoader<ExaminationRecord> examinationRecordsDl;
+    private CollectionContainer<ExaminationRecord> examinationRecordsDc;
     @Inject
-    private CollectionLoader<AnalysisRecord> analysisRecordsDl;
+    private CollectionContainer<ConsultationRecord> consultationRecordsDc;
     @Inject
-    private CollectionLoader<ConsultationRecord> consultationRecordsDl;
+    private CollectionContainer<AnalysisRecord> analysisRecordsDc;
     @Inject
-    private NoteService noteService;
+    private MedicalRecordService medicalRecordService;
     @Inject
     private DataGrid<NoteRecord> noteRecordsTable;
     @Named("noteRecordsTable.view")
@@ -45,11 +45,10 @@ public class MedicalRecordScreen extends Screen {
     }
 
     private void initDataCollections(){
-        List<NoteRecord> list = noteService.getAllUserNoteRecords();
-        noteRecordsDc.setItems(list);
-        examinationRecordsDl.load();
-        analysisRecordsDl.load();
-        consultationRecordsDl.load();
+        noteRecordsDc.setItems(medicalRecordService.getUserNoteRecords());
+        examinationRecordsDc.setItems(medicalRecordService.getUserExaminationRecords());
+        consultationRecordsDc.setItems(medicalRecordService.getUserConsultationRecords());
+        analysisRecordsDc.setItems(medicalRecordService.getUserAnalysisRecords());
     }
 
     @Install(to = "noteRecordsTable.create", subject = "afterCommitHandler")

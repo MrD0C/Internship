@@ -13,6 +13,7 @@ import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Table(name = "MEDICALRECORD_CONSULTATION_RECORD")
 @Entity(name = "medicalrecord_ConsultationRecord")
@@ -51,6 +52,17 @@ public class ConsultationRecord extends StandardEntity {
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "consultationRecord")
     private List<Medication> medications;
+
+    @Column(name = "USER_ID")
+    private UUID userId;
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
 
     public List<Medication> getMedications() {
         return medications;
