@@ -53,52 +53,52 @@ public class MedicalRecordScreen extends Screen {
 
     @Install(to = "noteRecordsTable.create", subject = "afterCommitHandler")
     private void noteRecordsTableCreateAfterCommitHandler(NoteRecord noteRecord) {
-        createTraySuccessNotification("Note saved");
+        createTraySuccessNotification("Заметка сохранена");
     }
 
     @Install(to = "noteRecordsTable.edit", subject = "afterCommitHandler")
     private void noteRecordsTableEditAfterCommitHandler(NoteRecord noteRecord) {
-        createTraySuccessNotification("Note changes saved");
+        createTraySuccessNotification("Изменения заметки сохранены");
     }
 
     @Install(to = "noteRecordsTable.remove", subject = "afterActionPerformedHandler")
     private void noteRecordsTableRemoveAfterActionPerformedHandler(RemoveOperation.AfterActionPerformedEvent<NoteRecord> afterActionPerformedEvent) {
-        createTraySuccessNotification("Note deleted");
+        createTraySuccessNotification("Заметка удалена");
     }
 
     @Install(to = "examinationRecordsTable.create", subject = "afterCommitHandler")
     private void examinationRecordsTableCreateAfterCommitHandler(ExaminationRecord examinationRecord) {
-        createTraySuccessNotification("Examination saved");
+        createTraySuccessNotification("Обследование сохранено");
     }
 
     @Install(to = "examinationRecordsTable.edit", subject = "afterCommitHandler")
     private void examinationRecordsTableEditAfterCommitHandler(ExaminationRecord examinationRecord) {
-        createTraySuccessNotification("Examination changes saved");
+        createTraySuccessNotification("Изменения обследования сохранены");
     }
 
     @Install(to = "examinationRecordsTable.remove", subject = "afterActionPerformedHandler")
     private void examinationRecordsTableRemoveAfterActionPerformedHandler(RemoveOperation.AfterActionPerformedEvent<ExaminationRecord> afterActionPerformedEvent) {
-        createTraySuccessNotification("Examination deleted");
+        createTraySuccessNotification("Обследование удалено");
     }
 
     @Install(to = "analysisRecordsTable.create", subject = "afterCommitHandler")
     private void analysisRecordsTableCreateAfterCommitHandler(AnalysisRecord analysisRecord) {
-        createTraySuccessNotification("Analysis saved");
+        createTraySuccessNotification("Анализ сохранен");
     }
 
     @Install(to = "analysisRecordsTable.edit", subject = "afterCommitHandler")
     private void analysisRecordsTableEditAfterCommitHandler(AnalysisRecord analysisRecord) {
-        createTraySuccessNotification("Analysis changes saved");
+        createTraySuccessNotification("Изменения анализа сохранены");
     }
 
     @Install(to = "analysisRecordsTable.remove", subject = "afterActionPerformedHandler")
     private void analysisRecordsTableRemoveAfterActionPerformedHandler(RemoveOperation.AfterActionPerformedEvent<AnalysisRecord> afterActionPerformedEvent) {
-        createTraySuccessNotification("Analysis deleted");
+        createTraySuccessNotification("Анализ удален");
     }
 
     private void createTraySuccessNotification(String description){
         notifications.create()
-                .withCaption("Success")
+                .withCaption("Успех")
                 .withDescription(description)
                 .withType(Notifications.NotificationType.TRAY)
                 .withPosition(Notifications.Position.BOTTOM_RIGHT)
