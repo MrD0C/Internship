@@ -4,10 +4,16 @@ import com.company.medicalrecord.entity.monitoring.PulseMonitoring;
 import com.company.medicalrecord.entity.monitoring.TemperatureMonitoring;
 import com.company.medicalrecord.entity.monitoring.WeightMonitoring;
 import com.company.medicalrecord.service.MonitoringService;
+import com.company.medicalrecord.web.screens.pulsemonitoring.PulseMonitoringBrowse;
+import com.company.medicalrecord.web.screens.temperaturemonitoring.TemperatureMonitoringBrowse;
+import com.company.medicalrecord.web.screens.weightmonitoring.WeightMonitoringBrowse;
+import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.ScreenBuilders;
+import com.haulmont.cuba.gui.builders.LookupBuilder;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.model.CollectionContainer;
+import com.haulmont.cuba.gui.model.DataComponents;
 import com.haulmont.cuba.gui.screen.*;
 
 import javax.inject.Inject;
@@ -46,6 +52,8 @@ public class MonitoringScreen extends Screen {
     private Notifications notifications;
     @Inject
     private ScreenBuilders screenBuilders;
+    @Inject
+    private DataComponents dataComponents;
 
     @Subscribe
     public void onInit(InitEvent event) {
@@ -223,22 +231,25 @@ public class MonitoringScreen extends Screen {
 
     @Subscribe("showAllWeight")
     public void onShowAllWeight(Action.ActionPerformedEvent event) {
-        screenBuilders.lookup(WeightMonitoring.class, this)
+        WeightMonitoringBrowse screen = (WeightMonitoringBrowse) screenBuilders.lookup(WeightMonitoring.class, this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
+        screen.setItems(monitoringService.getAllWeightMonitoringList());
     }
 
     @Subscribe("showAllTemperature")
     public void onShowAllTemperature(Action.ActionPerformedEvent event) {
-        screenBuilders.lookup(TemperatureMonitoring.class, this)
+        TemperatureMonitoringBrowse screen = (TemperatureMonitoringBrowse) screenBuilders.lookup(TemperatureMonitoring.class, this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
+        screen.setItems(monitoringService.getAllTemperatureMonitoringList());
     }
 
     @Subscribe("showAllPulse")
     public void onShowAllPulse(Action.ActionPerformedEvent event) {
-        screenBuilders.lookup(PulseMonitoring.class, this)
+        PulseMonitoringBrowse screen = (PulseMonitoringBrowse) screenBuilders.lookup(PulseMonitoring.class, this)
                 .withOpenMode(OpenMode.DIALOG)
                 .show();
+        screen.setItems(monitoringService.getAllPulseMonitoringList());
     }
 }

@@ -14,11 +14,17 @@ public interface MonitoringService {
 
     List<TemperatureMonitoring> getTemperatureMonitoringListForYear(LocalDateTime dateTime);
 
+    List<TemperatureMonitoring> getAllTemperatureMonitoringList();
+
     List<WeightMonitoring> getWeightMonitoringListForMonth(LocalDateTime dateTime);
 
     List<WeightMonitoring> getWeightMonitoringListForYear(LocalDateTime dateTime);
 
+    List<WeightMonitoring> getAllWeightMonitoringList();
+
     List<PulseMonitoring> getPulseMonitoringListForMonth(LocalDateTime dateTime);
 
     List<PulseMonitoring> getPulseMonitoringListForYear(LocalDateTime dateTime);
+
+    List<PulseMonitoring> getAllPulseMonitoringList();
 }
