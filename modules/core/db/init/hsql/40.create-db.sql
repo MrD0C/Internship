@@ -816,55 +816,55 @@ values ('f4e12dcd-6740-394f-1f3f-fd64804438e1', 1, '2021-07-21 15:27:09', 'admin
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('1bce4f4f-5ced-d136-c35f-7c1679762284', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_WeightMonitoring:deletedBy', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('1bce4f4f-5ced-d136-c35f-7c1679762284', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_WeightMonitoring:deletedBy', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('2092fdff-b4c8-0bff-dfc8-8492d514bff1', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_ConsultationRecord:createdBy', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('2092fdff-b4c8-0bff-dfc8-8492d514bff1', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_ConsultationRecord:createdBy', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('6b08f1a2-238b-535c-57af-6a76b446ee04', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_Medication:intakeRecommendation', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('6b08f1a2-238b-535c-57af-6a76b446ee04', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_Medication:intakeRecommendation', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('cb1399a5-c366-c329-acba-a5cfe32f034b', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_ExaminationRecord:name', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('cb1399a5-c366-c329-acba-a5cfe32f034b', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_ExaminationRecord:name', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('c68e861e-cdec-956d-46ae-f3e571da2f6a', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_TemperatureMonitoring:userId', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('c68e861e-cdec-956d-46ae-f3e571da2f6a', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_TemperatureMonitoring:userId', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('75c77861-27da-35d0-6b7d-cdf9c9c6b100', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_Description:anamnesis', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('75c77861-27da-35d0-6b7d-cdf9c9c6b100', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_Description:anamnesis', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('23d5bf67-b315-5a5e-88bb-6c994bda61ef', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_WeightMonitoring:createdBy', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('23d5bf67-b315-5a5e-88bb-6c994bda61ef', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_WeightMonitoring:createdBy', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('14ab2e81-561c-5036-dafb-de38a49f29a8', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_Medication:medicineName', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('14ab2e81-561c-5036-dafb-de38a49f29a8', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_Medication:medicineName', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('e0fb03bf-a484-b2ef-5a92-78f69c3b3687', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 40, 'cuba.gui.loginToClient', 1, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('e0fb03bf-a484-b2ef-5a92-78f69c3b3687', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 40, 'cuba.gui.loginToClient', 1, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('50cbda02-e0d6-477f-efd5-3a1e05c36492', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_PulseMonitoring:userId', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('50cbda02-e0d6-477f-efd5-3a1e05c36492', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_PulseMonitoring:userId', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('a85e190f-c454-7f3f-49e9-58382a625672', 1, '2021-07-21 15:27:09', 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_AnalysisRecord:name', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('a85e190f-c454-7f3f-49e9-58382a625672', 1, current_timestamp, 'admin', '2021-07-21 15:27:09', null, null, null, 30, 'medicalrecord_AnalysisRecord:name', 2, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_PERMISSION
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, PERMISSION_TYPE, TARGET, VALUE_, ROLE_ID)
-values ('ccb2f055-2ffc-0b0e-46d9-491392718a53', 1, '2021-07-21 15:30:09', 'admin', '2021-07-21 15:30:09', null, null, null, 10, 'medicalrecord_WeightMonitoring.edit', 1, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
+values ('ccb2f055-2ffc-0b0e-46d9-491392718a53', 1, current_timestamp, 'admin', '2021-07-21 15:30:09', null, null, null, 10, 'medicalrecord_WeightMonitoring.edit', 1, 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
 
 insert into SEC_USER
 (ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, LOGIN, LOGIN_LC, PASSWORD, PASSWORD_ENCRYPTION, NAME, FIRST_NAME, LAST_NAME, MIDDLE_NAME, POSITION_, EMAIL, LANGUAGE_, TIME_ZONE, TIME_ZONE_AUTO, ACTIVE, CHANGE_PASSWORD_AT_LOGON, GROUP_ID, GROUP_NAMES, IP_MASK, SYS_TENANT_ID)
-values ('be821b5a-35b1-3549-67fc-6e2ce4db3d1e', 1, '2021-07-21 14:56:39', 'admin', current_timestamp , null, null, null, 'user-dima', 'user-dima', '$2a$10$KBMFl4/j3NyGDEKccdUxcuhYqkCxR90KQR9k69x.MPksFsuIehDuW', 'bcrypt', null, null, null, null, null, null, 'ru', null, null, true, false, '0fa2b1a5-1d68-4d69-9fbd-dff348347f93', null, null, null);
+values ('be821b5a-35b1-3549-67fc-6e2ce4db3d1e', 1, current_timestamp, 'admin', current_timestamp , null, null, null, 'user-dima', 'user-dima', '$2a$10$KBMFl4/j3NyGDEKccdUxcuhYqkCxR90KQR9k69x.MPksFsuIehDuW', 'bcrypt', null, null, null, null, null, null, 'ru', null, null, true, false, '0fa2b1a5-1d68-4d69-9fbd-dff348347f93', null, null, null);
 
 insert into SEC_USER_ROLE (ID, CREATE_TS, VERSION, USER_ID, ROLE_ID)
 values ('632a6d64-f2e2-455a-93e9-33b919e16657', current_timestamp, 0, 'be821b5a-35b1-3549-67fc-6e2ce4db3d1e', 'dde915e5-2a25-26f6-c200-01a7e4aa00ef');
